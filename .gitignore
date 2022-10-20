@@ -27,3 +27,8 @@ hs_err_pid*
 #eclips configuration ?
 /.settings/
 
+#Fichiers propres au config de chacun
+.classpath
+.project
+
+
