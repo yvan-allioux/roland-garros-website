@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet ("/HelloWorld")
+@WebServlet ("/HelloWorld lol")
 
 public class HelloWorldServlet extends HttpServlet {
 	
