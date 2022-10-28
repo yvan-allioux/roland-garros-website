@@ -5,20 +5,39 @@ public class Joueur{
 	private int id;
 	private String nom;
 	private String prenom;
-	private LocalDate dateNaissance;
-	private String lieuNaissance;
-	private String nationalite;
-	private int taille;
-	private int poids;
-	private int sexe;
-	private String main;
-	private LocalDate dateCarriere;
-	private int classement;
+	private LocalDate dateNaissance = null;
+	private String lieuNaissance = null;
+	private String nationalite = null;
+	private int taille = (Integer)null;
+	private float poids = (Float)null;
+	private String sexe;
+	private String main = null;
+	private LocalDate dateCarriere = null;
+	private int classement = (Integer)null;
+	private int entraineur;
 
-	public Joueur(int id, String nom, String prenom) {
+	public Joueur(int id, String nom, String prenom, String sexe, int entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, int taille, float poids, String main, LocalDate dateCarriere, int classement) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.sexe = sexe;
+		this.entraineur = entraineur;
+		this.dateNaissance = dateNaissance;
+		this.lieuNaissance = lieuNaissance;
+		this.nationalite = nationalite;
+		this.taille = taille;
+		this.poids = poids;
+		this.main = main;
+		this.dateCarriere = dateCarriere;
+		this.classement = classement;
+	}
+	
+	public Joueur(int id, String nom, String prenom, String sexe, int entraineur) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+		this.entraineur = entraineur;
 	}
 	
 	public int getId() {
@@ -49,11 +68,11 @@ public class Joueur{
 		return taille;
 	}
 	
-	public int getPoids() {
+	public float getPoids() {
 		return poids;
 	}
 	
-	public int getSexe() {
+	public String getSexe() {
 		return sexe;
 	}
 	
@@ -69,5 +88,59 @@ public class Joueur{
 		return classement;
 	}
 	
+	public int getEntraineur() {
+		return entraineur;
+	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	
+	public void setEntraineur(int entraineur) {
+		this.entraineur = entraineur;
+	}
+	
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	
+	public void setLieuNaissance(String lieuNaissance) {
+		this.lieuNaissance = lieuNaissance;
+	}
+	
+	public void setNationalite(String nationalite) {
+		this.nationalite = nationalite;
+	}
+	
+	public void setTaille(int taille) {
+		this.taille = taille;
+	}
+	
+	public void setPoids(float poids) {
+		this.poids = poids;
+	}
+	
+	public void setMain(String main) {
+		this.main = main;
+	}
+	
+	public void setDateCarriere(LocalDate dateCarriere) {
+		this.dateCarriere = dateCarriere;
+	}
+	
+	public void setClassement(int classement) {
+		this.classement = classement;
+	}		
 }
