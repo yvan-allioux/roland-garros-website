@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/*==================== POLICES ======================*/
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Merriweather&family=Open+Sans&display=swap');
+
+/*==================== GENERAL ======================*/
+:root{
+	/**** FONTS *****/
+	--titleFont: 'Francois One', sans-serif;
+	--subtitleFont : 'Francois One', sans-serif;
+	--textFont: 'Open Sans', sans-serif;
+	/**** SIZES *****/
+	--titleSize :3rem;
+	--subtitleSize : 2rem;
+	--textSize : 1.5rem;
+	/**** COLORS *****/
+	--orange : #c85a19;
+	--vert : #00503c;
+}
+
+h1{
+	font-family : var(--titleFont);
+	color : var(--orange);
+}
+body{
+	font-family : var(--textFont);
+	margin:0;
+	padding:0;
+}
+
+.nav-link:hover{
+	color : var(--orange);
+}
+
+/*==================== FOOTER ======================*/
+footer{
+	background-color : var(--vert);
+	color : white; 
+	font-size : 0.75rem;
+	height : 20vh;
+	text-align : center;
+	padding-top : 20px;
+	border-top : 5px solid #003729;
+}
+
+a{
+	color : white;
+}
+
+
+
+
+
