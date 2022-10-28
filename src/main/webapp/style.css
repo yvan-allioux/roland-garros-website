@@ -10,7 +10,7 @@
 	--textFont: 'Open Sans', sans-serif;
 	/**** SIZES *****/
 	--titleSize :3rem;
-	--subtitleSize : 2rem;
+	--subtitleSize : 1.75rem;
 	--textSize : 1.5rem;
 	/**** COLORS *****/
 	--orange : #c85a19;
@@ -20,6 +20,11 @@
 h1{
 	font-family : var(--titleFont);
 	color : var(--orange);
+}
+
+h2{
+	font-family : var(--subtitleFont);
+	font-size : var(--subtitleSize);
 }
 body{
 	font-family : var(--textFont);
@@ -42,9 +47,27 @@ footer{
 	border-top : 5px solid #003729;
 }
 
-a{
+footer a{
 	color : white;
 }
+
+/*==================== CGU ======================*/
+span{
+	font-family : var(--subtitleFont);
+}
+
+/*==================== TABLEAUX ======================*/
+.table{
+	width : 80vw ;
+	margin : 10px auto;
+	font : var(--textFont);
+}
+ thead th{
+ 	font-family : var(--subtitleFont);
+ 	color : var(--orange);
+ }
+
+
 
 
 

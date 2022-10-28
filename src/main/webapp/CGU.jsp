@@ -16,7 +16,7 @@
 
 
 <body>
-	<h1> Mentions légales et conditions générales d'utilisation du site internet officiel de Roland-Garros </h1>
+<h1> Mentions légales et conditions générales d'utilisation du site internet officiel de Roland-Garros </h1>
 <h2>MENTIONS LÉGALES </h2>
 
 
