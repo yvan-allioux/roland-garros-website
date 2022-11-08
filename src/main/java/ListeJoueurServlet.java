@@ -25,7 +25,11 @@ public class ListeJoueurServlet extends HttpServlet {
         
         //pour chaque joueur de la liste
         for(int i =0;i<listeJoueurs.size();i++) {
-        	out.println(listeJoueurs.get(i).getPrenom());//on affiche le prénom de chaque joueur
+        	//on affiche les infos 
+        	out.println(listeJoueurs.get(i).getPrenom());
+        	out.println(listeJoueurs.get(i).getNom());
+        	out.println(listeJoueurs.get(i).getEntraineur());
+        	out.println("\n");
         }
         
 
