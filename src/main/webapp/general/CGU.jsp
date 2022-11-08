@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<!--  Bootstrap  -->
+<%@ include file="head.jsp" %>
+<title>CGU | Roland Garros</title>
 </head>
+
+<%@include file="nav.jsp" %>
+
+
 <body>
-	<h1> Mentions légales et conditions générales d'utilisation du site internet officiel de Roland-Garros </h1>
+<h1> Mentions légales et conditions générales d'utilisation du site internet officiel de Roland-Garros </h1>
 <h2>MENTIONS LÉGALES </h2>
 
 
@@ -122,4 +128,5 @@
 
 <p>Les présentes CGU sont régies par le droit français. Tout différend lié à l'interprétation et/ou à l'exécution des présentes est soumis aux tribunaux français conformément aux règles de droit commun.</p>
 </body>
+<%@include file="footer.jsp" %>
 </html>
