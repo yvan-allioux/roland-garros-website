@@ -10,12 +10,12 @@
 <body>
 	<form class="formConnexion">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Pseudo</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="pseudo" class="form-label">Pseudo</label>
+    <input type="text" class="form-control" id="pseudo" >
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label for="password" class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" id="password">
   </div>
   <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
