@@ -2,16 +2,16 @@ import java.time.LocalDate;
 
 public class Entraineur {
 
-	private int id;
+	private Integer id;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance = null;
 	private String nationalite = null;
 	private String main = null;
 	private LocalDate dateCarriere = null;
-	private int meilleurClassement = (Integer)null;
+	private Integer meilleurClassement = null;
 	
-	public Entraineur(int id, String nom, String prenom, LocalDate dateNaissance, String nationalite, String main, LocalDate dateCarriere, int meilleurClassement) {
+	public Entraineur(Integer id, String nom, String prenom, LocalDate dateNaissance, String nationalite, String main, LocalDate dateCarriere, Integer meilleurClassement) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -22,74 +22,90 @@ public class Entraineur {
 		this.meilleurClassement = meilleurClassement;
 	}
 	
-	public Entraineur(int id, String nom, String prenom) {
+	public Entraineur(Integer id, String nom, String prenom) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	
-	public String getNom() {
-		return nom;
-	}
-	
-	public String getPrenom() {
-		return prenom;
-	}
-	
-	public LocalDate getDateNaissance() {
-		return dateNaissance;
-	}
-	
-	public String getNationalite() {
-		return nationalite;
-	}
-	
-	public String getMain() {
-		return main;
-	}
-	
-	public LocalDate getDateCarriere() {
-		return dateCarriere;
-	}
-	
-	public int getMeilleurClassement() {
-		return meilleurClassement;
-	}
-	
-	public void setId(int id) {
+	//méthode fixe un ID
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
+	//méthode fixe un nom
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	
+	//méthode fixe un prénom
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 	
+	//méthode fixe une date de naissance
 	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 	
+	//méthode fixe une nationalite
 	public void setNationalite(String nationalite) {
 		this.nationalite = nationalite;
 	}
 	
+	//méthode fixe une main
 	public void setMain(String main) {
 		this.main = main;
 	}
 	
+	//méthode fixe une date de début de carrière
 	public void setDateCarriere(LocalDate dateCarriere) {
 		this.dateCarriere = dateCarriere;
 	}
 	
-	public void setMeilleurClassement(int meilleurClassement) {
+	//méthode fixe un meilleur classement
+	public void setMeilleurClassement(Integer meilleurClassement) {
 		this.meilleurClassement = meilleurClassement;
+	}
+	
+	//méthode obtenir l'ID de l'entraineur
+	public Integer getId() {
+		return id;
+	}
+	
+	//méthode obtenir le nom de l'entraineur
+	public String getNom() {
+		return nom;
+	}
+	
+	//méthode obtenir le prénom de l'entraineur
+	public String getPrenom() {
+		return prenom;
+	}
+	
+	//méthode obtenir la date de naissance de l'entraineur
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+	
+	//méthode obtenir la nationalite de l'entraineur
+	public String getNationalite() {
+		return nationalite;
+	}
+	
+	//méthode obtenir la main de l'entraineur
+	public String getMain() {
+		return main;
+	}
+	
+	//méthode obtenir la date de début de carrière de l'entraineur
+	public LocalDate getDateCarriere() {
+		return dateCarriere;
+	}
+	
+	//méthode obtenir le meilleur classement de l'entraineur
+	public Integer getMeilleurClassement() {
+		return meilleurClassement;
 	}
 		
 }
