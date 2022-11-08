@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="head.jsp" %>
-<title>Insert title here</title>
+<%@include file="../general/head.jsp" %>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<title>Roland Garros</title>
 </head>
 
-	<%@include file="nav.jsp" %>
+	<%@include file="../general/nav.jsp" %>
 <body>
 		
 		<div>
@@ -16,5 +17,5 @@
 		</div>
 	</body>
 
-<%@include file="footer.jsp" %>
+<%@include file="../general/footer.jsp" %>
 </html>

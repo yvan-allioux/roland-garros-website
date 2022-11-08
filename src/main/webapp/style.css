@@ -13,8 +13,10 @@
 	--subtitleSize : 1.75rem;
 	--textSize : 1.5rem;
 	/**** COLORS *****/
-	--orange : #c85a19;
-	--vert : #00503c;
+	--principal : #c85a19;
+	--principalFonce : ;
+	--secondaire: #00503c;
+	--secondaireFonce : #003729;
 }
 
 h1{
@@ -33,18 +35,18 @@ body{
 }
 
 .nav-link:hover{
-	color : var(--orange);
+	color : var(--principal);
 }
 
 /*==================== FOOTER ======================*/
 footer{
-	background-color : var(--vert);
+	background-color : var(--secondaire);
 	color : white; 
 	font-size : 0.75rem;
 	height : 20vh;
 	text-align : center;
 	padding-top : 20px;
-	border-top : 5px solid #003729;
+	border-top : 5px solid var(--secondaireFonce);
 }
 
 footer a{
@@ -58,16 +60,22 @@ span{
 
 /*==================== TABLEAUX ======================*/
 .table{
-	width : 80vw ;
-	margin : 10px auto;
+	margin : 10px, auto;
 	font : var(--textFont);
 }
  thead th{
  	font-family : var(--subtitleFont);
- 	color : var(--orange);
+ 	color : var(--principal);
  }
 
+.input-group{
+	width : 500px;
+}
 
+.formConnexion{
+	width : 45vw;
+	margin : auto;
+}
 
 
 
