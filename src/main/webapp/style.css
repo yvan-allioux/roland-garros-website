@@ -17,6 +17,8 @@
 	--principalFonce : ;
 	--secondaire: #00503c;
 	--secondaireFonce : #003729;
+
+	
 }
 
 h1{
@@ -75,6 +77,23 @@ span{
 .formConnexion{
 	width : 45vw;
 	margin : auto;
+}
+
+
+/* =================== FORMULAIRE ================ */
+.formModifier{
+	width: 50vw;
+	margin : auto;
+	border : 2px solid red;
+}
+.form-item-container{
+	display : flex;
+	flex-wrap:wrap;
+	justify-content : space-between;
+	border: 2px solid blue;
+}
+.formModifier label{
+	font-family : var(--subtitleFont);
 }
 
 

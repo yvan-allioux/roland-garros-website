@@ -59,7 +59,7 @@
 				  <td>Mark</td>
 				  <td>Nom + Prenom</td>
 				  <td>
-				  	<a href="">
+				  	<a href="modifierJoueurs.jsp">
 				  		<span class="material-symbols-outlined">edit_square</span>
 					</a>
 				  	<a href="">
