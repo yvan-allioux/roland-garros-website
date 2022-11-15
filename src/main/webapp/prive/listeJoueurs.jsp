@@ -45,6 +45,12 @@
 			  </tr>
 			</thead>
 			<tbody>
+				<%for (Joueur book:listeJoueurs) {
+
+				      String title = book.getTitle();
+				
+				      String author = book.getAuthor();%>
+				
 				<tr>
 				  <th scope="row">1</th>
 				  <td>Mark</td>
@@ -68,6 +74,9 @@
 				  </td>
 					  	
 				</tr>
+				
+				<%}%>
+				
  			</tbody>
 		</table>
 	</body>
