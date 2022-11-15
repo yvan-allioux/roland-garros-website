@@ -1,4 +1,9 @@
+package servlets;
+
+import classes.Joueur;
+import models.JoueurDAOImpl;
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.List;
 

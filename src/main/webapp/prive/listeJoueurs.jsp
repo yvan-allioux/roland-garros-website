@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List,Joueur"%>
+<%@page import="java.util.List,java.time.LocalDate,classes.Joueur"%>
 <%List<Joueur> joueurs = (List<Joueur>)request.getAttribute("joueurs");%>
-<%out.print("EHOH");
-out.print(joueurs);%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -52,24 +50,33 @@ out.print(joueurs);%>
 				<%for (Joueur joueur:joueurs) {
 
 				      Integer id = joueur.getId();
-				      
 				      String prenom = joueur.getPrenom();
-				
-				      String nom = joueur.getNom();%>
+				      String nom = joueur.getNom();
+				      LocalDate  dateNaissance = joueur.getDateNaissance();
+				      String lieuNaissance = joueur.getLieuNaissance();
+				      String nationalite = joueur.getNationalite();
+				      Integer taille = joueur.getTaille();
+				      Float poids = joueur.getPoids();
+				      String main = joueur.getMain();
+				      LocalDate dateCarriere = joueur.getDateCarriere();
+				      Integer classement = joueur.getClassement();
+				      String sexe = joueur.getSexe();
+				      Integer entraineur = joueur.getEntraineur();
+				      %>
 				
 				<tr>
-				  <th scope="row">1</th>
-				  <td><%=id%></td>
-				  <td><%=prenom%></td>
 				  <td><%=nom%></td>
-				  <td>Mark</td>
-				  <td>AA</td>
-				  <td>AA</td>
-				  <td>Mark</td>
-				  <td>AA</td>
-				  <td>AA</td>
-				  <td>Mark</td>
-				  <td>AA</td>
+				  <td><%=prenom%></td>
+				  <td><%=sexe%></td>
+				  <td><%=dateNaissance%></td>
+				  <td><%=lieuNaissance%></td>
+				  <td><%=nationalite%></td>
+				  <td><%=taille%></td>
+				  <td><%=poids%></td>
+				  <td><%=classement%></td>
+				  <td><%=main%></td>
+				  <td><%=dateCarriere%></td>
+				  <td><%=entraineur%></td>
 				  <td>
 				  	<a href="">
 				  		<span class="material-symbols-outlined">edit_square</span>
