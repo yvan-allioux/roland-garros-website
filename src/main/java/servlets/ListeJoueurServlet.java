@@ -63,5 +63,36 @@ public class ListeJoueurServlet extends HttpServlet {
       }
 		
 	}
+	
+	@Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//Création d'une instance du DAO des jouers
+        JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+        
+
+        if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué
+        	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("H");
+        	 req.setAttribute("joueurs", listeJoueurs);
+        } else if (req.getParameter("btn-femme") != null) { //Si le bouton "Femme" a été cliqué
+        	List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("F");
+        	req.setAttribute("joueurs", listeJoueurs);
+        } else if (req.getParameter("btn-classement") != null) { //Si le bouton "Classement" a été cliqué
+        	List<Joueur> listeJoueurs = joueurDAO.getAllJoueursOrderedByClassement();
+        	req.setAttribute("joueurs", listeJoueurs);
+        } else if (req.getParameter("btn-nom") != null) { //Si le bouton "Nom" a été cliqué
+        	List<Joueur> listeJoueurs = joueurDAO.getAllJoueursOrderedByNom();
+        	req.setAttribute("joueurs", listeJoueurs);
+        } else {
+        	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueurs();
+        	 req.setAttribute("joueurs", listeJoueurs);
+        }
+        //On stocke le chemin vers le fichier correspondant à la vue pour la liste des joueurs
+        String pageName = "/prive/listeJoueurs.jsp";
+        //On renvoie la requête 
+        req.getRequestDispatcher(pageName).forward(req, resp);
+    }
+	
+	
 
 }
