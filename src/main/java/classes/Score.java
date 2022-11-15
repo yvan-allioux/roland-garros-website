@@ -1,3 +1,5 @@
+package classes;
+
 import java.time.LocalTime;
 
 public class Score {

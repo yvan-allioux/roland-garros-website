@@ -1,4 +1,4 @@
-
+package classes;
 public class Admin extends Editeur{
 	//ATTRIBUTS
 

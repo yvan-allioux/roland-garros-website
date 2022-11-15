@@ -1,3 +1,6 @@
+package models;
+import classes.Joueur;
+
 import java.util.List;
 
 

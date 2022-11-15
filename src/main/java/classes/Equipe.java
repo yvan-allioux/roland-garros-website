@@ -1,3 +1,4 @@
+package classes;
 public class Equipe{
 
 	private Integer id;
