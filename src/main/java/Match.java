@@ -2,12 +2,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Match {
-	
+	//ATTRIBUTS
 	private int id;
 	private LocalDate date;
 	private LocalTime heure;
 	private int gagnant;
-	
+	//CONSTRUCTEUR
 	public Match(int id, LocalDate date, LocalTime heure, int gagnant) {
 		this.id = id;
 		this.date = date;
@@ -20,6 +20,9 @@ public class Match {
 		this.date = date;
 		this.heure = heure;
 	}
+	//METHODES
+
+	//GETTERS
 	
 	public int getId() {
 		return id;
@@ -36,7 +39,8 @@ public class Match {
 	public int getGagnant() {
 		return gagnant;
 	}
-	
+
+	//SETTERS
 	public void setId(int id) {
 		this.id = id;
 	}

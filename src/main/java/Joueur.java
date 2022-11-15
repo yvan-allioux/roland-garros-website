@@ -1,7 +1,8 @@
 import java.time.LocalDate;
 
 public class Joueur{
-	
+
+	//ATTRIBUTS
 	private int id;
 	private String nom;
 	private String prenom;
@@ -16,6 +17,7 @@ public class Joueur{
 	private int classement = (Integer)null;
 	private int entraineur;
 
+	//CONSTRUCTEURS
 	public Joueur(int id, String nom, String prenom, String sexe, int entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, int taille, float poids, String main, LocalDate dateCarriere, int classement) {
 		this.id = id;
 		this.nom = nom;
@@ -39,7 +41,8 @@ public class Joueur{
 		this.sexe = sexe;
 		this.entraineur = entraineur;
 	}
-	
+
+	//GETTERS
 	public int getId() {
 		return id;
 	}
@@ -92,6 +95,7 @@ public class Joueur{
 		return entraineur;
 	}
 	
+	//SETTERS
 	public void setId(int id) {
 		this.id = id;
 	}

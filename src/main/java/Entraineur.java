@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Entraineur {
-
+	//ATTRIBUTS
 	private int id;
 	private String nom;
 	private String prenom;
@@ -10,6 +10,7 @@ public class Entraineur {
 	private String main = null;
 	private LocalDate dateCarriere = null;
 	private int meilleurClassement = (Integer)null;
+	//CONSTRUCTEUR
 	
 	public Entraineur(int id, String nom, String prenom, LocalDate dateNaissance, String nationalite, String main, LocalDate dateCarriere, int meilleurClassement) {
 		this.id = id;
@@ -27,7 +28,9 @@ public class Entraineur {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
-	
+	//METHODES
+
+	//GETTERS
 	public int getId() {
 		return id;
 	}
@@ -59,7 +62,7 @@ public class Entraineur {
 	public int getMeilleurClassement() {
 		return meilleurClassement;
 	}
-	
+	//SETTERS
 	public void setId(int id) {
 		this.id = id;
 	}

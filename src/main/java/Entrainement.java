@@ -2,16 +2,17 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Entrainement {
+	//ATTRIBUTS
 	private int id;
 	private LocalDate date;
 	private LocalTime heure;
-	
+	//CONSTRUCTEUR
 	public Entrainement(int id, LocalDate date, LocalTime heure) {
 		this.id = id;
 		this.date = date;
 		this.heure = heure;
 	}
-	
+	//GETTERS
 	public int getId() {
 		return id;
 	}
@@ -23,7 +24,7 @@ public class Entrainement {
 	public LocalTime getHeure() {
 		return heure;
 	}
-	
+	//SETTERS
 	public void setId(int id) {
 		this.id = id;
 	}

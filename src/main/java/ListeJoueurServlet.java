@@ -18,6 +18,6 @@ public class ListeJoueurServlet extends HttpServlet {
 
         out.println("Liste des joueurs!");
 
-  }    
+  }
 
 }
