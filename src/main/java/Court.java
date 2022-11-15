@@ -4,29 +4,27 @@ public class Court {
 	private Integer id;
 	private String nom;
 	
+	//CONSTRUCTEURS
 	public Court(Integer id, String nom) {
 		this.id = id;
 		this.nom = nom;
 	}
 	
-	//méthode fixe un ID
-	public void setId(Integer id) {
-		this.id = id;
+
+	//GETTERS
+	public String getNom() {
+		return nom;
 	}
-	
-	//méthode fixe un nom
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	
-	//méthode obtenir l'ID d'un joueur
 	public Integer getId() {
 		return id;
 	}
-	
-	//méthode obtenir le nom d'un joueur
-	public String getNom() {
-		return nom;
+
+	//SETTERS
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 }
