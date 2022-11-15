@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%List<Joueur> joueurs = (List<Joueur>)request.getAttribute("joueurs");%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,17 +47,19 @@
 			  </tr>
 			</thead>
 			<tbody>
-				<%for (Joueur book:listeJoueurs) {
+				<%for (Joueur joueur:joueurs) {
 
-				      String title = book.getTitle();
+				      Integer id = joueur.getId();
+				      
+				      String prenom = joueur.getPrenom();
 				
-				      String author = book.getAuthor();%>
+				      String nom = joueur.getNom();%>
 				
 				<tr>
 				  <th scope="row">1</th>
-				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
+				  <td><%=id%></td>
+				  <td><%=prenom%></td>
+				  <td><%=nom%></td>
 				  <td>Mark</td>
 				  <td>Otto</td>
 				  <td>@mdo</td>
