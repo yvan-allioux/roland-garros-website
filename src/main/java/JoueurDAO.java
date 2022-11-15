@@ -5,3 +5,4 @@ public interface JoueurDAO {
 	public List<Joueur> getAllJoueurs();
 
 }
+
