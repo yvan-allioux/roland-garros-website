@@ -25,7 +25,7 @@ public class Score {
 	public LocalTime getTemps() {
 		return temps;
 	}
-	
+
 	//SETTERS
 	public void setNbSet(int nbSet) {
 		this.nbSet = nbSet;
