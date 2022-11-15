@@ -55,8 +55,10 @@ public class ListeJoueurServlet extends HttpServlet {
 
             e.printStackTrace();
 
+
       }
 		
 	}
+
 
 }
