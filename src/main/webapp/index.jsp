@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="../general/head.jsp" %>
-<link rel="stylesheet" href="style.css" type="text/css" />
+<%@include file="/general/head.jsp" %>
 <title>Roland Garros</title>
 </head>
 
