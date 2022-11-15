@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List,Joueur"%>
+<%List<Joueur> joueurs = (List<Joueur>)request.getAttribute("joueurs");%>
+<%out.print("EHOH");
+out.print(joueurs);%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,19 +49,27 @@
 			  </tr>
 			</thead>
 			<tbody>
+				<%for (Joueur joueur:joueurs) {
+
+				      Integer id = joueur.getId();
+				      
+				      String prenom = joueur.getPrenom();
+				
+				      String nom = joueur.getNom();%>
+				
 				<tr>
 				  <th scope="row">1</th>
+				  <td><%=id%></td>
+				  <td><%=prenom%></td>
+				  <td><%=nom%></td>
 				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
+				  <td>AA</td>
+				  <td>AA</td>
 				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
+				  <td>AA</td>
+				  <td>AA</td>
 				  <td>Mark</td>
-				  <td>Otto</td>
-				  <td>@mdo</td>
-				  <td>Mark</td>
-				  <td>Nom + Prenom</td>
+				  <td>AA</td>
 				  <td>
 				  	<a href="">
 				  		<span class="material-symbols-outlined">edit_square</span>
@@ -68,6 +80,9 @@
 				  </td>
 					  	
 				</tr>
+				
+				<%}%>
+				
  			</tbody>
 		</table>
 	</body>
