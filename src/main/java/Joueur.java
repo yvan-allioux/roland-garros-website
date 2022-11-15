@@ -5,15 +5,16 @@ public class Joueur{
 	private Integer id;
 	private String nom;
 	private String prenom;
-	private LocalDate dateNaissance = null;
-	private String lieuNaissance = null;
-	private String nationalite = null;
-	private Integer taille = null;
-	private float poids = (Float)null;
+	private LocalDate dateNaissance;
+	private String lieuNaissance;
+	private String nationalite ;
+	private int taille;
+	private float poids;
 	private String sexe;
-	private String main = null;
-	private LocalDate dateCarriere = null;
-	private Integer classement = null;
+	private String main;
+	private LocalDate dateCarriere;
+	private int classement;
+
 	private Integer entraineur;
 
 	public Joueur(Integer id, String nom, String prenom, String sexe, Integer entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere, Integer classement) {
@@ -32,7 +33,7 @@ public class Joueur{
 		this.classement = classement;
 	}
 	
-	public Joueur(Integer id, String nom, String prenom, String sexe, Integer entraineur) {
+	public Joueur(int id, String nom, String prenom, String sexe,Integer entraineur) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
