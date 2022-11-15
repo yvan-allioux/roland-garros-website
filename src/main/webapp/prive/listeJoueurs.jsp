@@ -12,12 +12,12 @@
 	<%@include file="../general/nav.jsp" %>
 	<body>	
 		<!--  Filtres -->	
-		<div class="btn-group" >
-		  <button type="button" class="btn btn-outline-dark">Nom</button>
-		  <button type="button" class="btn btn-outline-dark">Classement</button>
-		  <button type="button" class="btn btn-outline-dark">Homme</button>
-		  <button type="button" class="btn btn-outline-dark">Femme</button>
-		</div>
+		<form action="./joueurs"class="btn-group" method="post">
+		  <button type="submit" class="btn btn-outline-dark" name="btn-nom" value="btn-nom">Nom</button>
+		  <button type="submit" class="btn btn-outline-dark" name="btn-classement" value="btn-classement">Classement</button>
+		  <button type="submit" class="btn btn-outline-dark" name="btn-homme" value="btn-homme">Homme</button>
+		  <button type="submit" class="btn btn-outline-dark" name="btn-femme" value="btn-femme">Femme</button>
+		</form>
 		
 		<!--  importer fichier CSV -->
 		<div class="input-group input-group-sm">
