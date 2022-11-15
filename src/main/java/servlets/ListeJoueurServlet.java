@@ -44,7 +44,6 @@ public class ListeJoueurServlet extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         
         try {
-
             rd.forward(req, resp);
 
       } catch (ServletException e) {
@@ -59,6 +58,5 @@ public class ListeJoueurServlet extends HttpServlet {
       }
 		
 	}
-
 
 }
