@@ -19,11 +19,7 @@
 		  <button type="submit" class="btn btn-outline-dark" name="btn-femme" value="btn-femme">Femme</button>
 		</form>
 		
-		<!--  importer fichier CSV -->
-		<div class="input-group input-group-sm">
-		  <input type="file" class="form-control" id="inputTelechargement" placeholder="Username">
-		  <label class="input-group-text" for="inputTelechargement">Télécharger</label>
-		</div>
+		
 		
 		
 		<!-- Liste des joueurs  -->
@@ -78,10 +74,10 @@
 				  <td><%=dateCarriere%></td>
 				  <td><%=entraineur%></td>
 				  <td>
-				  	<a href="">
+				  	<a href="./joueur/modifier?id=<%=id%>">
 				  		<span class="material-symbols-outlined">edit_square</span>
 					</a>
-				  	<a href="">
+				  	<a href="./joueur/supprimer?id=<%=id%>">
 				  		<span class="material-symbols-outlined">delete</span>
 			  		</a>
 				  </td>
@@ -92,6 +88,18 @@
 				
  			</tbody>
 		</table>
+		<div>
+			<!--  importer fichier CSV -->
+			<div class="input-group input-group-sm">
+			  <input type="file" class="form-control" id="inputTelechargement" placeholder="Username">
+			  <label class="input-group-text" for="inputTelechargement">Télécharger</label>
+			</div>
+			<!--  bouton ajout joueur -->
+			
+			<a href="./joueur/ajouter" class="btn btn-outline-secondary">Ajouter un joueur</a>
+			
+		</div>
+		
 	</body>
 	<%@include file="../general/footer.jsp" %>
 </html>

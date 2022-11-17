@@ -125,5 +125,6 @@ public class Joueur{
 	public void setClassement(Integer classement) {
 		this.classement = classement;
 	}
+	
 
 }
