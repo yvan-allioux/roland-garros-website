@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="../general/head.jsp" %>
+<%@include file="/general/head.jsp" %>
+<link rel="stylesheet" href="style.css" type="text/css" /> 
 <title>Roland Garros</title>
 </head>
 
 	<%@include file="../general/nav.jsp" %>
 <body>
 		
-		<div>
+		<div class="index-item">
 			<h1>Roland Garros</h1>
    			<p> Ce site est un projet d'école fictif réaliser en JEE.</p>
 		</div>

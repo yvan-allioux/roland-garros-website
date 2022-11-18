@@ -21,12 +21,16 @@
 
 h1{
 	font-family : var(--titleFont);
-	color : var(--orange);
+	border-bottom : solid 2px var(--principal);
+	text-transform: uppercase;
+	width:fit-content;
 }
 
 h2{
 	font-family : var(--subtitleFont);
 	font-size : var(--subtitleSize);
+	text-transform: uppercase;
+	width:fit-content;
 }
 html{
 	min-height:100%;
@@ -35,8 +39,11 @@ body{
 	font-family : var(--textFont);
 	margin:0;
 	padding:0;
-	position:relative;
-	min-height:100%;
+	display : flex;
+	flex-direction:column; 
+	justify-content:space-between;
+	min-height:100vh;
+
 }
 
 .nav-link:hover{
@@ -60,7 +67,28 @@ footer{
 footer a{
 	color : white;
 }
+/*==================== INDEX ======================*/
+.index-item{
+	display:flex; 
+	flex-wrap:wrap;
+}
 
+.index-item h1{
+	font-size : 6rem;
+	color : var(--principal);
+	border-bottom:none;
+	align-self : flex-end;
+}
+.index-item h1::before{
+	  content: "";
+    display: block;
+    background: url('medias/accueil.jpg') no-repeat;
+    width: 40vw;
+    height: 35vh;
+    position : relative;
+    left : 10px;
+    top : 30px;
+}
 /*==================== CGU ======================*/
 span{
 	font-family : var(--subtitleFont);
@@ -84,8 +112,42 @@ span{
 	width : 45vw;
 	margin : auto;
 }
+/*==================== LISTE JOUEURS (PUBLIC) ======================*/
+.card{
+	max-width:200px;
+	min-width:200px;
+	margin-bottom : 5px !important;
+	border : 1px solid var(--principal) !important;
+	border-radius : 0;
+	padding : 2px;
+}
+.cardSexe h2{
+	border-bottom:2px solid var(--principal);
+}
+.card-text{
+	margin:0 !important;
+	padding:0;
+	
+}
+.card-text span{
+	color : var(--principal);
+	font-size:1.25rem;
+}
+.nationalite{
+	
+}
 
+.card-group{
+	justify-content : space-around;
+	align-content : space-around;
+}
 
+.cardJoueurs{
+	display:flex;
+}
+.cardSexe{
+	width : calc(100vw/2);
+}
 
 
 
