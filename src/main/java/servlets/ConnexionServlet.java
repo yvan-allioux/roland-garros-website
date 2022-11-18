@@ -62,10 +62,7 @@ public class ConnexionServlet extends HttpServlet{
 
         //nouvelle instance d'utilisateur
         Utilisateur unUser = new Utilisateur(login, password);
-
-        //get role
-        char role = unUser.getRole(login);
-        System.out.println("role : " + role);
+        System.out.println( "get role : " + unUser.getType());
 
         //utilisateur existant ?
         if(unUser.utilisateurExiste(login)) {

@@ -17,7 +17,11 @@ public class Utilisateur {
     public Utilisateur(String login, String password) {
         this.login = login;
         this.password = password;
-        //TODO : récupérer le type de l'utilisateur si il existe
+        if(new UtilisateurDAOimpl().utilisateurExiste(login)){
+            this.type = new UtilisateurDAOimpl().getRole(login);
+        }else{
+            this.type = 'Z';//erreur
+        }
     }
     //METHODES
 
