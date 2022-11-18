@@ -74,10 +74,10 @@
 				  <td><%=dateCarriere%></td>
 				  <td><%=entraineur%></td>
 				  <td>
-				  	<a href="./joueur/modifier?id=<%=id%>">
+				  	<a href="/joueur/modifier?id=<%=id%>">
 				  		<span class="material-symbols-outlined">edit_square</span>
 					</a>
-				  	<a href="./joueur/supprimer?id=<%=id%>">
+				  	<a href="/joueur/supprimer?id=<%=id%>">
 				  		<span class="material-symbols-outlined">delete</span>
 			  		</a>
 				  </td>
@@ -96,7 +96,7 @@
 			</div>
 			<!--  bouton ajout joueur -->
 			
-			<a href="./joueur/ajouter" class="btn btn-outline-secondary">Ajouter un joueur</a>
+			<a href="/joueur/ajouter" class="btn btn-outline-secondary">Ajouter un joueur</a>
 			
 		</div>
 		

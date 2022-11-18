@@ -31,7 +31,7 @@
            Privé
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../prive/listeJoueurs.jsp">Editer joueur</a></li>
+            <li><a class="dropdown-item" href="/joueurs/editer">Editer joueur</a></li>
             <li><a class="dropdown-item" href="#">Editer match</a></li>
              <li><a class="dropdown-item" href="#">Editer entraînement</a></li>
               <li><a class="dropdown-item" href="#">Editer entraîneur</a></li>

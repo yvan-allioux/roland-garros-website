@@ -3,6 +3,8 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import classes.Joueur;
@@ -67,8 +69,12 @@ public class EditerJoueurServlet extends HttpServlet {
 		String prenom = req.getParameter("prenom-joueur");
 		
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/ajouter")) {
-		
-			Joueur joueur = new Joueur(0, nom, prenom, "H",null);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+			LocalDate dateN= LocalDate.parse("1998-06-06", formatter);
+			LocalDate dateC= LocalDate.parse("2017-06-06", formatter);
+			
+			Joueur joueur = new Joueur(nom, prenom,"H", "Français",dateN,dateC);
 			
 			joueurDAO.createJoueur(joueur);
 		}
@@ -83,6 +89,6 @@ public class EditerJoueurServlet extends HttpServlet {
 			joueurDAO.updateJoueur(joueur);
 		}
         
-		resp.sendRedirect("../joueurs");
+		resp.sendRedirect("../joueurs/editer");
     }
 }

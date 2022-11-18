@@ -22,7 +22,6 @@ public class DBManager {
 		try {
 			Class.forName(properties.getString("DB_DRIVER"));
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

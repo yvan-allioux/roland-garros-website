@@ -146,8 +146,10 @@ public class JoueurDAOImpl implements JoueurDAO{
 	@Override
 	public void createJoueur(Joueur j) {
 		
-		String attributsTxt = String.format("%s, %s, %s, %s, %s,%s", j.getNom(), j.getPrenom(), j.getSexe(),j.getNationalite(),j.getDateNaissance(),j.getDateCarriere());
-		String query = "INSERT INTO Joueur (nom_joueur,prenom_joueur,sexe,nationalite,) VALUES ("+attributsTxt+")";
+		String attributsTxt = String.format("'%s', '%s', '%s', '%s', '%s','%d'", j.getNom(), j.getPrenom(), j.getSexe(),j.getNationalite(),j.getDateNaissance().toString(),j.getAnneeCarriere());
+		String query = "INSERT INTO Joueur (nom_joueur,prenom_joueur,sexe,nationalite,date_naissance,date_debut_carriere) VALUES ("+attributsTxt+")";
+		System.out.println(attributsTxt);
+		System.out.println(query);
 		PreparedStatement preparedStmt;
 		try {
 			preparedStmt = connexion.prepareStatement(query);
