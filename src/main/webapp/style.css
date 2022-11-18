@@ -32,6 +32,9 @@ h2{
 	text-transform: uppercase;
 	width:fit-content;
 }
+html{
+	min-height:100%;
+}
 body{
 	font-family : var(--textFont);
 	margin:0;
@@ -40,6 +43,7 @@ body{
 	flex-direction:column; 
 	justify-content:space-between;
 	min-height:100vh;
+
 }
 
 .nav-link:hover{
@@ -55,6 +59,9 @@ footer{
 	text-align : center;
 	padding-top : 20px;
 	border-top : 5px solid var(--secondaireFonce);
+	/*position: absolute;
+  	bottom: 0;
+  	width: 100%;*/
 }
 
 footer a{
