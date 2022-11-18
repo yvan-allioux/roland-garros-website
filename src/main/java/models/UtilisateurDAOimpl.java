@@ -23,9 +23,9 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 
         String queryPrepare = "SELECT * FROM Utilisateur WHERE pseudo='"+login+"'";
         System.out.println("test dao : " + queryPrepare);
-        //test si l'utilisateur existe
-        ResultSet rs = getResult(queryPrepare);
 
+        ResultSet rs = getResult(queryPrepare);
+        //test si l'utilisateur existe
         if(rs!=null) {
 
             try {
@@ -36,16 +36,29 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
                 e.printStackTrace();
             }
         }
-
         return false;
+    }
+    public char getRole(String login) {
 
-        //si le resultat est null, l'utilisateur n'existe pas
-        /*if(rs==null) {
-            return false;
+        String queryPrepare = "SELECT role FROM Utilisateur WHERE pseudo='"+login+"'";
+        System.out.println("test dao : " + queryPrepare);
+
+        ResultSet rs = getResult(queryPrepare);
+        //retour du role
+        if(rs!=null) {
+
+            try {
+                while (rs.next()) { //Itérer sur le resultSet :
+                    return rs.getString("role").charAt(0);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return 'Z';//erreur
+            }
+        }else{
+            return 'Z';//erreur
         }
-        else {
-            return true;
-        }*/
+        return 'Z';//erreur
     }
 
     public ResultSet getResult(String txtRequest) {

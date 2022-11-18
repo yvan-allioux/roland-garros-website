@@ -63,12 +63,16 @@ public class ConnexionServlet extends HttpServlet{
         //nouvelle instance d'utilisateur
         Utilisateur unUser = new Utilisateur(login, password);
 
+        //get role
+        char role = unUser.getRole(login);
+        System.out.println("role : " + role);
 
         //utilisateur existant ?
         if(unUser.utilisateurExiste(login)) {
             //redirection vers la page d'accueil
             System.out.println("utilisateur existant");
             response.sendRedirect(request.getContextPath() + "/");
+            //creation de la session
         } else {
             System.out.println("utilisateur inexistant");
             //redirection vers la page de connexion

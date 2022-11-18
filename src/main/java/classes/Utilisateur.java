@@ -27,6 +27,12 @@ public class Utilisateur {
         UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
         return unUtilisateurDAO.utilisateurExiste(login);
     }
+    //get role
+    public char getRole(String login) {
+        //retour du role
+        UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
+        return unUtilisateurDAO.getRole(login);
+    }
 
     //GETTERS
     public String getLogin() {
