@@ -6,6 +6,7 @@ import java.util.List;
 
 
 public interface JoueurDAO {
+	
 	public List<Joueur> getAllJoueurs() throws SQLException;
 	public List<Joueur> getAllJoueursBySexe(String sexe) throws SQLException;
 	public List<Joueur> getAllJoueursOrderedByClassement() throws SQLException;
@@ -14,6 +15,7 @@ public interface JoueurDAO {
 	public void updateJoueur(Joueur j) throws SQLException;
 	public void deleteJoueur(Integer id) throws SQLException;
 	public void createJoueur(Joueur j) throws SQLException;
+	public List<Joueur> updateListeJoueurs();
 
 }
 

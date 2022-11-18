@@ -12,7 +12,7 @@
 	<%@include file="../general/nav.jsp" %>
 	<body>	
 		<!--  Filtres -->	
-		<form action="./joueurs"class="btn-group" method="post">
+		<form action="/joueurs/editer"class="btn-group" method="post">
 		  <button type="submit" class="btn btn-outline-dark" name="btn-nom" value="btn-nom">Nom</button>
 		  <button type="submit" class="btn btn-outline-dark" name="btn-classement" value="btn-classement">Classement</button>
 		  <button type="submit" class="btn btn-outline-dark" name="btn-homme" value="btn-homme">Homme</button>

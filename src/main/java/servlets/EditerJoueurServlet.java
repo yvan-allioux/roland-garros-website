@@ -23,21 +23,20 @@ public class EditerJoueurServlet extends HttpServlet {
 	private Integer id_joueur=null;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		Integer id_joueur = null;
 		joueurDAO = new JoueurDAOImpl();
-		
 		if(req.getParameter("id")!=null){
 			//Récupération de l'id passé en paramètre
-			Integer id_joueur = Integer.parseInt(req.getParameter("id"));
+			id_joueur = Integer.parseInt(req.getParameter("id"));
 			 //Récupération du joueur correspondant à l'id passé en paramètre
 	        joueur = joueurDAO.getJoueurById(id_joueur);
 		}
 		
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/supprimer")) {
-
+		
 			joueurDAO.deleteJoueur(id_joueur);
 			
-			resp.sendRedirect("../joueurs");
+			resp.sendRedirect("/joueurs/editer");
 		}
 		
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/modifier")) {
@@ -89,6 +88,6 @@ public class EditerJoueurServlet extends HttpServlet {
 			joueurDAO.updateJoueur(joueur);
 		}
         
-		resp.sendRedirect("../joueurs/editer");
+		resp.sendRedirect("/joueurs/editer");
     }
 }

@@ -14,7 +14,7 @@ public class JoueurDAOImpl implements JoueurDAO{
 	
 	private Connection connexion;
 	private List<Joueur> listeJoueurs;
-	
+
 	public JoueurDAOImpl(){
 		connexion = DBManager.getInstance().getConnection();
 		listeJoueurs = this.getAllJoueurs();
@@ -154,6 +154,7 @@ public class JoueurDAOImpl implements JoueurDAO{
 		try {
 			preparedStmt = connexion.prepareStatement(query);
 			preparedStmt.execute();
+			this.updateListeJoueurs();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -177,7 +178,8 @@ public class JoueurDAOImpl implements JoueurDAO{
 	@Override
 	public void deleteJoueur(Integer id) {
 		
-		String query = "DELETE FROM Joueur WHERE id_joueur="+id+"";
+		String query = "DELETE FROM Joueur WHERE id_joueur="+id;
+		System.out.println(query);
 		
 		PreparedStatement preparedStmt;
 		try {
@@ -185,10 +187,9 @@ public class JoueurDAOImpl implements JoueurDAO{
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-	    
-	    
+		}	    
 	}
+
 	
 	/**
 	 * Retourne les résultat d'une requête SELECT
@@ -219,6 +220,13 @@ public class JoueurDAOImpl implements JoueurDAO{
 
 	public void setListeJoueurs(List<Joueur> listeJoueurs) {
 		this.listeJoueurs = listeJoueurs;
+	}
+	
+	@Override
+	public List<Joueur> updateListeJoueurs() {
+		
+		listeJoueurs = this.getAllJoueurs();
+		return listeJoueurs;
 	}
 
 	
