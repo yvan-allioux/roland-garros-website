@@ -13,6 +13,10 @@ import java.io.PrintWriter;
 @WebServlet("/main")
 
 public class MainServlet extends HttpServlet {
+
+    //CONSTRUCTEUR
+
+    //GET
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         /*resp.setContentType("text/html");
@@ -36,6 +40,10 @@ public class MainServlet extends HttpServlet {
              e.printStackTrace();
        }
 
+    }
+    //POST
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }
 
