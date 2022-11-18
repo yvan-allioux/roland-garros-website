@@ -8,7 +8,14 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+
 public class DBManager {
+
+	// TODO : A suprimer c'est pas fou d'avoir ça ici vaux mieux le mettre dans un fichier de config
+	private String JDBC_URL="jdbc:mysql://vps817240.ovh.net:3306/IMR_team03_schema?allowPublicKeyRetrieval=true&useSSL=false";
+	private String DB_LOGIN= "IMR_team03";
+	private String DB_PASSWORD="7KFJDo;tN1";
+	private String DB_DRIVER="com.mysql.cj.jdbc.Driver";
 
 	private static DBManager instance;
 
@@ -17,12 +24,11 @@ public class DBManager {
 	private static String resourceBundle = "config";
 
 	private DBManager() {
-		properties = ResourceBundle.getBundle(resourceBundle);
+		//properties = ResourceBundle.getBundle(resourceBundle);
 
 		try {
-			Class.forName(properties.getString("DB_DRIVER"));
+			Class.forName(DB_DRIVER);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -41,8 +47,8 @@ public class DBManager {
 
 		Connection connection = null;
 		try {
-			connection = DriverManager.getConnection(properties.getString("JDBC_URL"), properties.getString("DB_LOGIN"),
-					properties.getString("DB_PASSWORD"));
+			connection = DriverManager.getConnection(JDBC_URL,DB_LOGIN,
+					DB_PASSWORD);
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -80,7 +86,7 @@ public class DBManager {
 
 	/**
 	 * permet de tester la connexion à la DB
-	 * 
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
