@@ -90,7 +90,6 @@ public class Joueur{
 	public int getAnneeCarriere() {
 		return dateCarriere.getYear();
 	}
-	
 	public Integer getClassement() {
 		return classement;
 	}
@@ -137,6 +136,52 @@ public class Joueur{
 	}
 	public void setClassement(Integer classement) {
 		this.classement = classement;
+	}
+	
+	public String getMainComplet() {
+		
+		String mainTxt;
+		
+		 // redéfinition de l'affichage de la main
+	      if(this.main.equals("D")&& this.sexe.equals("F")){
+	    	  mainTxt = "Droitière";
+	      }else if (this.main.equals("D")&& this.sexe.equals("H")){
+	    	  mainTxt = "Droitier";
+	      }else if (this.main.equals("G")&& this.sexe.equals("F")){
+	    	  mainTxt = "Gauchère";
+	      }else if (this.main.equals("G")&& this.sexe.equals("H")){
+	    	  mainTxt = "Gaucher";
+	      }else {
+	    	  mainTxt = null;
+	      }
+	      
+	      return mainTxt;
+		
+	}
+	
+	public String getSexeComplet() {
+		
+		String sexeTxt;
+		
+		 // redéfinition de l'affichage de la main
+	      if(this.sexe.equals("F")){
+	    	  sexeTxt = "Femme";
+	      }else if (this.sexe.equals("H")){
+	    	  sexeTxt = "Homme";
+	      }else {
+	    	  sexeTxt = null;
+	      }
+	      
+	      return sexeTxt;
+		
+	}
+	
+	public int getAge() {
+		
+	      // calcul de l'age à partir de la date de naissance 
+	      LocalDate dateJour = LocalDate.now();
+	      int age =  dateJour.getYear() - dateNaissance.getYear();
+	      return age;
 	}
 	
 
