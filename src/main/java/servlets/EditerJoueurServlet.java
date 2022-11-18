@@ -45,7 +45,7 @@ public class EditerJoueurServlet extends HttpServlet {
 			req.setAttribute("joueur", joueur);
 	        req.getRequestDispatcher(pageName).forward(req, resp);
 		}
-		
+		/*A rediriger direct sur le bouton*/
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/ajouter")) {
 			
 			String pageName = "/prive/ajouterJoueur.jsp";

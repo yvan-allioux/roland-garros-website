@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="/general/head.jsp" %>
+<%@include file="../general/head.jsp" %>
 <title>Roland Garros</title>
 </head>
 
