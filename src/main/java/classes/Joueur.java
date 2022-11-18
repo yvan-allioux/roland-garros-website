@@ -36,6 +36,15 @@ public class Joueur{
 		this.classement = classement;
 	}
 	
+	public Joueur(String nom, String prenom, String sexe,String nationalite,LocalDate dateNaissance, LocalDate dateDebutCarriere ) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+		this.nationalite = nationalite;
+		this.dateCarriere = dateDebutCarriere;
+		this.dateNaissance = dateNaissance;
+	}
+	
 	public Joueur(int id, String nom, String prenom, String sexe,Integer entraineur) {
 		this.id = id;
 		this.nom = nom;
@@ -78,6 +87,10 @@ public class Joueur{
 	public LocalDate getDateCarriere() {
 		return dateCarriere;
 	}
+	public int getAnneeCarriere() {
+		return dateCarriere.getYear();
+	}
+	
 	public Integer getClassement() {
 		return classement;
 	}
@@ -125,5 +138,6 @@ public class Joueur{
 	public void setClassement(Integer classement) {
 		this.classement = classement;
 	}
+	
 
 }

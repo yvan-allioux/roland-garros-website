@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet ("/joueurs")
+@WebServlet ("/joueurs/editer")
 public class ListeJoueurServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,22 +26,11 @@ public class ListeJoueurServlet extends HttpServlet {
 	private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
 		
 		resp.setContentType("text/html");
-        
-        //PrintWriter out = resp.getWriter()
        
         //Création d'une instance du DAO des jouers
         JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
         //Récupération de tous les joueurs dans listeJoueurs
-        List<Joueur> listeJoueurs = joueurDAO.getAllJoueurs();
-        
-        //pour chaque joueur de la liste
-        /*for(int i =0;i<listeJoueurs.size();i++) {
-        	//on affiche les infos 
-        	out.println(listeJoueurs.get(i).getPrenom());
-        	out.println(listeJoueurs.get(i).getNom());
-        	out.println(listeJoueurs.get(i).getEntraineur());
-        	out.println("\n");
-        }*/
+        List<Joueur> listeJoueurs = joueurDAO.getListeJoueurs();
         
         req.setAttribute("joueurs", listeJoueurs);
         
@@ -69,7 +58,6 @@ public class ListeJoueurServlet extends HttpServlet {
 		
 		//Création d'une instance du DAO des jouers
         JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
-        
 
         if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué
         	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("H");
@@ -87,6 +75,7 @@ public class ListeJoueurServlet extends HttpServlet {
         	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueurs();
         	 req.setAttribute("joueurs", listeJoueurs);
         }
+        
         //On stocke le chemin vers le fichier correspondant à la vue pour la liste des joueurs
         String pageName = "/prive/listeJoueurs.jsp";
         //On renvoie la requête 
