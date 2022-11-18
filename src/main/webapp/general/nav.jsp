@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../prive/connexion.jsp"><span class="material-symbols-outlined">login</span></a>
+          <a class="nav-link" href="../connexion"><span class="material-symbols-outlined">login</span></a>
         </li>
        
       </ul>
