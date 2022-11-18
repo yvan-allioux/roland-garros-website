@@ -19,10 +19,12 @@ Joueur joueur = joueurDAO.getJoueurById(1);%>
 	</div>
 	<h2> Son profil</h2>
 	<div>
+	</div>
+	<div>
 		<h3>Informations générales</h3>
 		<div>
 		<p><span>Age : </span><%= joueur.getAge()%> ans</p>
-		<p><span>Date de naissance: </span>s<%=joueur.getDateNaissance() %> </p>
+		<p><span>Date de naissance : </span><%=joueur.getDateNaissance() %> </p>
 		<p><span>Lieu de naissance : </span><%=joueur.getLieuNaissance() %></p>
 		<p><span>Taille : </span><%=joueur.getTaille() %> m </p>
 		<p><span>Poids : </span><%=joueur.getPoids() %> kg</p>
