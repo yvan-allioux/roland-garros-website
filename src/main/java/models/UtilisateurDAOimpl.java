@@ -39,14 +39,10 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
         return false;
     }
     public char getRole(String login) {
-
         String queryPrepare = "SELECT role FROM Utilisateur WHERE pseudo='"+login+"'";
-        System.out.println("test dao : " + queryPrepare);
-
         ResultSet rs = getResult(queryPrepare);
         //retour du role
         if(rs!=null) {
-
             try {
                 while (rs.next()) { //Itérer sur le resultSet :
                     return rs.getString("role").charAt(0);
@@ -60,6 +56,27 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
         }
         return 'Z';//erreur
     }
+
+    public String getPassewordDataBase(String login) {
+        String queryPrepare = "SELECT mdp FROM Utilisateur WHERE pseudo='"+login+"'";
+        ResultSet rs = getResult(queryPrepare);
+        //retour du role
+        if(rs!=null) {
+
+            try {
+                while (rs.next()) { //Itérer sur le resultSet :
+                    return rs.getString("mdp");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "Z";//erreur
+            }
+        }else{
+            return "Z";//erreur
+        }
+        return "Z";//erreur
+    }
+
 
     public ResultSet getResult(String txtRequest) {
         //Récupérer une connexion de type java.sql.Connection par la méthode

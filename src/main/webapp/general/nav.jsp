@@ -40,6 +40,19 @@
         <li class="nav-item">
           <a class="nav-link" href="../connexion"><span class="material-symbols-outlined">login</span></a>
         </li>
+
+          <c:set var="login" scope="session" value="${sessionScope.login}"/>
+          <c:set var="role" scope="session" value="${sessionScope.role}"/>
+          <%--test if login is null and role is null--%>
+            <c:if test="${login != null && role != null}"><%--todo : faire une condition qui fonctionne ...--%>
+                <li class="nav-item">
+                    <p>test</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./deconnexion">deconection</a>
+                </li>
+            </c:if>
+
        
       </ul>
     </div>

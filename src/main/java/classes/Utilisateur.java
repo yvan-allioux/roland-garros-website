@@ -37,6 +37,12 @@ public class Utilisateur {
         UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
         return unUtilisateurDAO.getRole(login);
     }
+    //get password
+    public String getPasswordDataBase(String login) {
+        //retour du role
+        UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
+        return unUtilisateurDAO.getPassewordDataBase(login);
+    }
 
     //GETTERS
     public String getLogin() {
