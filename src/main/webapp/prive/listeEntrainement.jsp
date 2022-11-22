@@ -1,3 +1,9 @@
+<%@ page import="classes.Entrainement" %>
+
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.LocalTime" %>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur"%>
@@ -27,10 +33,11 @@
 			<tbody>
 				<%for (Entrainement entrainement:entrainements) {
 				      Integer id = entrainement.getId();
-				      Local Date date = entrainement.getDate();
-				      Local Date heure = heure.getHeure()
-				      String prenomJ = entrainement.getPrenomJ();
-				      String nomJ = entrainement.getNomJ();
+					  LocalDate date = entrainement.getDate();
+					  LocalTime heure = entrainement.getHeure();
+				      String prenomJ = entrainement.getJoueur().getPrenom();
+				      String nomJ = entrainement.getJoueur().getNom();
+					  String court = entrainement.getCourt().getNom();
 				      %>
 				
 				<tr>

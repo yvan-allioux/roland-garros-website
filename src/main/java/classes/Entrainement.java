@@ -7,12 +7,21 @@ public class Entrainement {
 	//ATTRIBUTS
 	private Integer id;
 	private LocalDate date;
+	private Joueur joueur;
+	private Court court;
 	private LocalTime heure;
 
 	//CONSTRUCTEUR
 	public Entrainement(Integer id, LocalDate date, LocalTime heure) {
 		this.id = id;
 		this.date = date;
+		this.heure = heure;
+	}
+	public Entrainement(Integer id, LocalDate date, LocalTime heure, Joueur joueur, Court court) {
+		this.id = id;
+		this.date = date;
+		this.joueur = joueur;
+		this.court = court;
 		this.heure = heure;
 	}
 
@@ -27,6 +36,12 @@ public class Entrainement {
 	}
 	public LocalTime getHeure() {
 		return heure;
+	}
+	public Joueur getJoueur() {
+		return joueur;
+	}
+	public Court getCourt() {
+		return court;
 	}
 
 	//SETTERS

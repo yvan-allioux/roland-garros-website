@@ -1,10 +1,9 @@
 package servlets;
 
 import classes.Joueur;
-import models.JoueurDAOImpl;
+import models.JoueurDAOimpl;
 import java.io.IOException;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -28,7 +27,7 @@ public class ListeJoueurServlet extends HttpServlet {
 		resp.setContentType("text/html");
        
         //Création d'une instance du DAO des jouers
-        JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+        JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
         //Récupération de tous les joueurs dans listeJoueurs
         List<Joueur> listeJoueurs = joueurDAO.getListeJoueurs();
         
@@ -57,7 +56,7 @@ public class ListeJoueurServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//Création d'une instance du DAO des jouers
-        JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+        JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 
         if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué
         	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("H");

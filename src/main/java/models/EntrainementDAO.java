@@ -17,10 +17,13 @@ public interface EntrainementDAO {
     //retourne le date de l'entrainement
     public String getDate(String id_entrainement);//objet date/heur ?
 
-    /*//retourne le joueur de l'entrainement
-    public Joueur getJoueur(String id_entrainement);//retourne un objet joueur
+    //retourne le joueur de l'entrainement
+    public int getIdJoueur(String id_entrainement);//retourne un objet joueur
 
     //retourne le court de l'entrainement
-    public Court getCourt(String id_entrainement);*/
+    public int getIdCourt(String id_entrainement);//retourne un objet court
+
+    //retourne la liste des entrainements
+    //public List<Entrainement> getAllEntrainements() throws SQLException;
 
 }

@@ -9,13 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-public class JoueurDAOImpl implements JoueurDAO{
+
+public class JoueurDAOimpl implements JoueurDAO{
 	
 	private Connection connexion;
 	private List<Joueur> listeJoueurs;
 
-	public JoueurDAOImpl(){
+	public JoueurDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
 		listeJoueurs = this.getAllJoueurs();
 	}

@@ -1,22 +1,16 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import classes.Entrainement;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-import models.EntrainementDAO;
 import models.EntrainementDAOimpl;
-import models.JoueurDAOImpl;
-import classes.Utilisateur;
 
 @WebServlet (name = "entrainement", value = "/entrainement")
 
@@ -50,7 +44,22 @@ public class EntrainementServlet extends HttpServlet{
         //affichage de la date de l'entrainement
         System.out.println("entrainement date 1 : "+ entrainementDAO.getDate("1"));
 
+        //joueur de l'entrainement
+        System.out.println("entrainement joueur 1 : "+ entrainementDAO.getIdJoueur("1"));
 
+        //court de l'entrainement
+        System.out.println("entrainement court 1 : "+ entrainementDAO.getIdCourt("1"));
+
+        //initialisation de la liste des entrainements getAllEntrainement
+        List<Entrainement> uneListeEntrainement = entrainementDAO.getAllEntrainement();
+
+        //affichage du contenu de la liste des entrainements
+        for (Entrainement unEntrainement : uneListeEntrainement) {
+            System.out.println("entrainement liste : "+ unEntrainement.getId());
+        }
+
+        //set attribut
+        request.setAttribute("entrainement", uneListeEntrainement);
 
         //Récupération de tous les Entrainement dans listeEntrainement
         //List<Entrainement> listeEntrainement = entrainementDAO.getAllEntrainement();

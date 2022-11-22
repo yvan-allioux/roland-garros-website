@@ -1,10 +1,9 @@
 package servlets;
 
 import classes.Match;
-import models.MatchDAOImpl;
+import models.MatchDAOimpl;
 import java.io.IOException;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -28,7 +27,7 @@ public class ListeMatchServlet extends HttpServlet {
 		resp.setContentType("text/html");
        
         //Création d'une instance du DAO des matchs
-        MatchDAOImpl matchDAO = new MatchDAOImpl();
+        MatchDAOimpl matchDAO = new MatchDAOimpl();
         //Récupération de tous les matchs dans listeMatchs
         List<Match> listeMatchs = matchDAO.getAllMatchs();
         
@@ -57,7 +56,7 @@ public class ListeMatchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//Création d'une instance du DAO des matchs
-        MatchDAOImpl matchDAO = new MatchDAOImpl();
+        MatchDAOimpl matchDAO = new MatchDAOimpl();
         
         	 List<Match> listeMatchs = matchDAO.getAllMatchs();
         	 req.setAttribute("matchs", listeMatchs);

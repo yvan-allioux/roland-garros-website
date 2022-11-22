@@ -5,17 +5,16 @@ import db.DBManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-public class MatchDAOImpl implements MatchDAO{
+public class MatchDAOimpl implements MatchDAO{
 	
 	private Connection connexion;
 	private List<Match> listeMatchs;
 
-	public MatchDAOImpl(){
+	public MatchDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
 		listeMatchs = this.getAllMatchs();
 	}

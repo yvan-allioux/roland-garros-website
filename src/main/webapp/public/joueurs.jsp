@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOImpl"%>
-<%JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+<%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
+<%
+    JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 
 <!DOCTYPE html>
