@@ -23,9 +23,9 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 
         String queryPrepare = "SELECT * FROM Utilisateur WHERE pseudo='"+login+"'";
         System.out.println("test dao : " + queryPrepare);
-        //test si l'utilisateur existe
-        ResultSet rs = getResult(queryPrepare);
 
+        ResultSet rs = getResult(queryPrepare);
+        //test si l'utilisateur existe
         if(rs!=null) {
 
             try {
@@ -36,17 +36,47 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
                 e.printStackTrace();
             }
         }
-
         return false;
-
-        //si le resultat est null, l'utilisateur n'existe pas
-        /*if(rs==null) {
-            return false;
-        }
-        else {
-            return true;
-        }*/
     }
+    public char getRole(String login) {
+        String queryPrepare = "SELECT role FROM Utilisateur WHERE pseudo='"+login+"'";
+        ResultSet rs = getResult(queryPrepare);
+        //retour du role
+        if(rs!=null) {
+            try {
+                while (rs.next()) { //Itérer sur le resultSet :
+                    return rs.getString("role").charAt(0);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return 'Z';//erreur
+            }
+        }else{
+            return 'Z';//erreur
+        }
+        return 'Z';//erreur
+    }
+
+    public String getPassewordDataBase(String login) {
+        String queryPrepare = "SELECT mdp FROM Utilisateur WHERE pseudo='"+login+"'";
+        ResultSet rs = getResult(queryPrepare);
+        //retour du role
+        if(rs!=null) {
+
+            try {
+                while (rs.next()) { //Itérer sur le resultSet :
+                    return rs.getString("mdp");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "Z";//erreur
+            }
+        }else{
+            return "Z";//erreur
+        }
+        return "Z";//erreur
+    }
+
 
     public ResultSet getResult(String txtRequest) {
         //Récupérer une connexion de type java.sql.Connection par la méthode
