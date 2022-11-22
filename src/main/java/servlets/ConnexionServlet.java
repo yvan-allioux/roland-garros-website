@@ -19,30 +19,6 @@ import models.JoueurDAOImpl;
 
 public class ConnexionServlet extends HttpServlet{
 
-    //CONSRUCTEUR
-    /*private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
-
-        resp.setContentType("text/html");
-        String pageName = "/public/test.jsp";
-        //indique la vue à afficher
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-
-        try {
-            rd.forward(req, resp);
-
-        } catch (ServletException e) {
-
-            e.printStackTrace();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-
-        }
-
-    }*/
-
     //GET REQUEST
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /*String variable = "Liste des joueurs";
