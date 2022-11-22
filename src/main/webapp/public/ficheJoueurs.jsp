@@ -7,6 +7,7 @@ Joueur joueur = joueurDAO.getJoueurById(1);%>
 <html>
 <head>
 	<%@include file="../general/head.jsp" %>
+	<link rel="stylesheet" href="../style.css" type="text/css" />
 	<title> <%=joueur.getPrenom() %> <%= joueur.getNom() %> | Roland Garros</title>
 	</head>
 	

@@ -14,9 +14,19 @@
 	--textSize : 1.5rem;
 	/**** COLORS *****/
 	--principal : #c85a19;
-	--principalFonce : ;
+	--principalFonce : #ab4203 ;
 	--secondaire: #00503c;
 	--secondaireFonce : #003729;
+	/* redefinition des couleurs Bootstrap */
+	/* PRIMARY = ORANGE */
+	--bs-link-color : #c85a19;
+	--bs-primary: #c85a19;
+	--bs-link-hover-color: #ab4203;
+	--bs-primary: #c85a19;
+	--bs-blue: #c85a19;
+	/* SECONDARY = VERT */
+	--bs-green: #00503c;
+	--bs-success: #00503c;
 }
 
 h1{
@@ -26,7 +36,7 @@ h1{
 	width:fit-content;
 }
 
-h2{
+h2,h3{
 	font-family : var(--subtitleFont);
 	font-size : var(--subtitleSize);
 	text-transform: uppercase;
@@ -46,9 +56,6 @@ body{
 
 }
 
-.nav-link:hover{
-	color : var(--principal);
-}
 
 /*==================== FOOTER ======================*/
 footer{
@@ -96,7 +103,7 @@ span{
 
 /*==================== TABLEAUX ======================*/
 .table{
-	margin : 10px, auto;
+	margin : auto, 20px;
 	font : var(--textFont);
 }
  thead th{
@@ -132,9 +139,6 @@ span{
 .card-text span{
 	color : var(--principal);
 	font-size:1.25rem;
-}
-.nationalite{
-	
 }
 
 .card-group{
