@@ -13,7 +13,7 @@
     </button>
      <!--  PARTIE PUBLIC -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid">
        <li class="nav-item">
           <a class="nav-link" href="./joueurs">Joueurs</a>
         </li>
@@ -42,17 +42,17 @@
           <a class="nav-link" href="../connexion"><span class="material-symbols-outlined">login</span></a>
         </li>
 
-          <c:set var="login" scope="session" value="${sessionScope.login}"/>
-          <c:set var="role" scope="session" value="${sessionScope.role}"/>
           <%--test if login is null and role is null--%>
-            <c:if test="${login != null && role != null}"><%--todo : faire une condition qui fonctionne ...--%>
-                <li class="nav-item">
-                    <p>test</p>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./deconnexion">deconection</a>
-                </li>
-            </c:if>
+          <% if(session.getAttribute("role")!=null){%>
+          <div class="d-flex">
+            <li class="nav-item">
+                <p>bonjour ${sessionScope.login} role : ${sessionScope.role}</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./deconection"><button class="btn btn-outline-success me-2" type="button">Déconnexion</button></a>
+            </li>
+          </div>
+            <%}%>
 
        
       </ul>
