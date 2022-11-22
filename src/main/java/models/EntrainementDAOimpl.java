@@ -42,7 +42,6 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         QueryTool monQueryTool = new QueryTool();
 
         String queryPrepare = "SELECT heure FROM `Entrainement` WHERE id_entrainement='"+id_entrainement+"'";
-        System.out.println("test dao : " + queryPrepare);
 
         ResultSet rs = monQueryTool.getResult(queryPrepare);
         //test si l'utilisateur existe
@@ -51,6 +50,27 @@ public class EntrainementDAOimpl implements EntrainementDAO {
             try {
                 while (rs.next()) { //Itérer sur le resultSet :
                     return rs.getString("heure");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    //retourne le date de l'entrainement
+    public String getDate(String id_entrainement){//objet date/heur ?
+        QueryTool monQueryTool = new QueryTool();
+
+        String queryPrepare = "SELECT date FROM `Entrainement` WHERE id_entrainement='"+id_entrainement+"'";
+
+        ResultSet rs = monQueryTool.getResult(queryPrepare);
+        //test si l'utilisateur existe
+        if(rs!=null) {
+
+            try {
+                while (rs.next()) { //Itérer sur le resultSet :
+                    return rs.getString("date");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

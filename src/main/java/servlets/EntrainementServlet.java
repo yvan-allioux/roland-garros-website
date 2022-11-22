@@ -47,6 +47,9 @@ public class EntrainementServlet extends HttpServlet{
         //affichage de la l'oraires de l'entrainement
         System.out.println("entrainement horaire 1 : "+ entrainementDAO.getHoraire("1"));
 
+        //affichage de la date de l'entrainement
+        System.out.println("entrainement date 1 : "+ entrainementDAO.getDate("1"));
+
 
 
         //Récupération de tous les Entrainement dans listeEntrainement
