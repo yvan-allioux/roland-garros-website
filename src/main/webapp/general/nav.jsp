@@ -21,7 +21,7 @@
                         <a class="nav-link" href="/matchs">Matchs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Entraînements</a>
+                        <a class="nav-link" href="/entrainement">Entraînements</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Statistiques</a>
