@@ -18,6 +18,7 @@ public class Joueur{
 	private LocalDate dateCarriere;
 	private int classement;
 	private Integer entraineur;
+	private String nomEntraineur=null;
 
 	//CONSTRUCTEURS
 	public Joueur(Integer id, String nom, String prenom, String sexe, Integer entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere, Integer classement) {
@@ -63,6 +64,11 @@ public class Joueur{
 	public String getPrenom() {
 		return prenom;
 	}
+	
+	public String getNomComplet() {
+		return prenom+" "+nom;
+	} 
+	
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
@@ -140,20 +146,22 @@ public class Joueur{
 	
 	public String getMainComplet() {
 		
-		String mainTxt;
+		String mainTxt=null;
 		
 		 // redéfinition de l'affichage de la main
-	      if(this.main.equals("D")&& this.sexe.equals("F")){
-	    	  mainTxt = "Droitière";
-	      }else if (this.main.equals("D")&& this.sexe.equals("H")){
-	    	  mainTxt = "Droitier";
-	      }else if (this.main.equals("G")&& this.sexe.equals("F")){
-	    	  mainTxt = "Gauchère";
-	      }else if (this.main.equals("G")&& this.sexe.equals("H")){
-	    	  mainTxt = "Gaucher";
-	      }else {
-	    	  mainTxt = null;
-	      }
+		if(this.main!=null) {
+			 if(this.main.equals("D")&& this.sexe.equals("F")){
+		    	  mainTxt = "Droitière";
+		      }else if (this.main.equals("D")&& this.sexe.equals("H")){
+		    	  mainTxt = "Droitier";
+		      }else if (this.main.equals("G")&& this.sexe.equals("F")){
+		    	  mainTxt = "Gauchère";
+		      }else if (this.main.equals("G")&& this.sexe.equals("H")){
+		    	  mainTxt = "Gaucher";
+		      }
+		}else {
+	    	  mainTxt = "Inconnu";
+	    }
 	      
 	      return mainTxt;
 		
@@ -182,6 +190,14 @@ public class Joueur{
 	      LocalDate dateJour = LocalDate.now();
 	      int age =  dateJour.getYear() - dateNaissance.getYear();
 	      return age;
+	}
+
+	public String getNomEntraineur() {
+		return nomEntraineur;
+	}
+
+	public void setNomEntraineur(String nomEntraineur) {
+		this.nomEntraineur = nomEntraineur;
 	}
 	
 

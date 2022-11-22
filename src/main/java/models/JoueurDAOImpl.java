@@ -47,31 +47,6 @@ public class JoueurDAOImpl implements JoueurDAO{
 	}
 
 	@Override
-	public List<Joueur> getAllJoueursBySexe(String sexe) {
-		
-		List<Joueur> listeJoueursBySexe = new ArrayList<Joueur>();
-		
-		ResultSet rs = getResult("SELECT * FROM Joueur WHERE sexe='"+sexe+"'");
-		
-		if(rs!=null) {
-			
-			try {
-				while (rs.next()) { //Itérer sur le resultSet :
-					//Pour chaque instance de joueur retournée par la requête on créé un nouveau joueur
-					//Joueur j = new Joueur(rs.getInt("id_joueur"), rs.getString("nom_joueur"), rs.getString("prenom_joueur"), rs.getString("sexe"),rs.getInt("entraineur"));
-					Joueur j = new Joueur(rs.getInt("id_joueur"), rs.getString("nom_joueur"), rs.getString("prenom_joueur"), rs.getString("sexe"), rs.getInt("entraineur"), rs.getDate("date_naissance").toLocalDate(), rs.getString("lieu_naissance"), rs.getString("nationalite"), rs.getInt("taille"), rs.getFloat("poids"), rs.getString("main"), rs.getDate("date_debut_carriere").toLocalDate(), rs.getInt("classement"));
-					//On ajoute le joueur créé à la liste des joueurs
-					listeJoueursBySexe.add(j);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return listeJoueursBySexe;
-	}
-
-	@Override
 	public List<Joueur> getAllJoueursOrderedByClassement() {
 		
 		List<Joueur> listeJoueursClassement = new ArrayList<Joueur>();
