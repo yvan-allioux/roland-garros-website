@@ -1,19 +1,22 @@
 package classes;
-public class Equipe{
+
+public class Equipe {
 
 	private Integer id;
 	private Joueur joueur1, joueur2;
-	
-	//CONSTRUCTEUR
-	public Equipe(Integer id) {
+	private String nom;
+
+	// CONSTRUCTEUR
+	public Equipe(Integer id, Joueur j1, Joueur j2) {
 		this.id = id;
-		this.joueur1 = new Joueur(id, null, null, null, id);
-		this.joueur2 = new Joueur(id, null, null, null, id);
+		this.joueur1 = j1;
+		this.joueur2 = j2;
+		this.nom = j1.getNom() + " & " + j2.getNom();
 	}
 
-	//METHODES
+	// METHODES
 
-	//GETTERS
+	// GETTERS
 	public Integer getId() {
 		return id;
 	}
@@ -26,13 +29,18 @@ public class Equipe{
 		return joueur2;
 	}
 
-	//SETTERS
+	public String getNom() {
+		return nom;
+	}
+
+	// SETTERS
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public void setJoueurs(Joueur joueur1, Joueur joueur2) {
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 	}
-	
+
 }
