@@ -14,9 +14,10 @@
 	--textSize : 1.5rem;
 	/**** COLORS *****/
 	--principal : #c85a19;
-	--principalFonce : ;
+	--principalFonce : #FFF ;
 	--secondaire: #00503c;
 	--secondaireFonce : #003729;
+	--bs-link-color : #c85a19;
 }
 
 h1{
@@ -96,7 +97,7 @@ span{
 
 /*==================== TABLEAUX ======================*/
 .table{
-	margin : 10px, auto;
+	margin : auto, 20px;
 	font : var(--textFont);
 }
  thead th{
@@ -133,9 +134,6 @@ span{
 	color : var(--principal);
 	font-size:1.25rem;
 }
-.nationalite{
-	
-}
 
 .card-group{
 	justify-content : space-around;
@@ -149,5 +147,8 @@ span{
 	width : calc(100vw/2);
 }
 
+a{
+	color:var(--principal);
+}
 
 

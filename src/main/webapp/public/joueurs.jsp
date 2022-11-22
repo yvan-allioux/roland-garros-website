@@ -17,7 +17,7 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 	<h1>Joueurs et Joueuses</h1>
 	<!-- liste des joueurs -->
 	<div class="cardJoueurs">
-		<div class="cardSexe">		
+		<div class="cardSexe">	
 			<h2>Dames</h2>
 			<div class="card-group">
 			<!-- récuperation des données de chaque joueurs -->
@@ -28,19 +28,9 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 		      String nom = joueur.getNom();
 		      LocalDate  dateNaissance = joueur.getDateNaissance();
 		      String nationalite = joueur.getNationalite();
-		      String main = joueur.getMain();
+		      String main = joueur.getMainComplet();
 		      Integer classement = joueur.getClassement();
 		      String sexe = joueur.getSexe();
-		      // redéfinition de l'affichage de la main
-		      if(main.equals("D")&& sexe.equals("F")){
-		    	  main = "Droitière";
-		      }else if (main.equals("D")&& sexe.equals("H")){
-		    	  main = "Droitier";
-		      }else if (main.equals("G")&& sexe.equals("F")){
-		    	  main = "Gauchère";
-		      }else if (main.equals("G")&& sexe.equals("H")){
-		    	  main = "Gaucher";
-		      }
 		      
 		      // calcul de l'age à partir de la date de naissance 
 		      int age =0;
@@ -56,6 +46,7 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 				  	<p class="card-text"> <%=sexe%>	|<%=main%> </p>
 				  	<p class="card-text"> Classement : <span><%=classement%></span> </p>
 				  	<p class="card-text"> Age: <%=age%> </p>
+				  	<a class="linkJoueur"href="#"><span class="material-symbols-outlined">add_circle</span></a>
 				</div>
 	    	<%}
 	      	}%>
