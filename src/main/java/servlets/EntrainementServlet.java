@@ -29,34 +29,34 @@ public class EntrainementServlet extends HttpServlet{
     //doProcess
     public void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //indique la vue à afficher
-        System.out.println("entrainement Servlet doProcess");
+        //System.out.println("entrainement Servlet doProcess");
 
         //Création d'une instance du DAO EntrainementDAOimpl
         EntrainementDAOimpl entrainementDAO = new EntrainementDAOimpl();
 
         //test si l'entrainement existe
-        System.out.println("entrainement existe 1 : "+ entrainementDAO.entrainementExiste("1"));
-        System.out.println("entrainement existe 7 : "+ entrainementDAO.entrainementExiste("7"));
+        //System.out.println("entrainement existe 1 : "+ entrainementDAO.entrainementExiste("1"));
+        //System.out.println("entrainement existe 7 : "+ entrainementDAO.entrainementExiste("7"));
 
         //affichage de la l'oraires de l'entrainement
-        System.out.println("entrainement horaire 1 : "+ entrainementDAO.getHoraire("1"));
+        //System.out.println("entrainement horaire 1 : "+ entrainementDAO.getHoraire("1"));
 
         //affichage de la date de l'entrainement
-        System.out.println("entrainement date 1 : "+ entrainementDAO.getDate("1"));
+        //System.out.println("entrainement date 1 : "+ entrainementDAO.getDate("1"));
 
         //joueur de l'entrainement
-        System.out.println("entrainement joueur 1 : "+ entrainementDAO.getIdJoueur("1"));
+        //System.out.println("entrainement joueur 1 : "+ entrainementDAO.getIdJoueur("1"));
 
         //court de l'entrainement
-        System.out.println("entrainement court 1 : "+ entrainementDAO.getIdCourt("1"));
+        //System.out.println("entrainement court 1 : "+ entrainementDAO.getIdCourt("1"));
 
         //initialisation de la liste des entrainements getAllEntrainement
         List<Entrainement> uneListeEntrainement = entrainementDAO.getAllEntrainement();
 
         //affichage du contenu de la liste des entrainements
-        for (Entrainement unEntrainement : uneListeEntrainement) {
+        /*for (Entrainement unEntrainement : uneListeEntrainement) {
             System.out.println("entrainement liste : "+ unEntrainement.getId());
-        }
+        }*/
 
         //set attribut
         request.setAttribute("entrainement", uneListeEntrainement);
