@@ -31,12 +31,7 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 		      String main = joueur.getMainComplet();
 		      Integer classement = joueur.getClassement();
 		      String sexe = joueur.getSexe();
-		      
-		      // calcul de l'age à partir de la date de naissance 
-		      int age =0;
-		      LocalDate dateJour = LocalDate.now();
-		      age =  dateJour.getYear() - dateNaissance.getYear();
-		      
+		      Integer age =joueur.getAge();		      
 	      
 	      	//affichage des joueurs feminins
 				if(sexe.equals("F")){%>
@@ -45,8 +40,8 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 				  	<p class="card-text nationalite"><%=nationalite %></p>
 				  	<p class="card-text"> <%=sexe%>	|<%=main%> </p>
 				  	<p class="card-text"> Classement : <span><%=classement%></span> </p>
-				  	<p class="card-text"> Age: <%=age%> </p>
-				  	<a class="linkJoueur"href="#"><span class="material-symbols-outlined">add_circle</span></a>
+				  	<p class="card-text"> Age : <%=age%> ans</p>
+				  	<a class="align-self-end"href="#"><span class="material-symbols-outlined">add_circle</span></a>
 				</div>
 	    	<%}
 	      	}%>
@@ -57,21 +52,25 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 			<div class="card-group">
 		<!-- récuperation des données de chaque joueurs -->
 		<%for (Joueur joueur:joueurs) {
-
-	      Integer id = joueur.getId();
-	      String prenom = joueur.getPrenom();
-	      String nom = joueur.getNom();
-	      String nationalite = joueur.getNationalite();
-	      String main = joueur.getMain();
-	      Integer classement = joueur.getClassement();
-	      String sexe = joueur.getSexe();
+			Integer id = joueur.getId();
+			String prenom = joueur.getPrenom();
+			String nom = joueur.getNom();
+			LocalDate  dateNaissance = joueur.getDateNaissance();
+			String nationalite = joueur.getNationalite();
+			String main = joueur.getMainComplet();
+			Integer classement = joueur.getClassement();
+			String sexe = joueur.getSexe();
+			Integer age =joueur.getAge();	
       
       	//affichage des joueurs masculins
 			if(sexe.equals("H")){%>
 			<div class="card">
-				<p><%=nom%></p>
-			  	<p><%=prenom%></p>
-			  	<p><%=sexe%></p>
+					<p class="card-text"><span> <%=prenom%> <%=nom%> </span></p>
+				  	<p class="card-text nationalite"><%=nationalite %></p>
+				  	<p class="card-text"> <%=sexe%>	|<%=main%> </p>
+				  	<p class="card-text"> Classement : <span><%=classement%></span> </p>
+				  	<p class="card-text"> Age : <%=age%> ans</p>
+				  	<a class="align-self-end"href="joueurs/ficheJoueurs.jsp?id=<%=id%>"><span class="material-symbols-outlined">add_circle</span></a>
 			</div>
     	<%}
       	}%>
