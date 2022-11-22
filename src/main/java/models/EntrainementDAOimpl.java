@@ -39,9 +39,9 @@ public class EntrainementDAOimpl implements EntrainementDAO {
 
     //retourne l'horaire de l'entrainement
     public String getHoraire(String id_entrainement){//objet date/heur ?
-        /*QueryTool monQueryTool = new QueryTool();
+        QueryTool monQueryTool = new QueryTool();
 
-        String queryPrepare = "SELECT horaire FROM `Entrainement` WHERE id_entrainement='"+id_entrainement+"'";
+        String queryPrepare = "SELECT heure FROM `Entrainement` WHERE id_entrainement='"+id_entrainement+"'";
         System.out.println("test dao : " + queryPrepare);
 
         ResultSet rs = monQueryTool.getResult(queryPrepare);
@@ -50,12 +50,12 @@ public class EntrainementDAOimpl implements EntrainementDAO {
 
             try {
                 while (rs.next()) { //Itérer sur le resultSet :
-                    return rs.getString("horaire");
+                    return rs.getString("heure");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
         return null;
     }
 }

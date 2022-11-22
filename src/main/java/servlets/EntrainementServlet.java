@@ -45,7 +45,7 @@ public class EntrainementServlet extends HttpServlet{
         System.out.println("entrainement existe 7 : "+ entrainementDAO.entrainementExiste("7"));
 
         //affichage de la l'oraires de l'entrainement
-        //System.out.println("entrainement 1 : "+ entrainementDAO.getHoraire("1"));
+        System.out.println("entrainement horaire 1 : "+ entrainementDAO.getHoraire("1"));
 
 
 
