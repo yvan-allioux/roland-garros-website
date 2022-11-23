@@ -23,19 +23,19 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 	  </div>
 	    	<div class="col-md-4">
 		    <label for="ddn" class="form-label">Date de naissance</label>
-		    <input type="date" class="form-control" id="ddn" value="<%=joueur.getDateNaissance()%>">
+		    <input type="date" class="form-control" name="ddn" value="<%=joueur.getDateNaissance()%>">
 		  </div>
 		   <div class="col-md-4">
 		    <label for="ldn" class="form-label">Lieu de naissance</label>
-		    <input type="text" class="form-control" id="ldn" value="<%=joueur.getLieuNaissance()%>">
+		    <input type="text" class="form-control" name="ldn" value="<%=joueur.getLieuNaissance()%>">
 		  </div>
 		  <div class="col-md-4">
 		    <label for="nationalite" class="form-label">Nationalité</label>
-		    <input type="text" class="form-control" id="nationalite" value="<%=joueur.getNationalite()%>">
+		    <input type="text" class="form-control" name="nationalite" value="<%=joueur.getNationalite()%>">
 		  </div>
 		  <div class="col-md-4">
 		    <label for="sexe" class="form-label">Sexe</label>
-		    <select  class="form-select" id="sexe">
+		    <select  class="form-select" name="sexe">
 		    <%if(joueur.getSexe().equals("F")){ %>
 		    	<option value="F" selected>Femme</option>
 		    	<option value="H">Homme</option>
@@ -47,24 +47,24 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 		  </div>
 		  <div class="col-md-4">
 		    <label for="taille" class="form-label">Taille</label>
-		    <input type="text" class="form-control" id="taille" value="<%=joueur.getTaille()%>">
+		    <input type="text" class="form-control" name="taille" value="<%=joueur.getTaille()%>">
 		  </div>
 		  <div class="col-md-4">
 		    <label for="poids" class="form-label">Poids</label>
-		    <input type="text" class="form-control" id="poids" value="<%=joueur.getPoids()%>">
+		    <input type="text" class="form-control" name="poids" value="<%=joueur.getPoids()%>">
 		  </div>
 	  
 		  <div class="col-md-7">
 		    <label for="ddc" class="form-label">Date de début de carrière</label>
-		    <input type="date" class="form-control" id="ddc" value="<%=joueur.getDateCarriere()%>">
+		    <input type="date" class="form-control" name="ddc" value="<%=joueur.getDateCarriere()%>">
 		  </div>
 		  <div class="col-md-3" disabled>
 		    <label for="classement" class="form-label">Classement</label>
-		    <input type="text" class="form-control" id="classement" disabled value="<%=joueur.getClassement()%>">
+		    <input type="text" class="form-control" name="classement" disabled value="<%=joueur.getClassement()%>">
 		  </div>
 		  <div class="col-md-2">
 		    <label for="main" class="form-label">Main</label>
-		    <select class="form-select" id="main">
+		    <select class="form-select" name="main">
 		    	<option value="D">Droitier</option>
 		    	<option value="G">Gaucher</option>
 		    </select>
@@ -73,12 +73,12 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 		  <div class="col-md-12">
 
 		    <label for="entraineur" class="form-label">Entraineur</label>
-		    <select  class="form-select" name="entraineur" id="entraineur">
-		    	<option value="<%=joueur.getEntraineur()%>" selected><%=joueur.getEntraineur().getNomComplet()%></option>
+		    <select  class="form-select" name="entraineur">
+		    	<option value="<%=joueur.getId()%>" selected><%=joueur.getEntraineur().getNomComplet()%></option>
 		    	<%for(Entraineur e:entraineurs){ 
 		    		if(e.getId()!=joueur.getEntraineur().getId()){%>
 		    	<option value="<%=e.getId()%>"><%=e.getNomComplet()%></option>
-		    	<%	}
+		    	<%}
 		    	} %>
 		    </select>
 		  </div>

@@ -134,7 +134,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 				while (rs.next()) {
 					Entraineur e = entraineurDAO.getEntraineurById(rs.getInt("entraineur"));
 					j = new Joueur(rs.getInt("id_joueur"), rs.getString("nom_joueur"), rs.getString("prenom_joueur"),
-							rs.getString("sexe"), e, rs.getDate("date_naissance").toLocalDate(),
+							rs.getString("sexe"),e, rs.getDate("date_naissance").toLocalDate(),
 							rs.getString("lieu_naissance"), rs.getString("nationalite"), rs.getInt("taille"),
 							rs.getFloat("poids"), rs.getString("main"), rs.getDate("date_debut_carriere").toLocalDate(),
 							rs.getInt("classement"));
@@ -150,12 +150,10 @@ public class JoueurDAOimpl implements JoueurDAO {
 	@Override
 	public void createJoueur(Joueur j) {
 
-		String attributsTxt = String.format("'%s', '%s', '%s', '%s', '%s','%d'", j.getNom(), j.getPrenom(), j.getSexe(),
-				j.getNationalite(), j.getDateNaissance().toString(), j.getAnneeCarriere());
-		String query = "INSERT INTO Joueur (nom_joueur,prenom_joueur,sexe,nationalite,date_naissance,date_debut_carriere) VALUES ("
+		String attributsTxt = String.format("'%s', '%s', '%s', '%s', '%s','%s','%d','%s','%s','%d','%d','%d'", j.getNom(), j.getPrenom(), j.getSexe(),
+				j.getNationalite(), j.getDateNaissance().toString(), j.getAnneeCarriere(),j.getEntraineur().getId(),j.getMain(),j.getLieuNaissance(),j.getClassement(),j.getTaille(),(int)j.getPoids());
+		String query = "INSERT INTO Joueur (nom_joueur,prenom_joueur,sexe,nationalite,date_naissance,date_debut_carriere,entraineur,main,lieu_naissance,classement,taille,poids) VALUES ("
 				+ attributsTxt + ")";
-		System.out.println(attributsTxt);
-		System.out.println(query);
 		PreparedStatement preparedStmt;
 		try {
 			preparedStmt = connexion.prepareStatement(query);
@@ -186,8 +184,6 @@ public class JoueurDAOimpl implements JoueurDAO {
 	public void deleteJoueur(Integer id) {
 
 		String query = "DELETE FROM Joueur WHERE id_joueur=" + id;
-		System.out.println(query);
-
 		PreparedStatement preparedStmt;
 		try {
 			preparedStmt = connexion.prepareStatement(query);

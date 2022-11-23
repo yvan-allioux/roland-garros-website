@@ -21,7 +21,7 @@ public class Joueur{
 	private String nomEntraineur=null;
 
 	//CONSTRUCTEURS
-	public Joueur(Integer id, String nom, String prenom, String sexe, Entraineur entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere, Integer classement) {
+	public Joueur(Integer id,String nom, String prenom, String sexe, Entraineur entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere,Integer classement) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -34,7 +34,22 @@ public class Joueur{
 		this.poids = poids;
 		this.main = main;
 		this.dateCarriere = dateCarriere;
-		this.classement = classement;
+		this.classement = 0;
+	}
+	public Joueur(String nom, String prenom, String sexe, Entraineur entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+		this.entraineur = entraineur;
+		this.dateNaissance = dateNaissance;
+		this.lieuNaissance = lieuNaissance;
+		this.nationalite = nationalite;
+		this.taille = taille;
+		this.poids = poids;
+		this.main = main;
+		this.dateCarriere = dateCarriere;
+		this.classement = 0;
 	}
 	
 	public Joueur(String nom, String prenom, String sexe,String nationalite,LocalDate dateNaissance, LocalDate dateDebutCarriere ) {

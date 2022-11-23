@@ -23,38 +23,38 @@
 	   <div class="form-item-container ">
 	    <div>
 		    <label for="ddn" class="form-label">Date de naissance</label>
-		    <input type="date" class="form-control" id="ddn" placeholder="1999-03-30">
+		    <input type="date" class="form-control" name="ddn" placeholder="1999-03-30">
 		  </div>
 		   <div>
 		    <label for="ldn" class="form-label">Lieu de naissance</label>
-		    <input type="text" class="form-control" id="ldn" placeholder="Paris">
+		    <input type="text" class="form-control" name="ldn" placeholder="Paris">
 		  </div>
 		  <div>
 		    <label for="nationalite" class="form-label">Nationalité</label>
-		    <input type="text" class="form-control" id="nationalite" placeholder="Français">
+		    <input type="text" class="form-control" name="nationalite" placeholder="Français">
 		  </div>
 	  </div>
 	  <div class="form-item-container">
 		  <div>
 		    <label for="sexe" class="form-label">Sexe</label>
-		    <select  class="form-select" id="sexe">
-		    	<option value="F">Femme</option>
+		    <select  class="form-select" name="sexe">
+		    	<option value="F" selected>Femme</option>
 		    	<option value="H">Homme</option>
 		    </select>
 		  </div>
 		  <div>
 		    <label for="taille" class="form-label">Taille (cm)</label>
-		    <input type="text" class="form-control" id="taille" placeholder="175">
+		    <input type="text" class="form-control" name="taille" placeholder="175">
 		  </div>
 		  <div>
 		    <label for="poids" class="form-label">Poids (kg)</label>
-		    <input type="text" class="form-control" id="poids" placeholder="62">
+		    <input type="text" class="form-control" name="poids" placeholder="62">
 		  </div>
 	  </div>
 	  <div class="form-item-container">
 		  <div>
 		    <label for="main" class="form-label">Main</label>
-		    <select class="form-select" id="main">
+		    <select class="form-select" name="main">
 		    	<option value="D">Droitier</option>
 		    	<option value="G">Gaucher</option>
 		    </select>
@@ -63,11 +63,11 @@
 	  <div class="form-item-container">
 		  <div>
 		    <label for="ddc" class="form-label">Date de début de carrière</label>
-		    <input type="date" class="form-control" id="ddc" placeholder="2015-01-01">
+		    <input type="date" class="form-control" name="ddc" placeholder="2015-01-01">
 		  </div>
 		  <div>
 		    <label for="entraineur" class="form-label">Entraineur</label>
-		    <select  class="form-select" name="entraineur" id="entraineur">
+		    <select  class="form-select" name="entraineur">
 		    	<%for(Entraineur e:entraineurs){%>
 		    	<option value="<%=e.getId()%>"><%=e.getNomComplet()%></option>
 		    	<%}%>

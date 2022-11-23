@@ -2,8 +2,7 @@ package servlets;
 
 import classes.Entraineur;
 import classes.Joueur;
-import models.EntraineurDAOImpl;
-import models.JoueurDAOImpl;
+import models.JoueurDAOimpl;
 import java.io.IOException;
 
 import java.io.PrintWriter;
@@ -32,7 +31,7 @@ public class ListeJoueurServlet extends HttpServlet {
 		resp.setContentType("text/html");
        
         //Création d'une instance du DAO des joueurs
-        JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+        JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 
         //Récupération de tous les joueurs dans listeJoueurs
         this.listeJoueurs = joueurDAO.getListeJoueurs();
