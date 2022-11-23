@@ -33,7 +33,9 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 			<tr>
 				<th scope="col">Date</th>
 				<th scope="col">Heure</th>
-				<th scope="col">Gagnant</th>
+				<th scope="col">Joueur1</th>
+				<th scope="col">Joueur2</th>
+				<!--<th scope="col">Gagnant</th>-->
 				<th scope="col"></th>
 
 			</tr>
@@ -45,13 +47,18 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 				Integer id = match.getId();
 				LocalDate date = match.getDate();
 				LocalTime heure = match.getHeure();
-				Integer gagnant = match.getGagnant();
+				String joueur1 = match.getJoueur1().getNomComplet();
+				String joueur2 = match.getJoueur2().getNomComplet();
+				//String gagnant = match.getGagnant().getNomComplet();
+				
 			%>
 
 			<tr>
 				<td><%=date%></td>
 				<td><%=heure%></td>
-				<td><%=gagnant%></td>
+				<td><%=joueur1%></td>
+				<td><%=joueur2%></td>
+				<!--  <td><%//gagnant%></td>-->
 				<td>
 					<a href="/match/modifier?id=<%=id%>"> <span
 						class="material-symbols-outlined">edit_square</span>

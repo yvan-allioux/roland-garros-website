@@ -1,5 +1,9 @@
 package models;
 
+import models.CourtDAOimpl;
+import models.JoueurDAOimpl;
+import classes.Court;
+import classes.Joueur;
 import classes.Match;
 import db.DBManager;
 
@@ -14,6 +18,8 @@ public class MatchDAOimpl implements MatchDAO{
 	
 	private Connection connexion;
 	private List<Match> listeMatchs;
+	private JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
+	private CourtDAOimpl courtDAO = new CourtDAOimpl();
 
 	public MatchDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
@@ -31,10 +37,12 @@ public class MatchDAOimpl implements MatchDAO{
 
 			try {
 				while (rs.next()) { // Itérer sur le resultSet :
+					Joueur j1 = joueurDAO.getJoueurById(rs.getInt("joueur1"));
+					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
+					Court court = courtDAO.getCourtById(rs.getInt("court"));
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
-					// match
 					Match m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
-							rs.getTime("heure").toLocalTime());
+							rs.getTime("heure").toLocalTime(),j1,j2,court);
 					// On ajoute le match créé à la liste des matchs
 					allMatchs.add(m);
 				}
@@ -87,31 +95,50 @@ public class MatchDAOimpl implements MatchDAO{
 	}
 
 	@Override
-	public Match getMatchById(Integer id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public Match getMatchById(Integer id) {
+		Match m = null;
+
+		ResultSet rs = getResult("SELECT * FROM Matchs WHERE id_match=" + id);
+
+		if (rs != null) {
+
+			try {
+				while (rs.next()) {
+					Joueur j1 = joueurDAO.getJoueurById(rs.getInt("joueur1"));
+					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
+					Court court = courtDAO.getCourtById(rs.getInt("court"));
+					// Pour chaque instance de match retournée par la requête on créé un nouveau
+					m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
+							rs.getTime("heure").toLocalTime(),j1,j2,court);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return m;
 	}
 
 	@Override
-	public void updateMatch(Match m) throws SQLException {
+	public void updateMatch(Match m) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void deleteMatch(Integer id) throws SQLException {
+	public void deleteMatch(Integer id){
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void createMatch(Match m) throws SQLException {
+	public void createMatch(Match m){
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<Match> getAllMatchsByDate(LocalDate date) throws SQLException {
+	public List<Match> getAllMatchsByDate(LocalDate date){
 		// TODO Auto-generated method stub
 		return null;
 	}

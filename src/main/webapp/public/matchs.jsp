@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@page
-	import="java.util.List,java.time.LocalDate,java.time.LocalTime,classes.Match,models.MatchDAOImpl"%>
-<%MatchDAOImpl matchDAO = new MatchDAOImpl();
+	import="java.util.List,java.time.LocalDate,java.time.LocalTime,classes.Match,models.MatchDAOimpl"%>
+<%MatchDAOimpl matchDAO = new MatchDAOimpl();
 List<Match> matchs = matchDAO.getAllMatchs();%>
 
 <!DOCTYPE html>

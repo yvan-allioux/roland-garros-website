@@ -9,11 +9,11 @@ public class Match {
 	private Integer id;
 	private LocalDate date;
 	private LocalTime heure;
-	private Integer gagnant;
+	private Joueur gagnant;
 	private Court court;
 	private Joueur joueur1, joueur2;
 	private Equipe equipe1, equipe2;
-	private Integer score;
+	private Score score;
 
 	// CONSTRUCTEUR
 	// Match sans joueur
@@ -59,16 +59,16 @@ public class Match {
 		return heure;
 	}
 
-	public Integer getGagnant() {
+	public Joueur getGagnant() {
 		return gagnant;
 	}
 
-	public String getJoueur1() {
-		return joueur1.getPrenom() + joueur1.getNom();
+	public Joueur getJoueur1() {
+		return joueur1;
 	}
 
-	public String getJoueur2() {
-		return joueur2.getPrenom() + joueur2.getNom();
+	public Joueur getJoueur2() {
+		return joueur2;
 	}
 
 	public String getEquipe1() {
@@ -79,12 +79,8 @@ public class Match {
 		return equipe1.getNom();
 	}
 
-	public String getCourt() {
-		if (court == null) {
-			return " /";
-		} else {
-			return court.getNom();
-		}
+	public Court getCourt() {
+			return court;
 	}
 
 	// SETTERS
@@ -100,7 +96,7 @@ public class Match {
 		this.heure = heure;
 	}
 
-	public void setGagnant(Integer gagnant) {
+	public void setGagnant(Joueur gagnant) {
 		this.gagnant = gagnant;
 	}
 
