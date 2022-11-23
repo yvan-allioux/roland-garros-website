@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html>
 
-<footer>
-		<p> &#xA9; Les MAKY - Yvan ALLIOUX, Margaux ARGENTIN, Apolline CHENAIS, Katell QUEMENEUR </p>
-		<p>&#xA9;Projet ENSSAT IAI 2 - novembre 2022 - tout droits résérvés </p>
-		<a href="../general/CGU.jsp">Conditions générales d'utilisation</a>
-	</footer>
+<footer class="footer fixed-bottom">
+	<div class="container p-3">
+		<p class="m-1"> &#xA9; Les MAKY - Yvan ALLIOUX, Margaux ARGENTIN, Apolline CHENAIS, Katell QUEMENEUR </p>
+		<p class="m-1">&#xA9;Projet ENSSAT IAI 2 - novembre 2022 - tout droits résérvés </p>
+		<a class="m-1" href="../general/CGU.jsp">Conditions générales d'utilisation</a>
+	</div>
+</footer>
 </html>

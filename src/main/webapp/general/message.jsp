@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@include file="/general/head.jsp" %>
-<link rel="stylesheet" href="style.css" type="text/css" /> 
+<%--<link rel="stylesheet" href="style.css" type="text/css" /> --%>
 </head>
 
 <body>

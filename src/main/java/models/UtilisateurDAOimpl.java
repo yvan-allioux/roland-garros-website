@@ -22,7 +22,6 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
     public boolean utilisateurExiste(String login) {
 
         String queryPrepare = "SELECT * FROM Utilisateur WHERE pseudo='"+login+"'";
-        System.out.println("test dao : " + queryPrepare);
 
         ResultSet rs = getResult(queryPrepare);
         //test si l'utilisateur existe

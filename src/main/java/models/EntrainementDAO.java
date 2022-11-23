@@ -12,8 +12,6 @@ public interface EntrainementDAO {
     //retourne l'horaire de l'entrainement
     public String getHoraire(String id_entrainement);//objet date/heur ?
 
-
-
     //retourne le date de l'entrainement
     public String getDate(String id_entrainement);//objet date/heur ?
 

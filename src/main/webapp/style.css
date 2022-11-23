@@ -32,9 +32,10 @@
 
 h1{
 	font-family : var(--titleFont);
-	border-bottom : solid 2px var(--principal);
+	text-decoration-line: underline;
+	-webkit-text-decoration-color: var(--principal);
+	text-decoration-color: var(--principal);
 	text-transform: uppercase;
-	width:fit-content;
 }
 
 h2,h3{
@@ -81,13 +82,10 @@ footer{
 	background-color : var(--secondaire);
 	color : white; 
 	font-size : 0.75rem;
-	height : 20vh;
 	text-align : center;
-	padding-top : 20px;
-	border-top : 5px solid var(--secondaireFonce);
-	/*position: absolute;
-  	bottom: 0;
-  	width: 100%;*/
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 footer a{
@@ -103,7 +101,7 @@ footer a{
 	font-size : 6rem;
 	color : var(--principal);
 	border-bottom:none;
-	align-self : flex-end;
+	/*align-self : flex-end;*/
 }
 .index-item h1::before{
 	  content: "";
@@ -172,5 +170,17 @@ span{
 	width : calc(100vw/2);
 }
 
-
+.masthead{
+	background-image: url('medias/jaiUnBackground.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 90vh;
+}
+.text-large {
+	font-size: 1000%!important;
+}
+.masthead > div {
+	margin-top: 30vh!important;
+}
 
