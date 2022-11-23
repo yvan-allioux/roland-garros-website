@@ -12,9 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import models.EntrainementDAOimpl;
 
-@WebServlet (name = "entrainement", value = "/entrainement")
+@WebServlet(name = "entrainement-edit", value = "/entrainement/edit")
 
-public class EntrainementServlet extends HttpServlet{
+public class EditerEntrainementServlet extends HttpServlet {
     //GET REQUEST
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.doProcess(request, response);
@@ -26,11 +26,19 @@ public class EntrainementServlet extends HttpServlet{
     }
     //doProcess
     public void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        //Création d'une instance du DAO EntrainementDAOimpl
         EntrainementDAOimpl entrainementDAO = new EntrainementDAOimpl();
+
+        //initialisation de la liste des entrainements getAllEntrainement
         List<Entrainement> uneListeEntrainement = entrainementDAO.getAllEntrainement();
+
+        //set attribut
         request.setAttribute("entrainement", uneListeEntrainement);
-        request.setAttribute("editMod", false);
+        request.setAttribute("editMod", true);
+
         this.getServletContext().getRequestDispatcher("/prive/listeEntrainement.jsp").forward(request, response);
+
     }
 
 }
