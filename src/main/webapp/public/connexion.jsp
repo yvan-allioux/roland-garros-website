@@ -33,7 +33,6 @@
     PrintWriter var = response.getWriter();
     //get
     String paramErreur = request.getParameter("erreur");
-    System.out.println(paramErreur);
     //test if string equal
     if(paramErreur != null){
         if(paramErreur.equals("loginInexistant")){
