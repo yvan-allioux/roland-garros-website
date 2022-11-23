@@ -170,4 +170,39 @@ public class EntrainementDAOimpl implements EntrainementDAO {
 
     }
 
+    //retourne un entrainements par son id
+    public Entrainement getEntrainementById(Integer id_entrainement) {
+        QueryTool monQueryTool = new QueryTool();
+
+        //nouveaux JoueurDAO
+        JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+        CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+
+        ResultSet rs = monQueryTool.getResult("SELECT * FROM Entrainement WHERE id_entrainement='"+id_entrainement+"'");
+
+        if(rs!=null) {
+
+            try {
+                while (rs.next()) {
+                    int id_entrainement2 = rs.getInt("id_entrainement");
+                    String date2 = rs.getString("date");
+                    LocalDate dateParse2 = LocalDate.parse(date2);
+                    String heur2 = rs.getString("heure");
+                    LocalTime heurParse2 = LocalTime.parse(heur2);
+                    //setup valeur unJoueurDAOimpl
+                    Joueur unJoueur2 = unJoueurDAOimpl.getJoueurById(rs.getInt("joueur"));
+                    //setup valeur unCourtDAOimpl
+                    Court unCourt2 = unCourtDAOimpl.getCourtById(rs.getInt("court"));
+                    //Integer id, LocalDate date, LocalTime heure, Joueur joueur, Court court
+                    Entrainement unEntrainement2 = new Entrainement(id_entrainement2, dateParse2, heurParse2, unJoueur2, unCourt2);
+                    return unEntrainement2;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        Entrainement unEntrainementNULL = new Entrainement(0,null,null, null,null);
+        return unEntrainementNULL;
+    }
+
 }

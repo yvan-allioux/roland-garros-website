@@ -5,14 +5,14 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-        	<img src="/medias/logo.svg" width="40px">	
+        	<a href="/home"><img src="/medias/logo.png" width="40px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!--  PARTIE PUBLIC -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class=" ms-2 collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                	<li class="nav-item">  	
+                	<li class="nav-item">
             			<a class="nav-link" href="/home"><span class="material-symbols-outlined">home</span></a>
            			</li>
                     <li class="nav-item">
@@ -50,16 +50,22 @@
                     <%}%>
                 </ul>
                 <%--test if login is null PERMER D'AFICHER DES INFO/PAGE UNIQUEMENT QUAND ON EST CONECTE --%>
-                
-                <div class="d-flex">
+
+
                 <% if(session.getAttribute("login")!=null){%>
-                	<p class="nav-item m-2">bonjour ${sessionScope.login} role : ${sessionScope.role}</p>
-                    <a class="nav-link m-2" href="./deconnexion"><span class="material-symbols-outlined">logout</span></a>
-                <%}else { %>
-                	<a class="nav-link" href="../connexion"><span class="material-symbols-outlined">login</span></a>
+                    <div class="d-flex">
+                        <p class="nav-item m-2">bonjour ${sessionScope.login} <% if(session.getAttribute("role").equals('A')){%>| role : Admin<%}%> <% if(session.getAttribute("role").equals('E')){%>role : Editeur de joueur<%}%> <% if(session.getAttribute("role").equals('M')){%>role : Editeur de match<%}%>
+                    </div>
+                    <div class="d-flex">
+                        <a class="nav-link m-2" href="./deconnexion"><span class="material-symbols-outlined">logout</span></a>
+                    </div>
+                <%}else{%>
+                    <div class="d-flex me-2">
+                        <a class="nav-link" href="../connexion"><span class="material-symbols-outlined">login</span></a>
+                    </div>
                 <%}%>
-                </div>
-                
+
+
             </div>
 
         </div>

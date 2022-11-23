@@ -6,13 +6,13 @@
 <html>
 <head>
     <%@include file="../general/head.jsp" %>
-    <link rel="stylesheet" href="../style.css" type="text/css" />
+    <%--<link rel="stylesheet" href="../style.css" type="text/css" />--%>
     <title>Connexion | Roland Garros</title>
 </head>
 <%@include file="../general/nav.jsp" %>
 <body>
 <div class="container">
-<h1 class="mx-center">Connexion</h1>
+<h1 class="text-center m-4">Connexion</h1>
 <form  method="POST" action="connexion" class="formConnexion">
     <div class="mb-3">
         <label for="login" class="form-label">Pseudo</label>
@@ -33,7 +33,6 @@
     PrintWriter var = response.getWriter();
     //get
     String paramErreur = request.getParameter("erreur");
-    System.out.println(paramErreur);
     //test if string equal
     if(paramErreur != null){
         if(paramErreur.equals("loginInexistant")){
