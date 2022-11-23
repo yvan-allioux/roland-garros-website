@@ -7,7 +7,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur"%>
-<%List<Entrainement> entrainements = (List<Entrainement>)request.getAttribute("entrainement");%>
+<%
+	List<Entrainement> entrainements = (List<Entrainement>)request.getAttribute("entrainement");
+	boolean editMod = (boolean)request.getAttribute("editMod");
+
+	//todo faire des verification si l'user est bien conécté
+%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,14 +51,16 @@
 				  <td><%=heure%></td>
 				  <td><%=court%></td>
 				  <td><%=prenomJ%> <%=nomJ%></td>
-				  <td>
-				  	<a href="/entrainement/modifier?id=<%=id%>">
-				  		<span class="material-symbols-outlined">edit_square</span>
-					</a>
-				  	<a href="/joueur/supprimer?id=<%=id%>">
-				  		<span class="material-symbols-outlined">delete</span>
-			  		</a>
-				  </td>
+					<% if(editMod) {%>
+					  <td>
+						<a href="/entrainement/modifier?id=<%=id%>">
+							<span class="material-symbols-outlined">edit_square</span>
+						</a>
+						<a href="/joueur/supprimer?id=<%=id%>">
+							<span class="material-symbols-outlined">delete</span>
+						</a>
+					  </td>
+					<%}%>
 					  	
 				</tr>
 				
@@ -61,14 +69,8 @@
  			</tbody>
 		</table>
 		<div>
-			<!--  importer fichier CSV -->
-			<div class="input-group input-group-sm">
-			  <input type="file" class="form-control" id="inputTelechargement" placeholder="Username">
-			  <label class="input-group-text" for="inputTelechargement">Télécharger</label>
-			</div>
-			<!--  bouton ajout joueur -->
-			
-			<a href="/joueur/ajouter" class="btn btn-outline-secondary">Ajouter un joueur</a>
+			<!--  bouton ajout joueur TODO-->
+			<a href="/joueur/ajouter" class="btn btn-outline-secondary">Ajouter un Entrainement</a>
 			
 		</div>
 		

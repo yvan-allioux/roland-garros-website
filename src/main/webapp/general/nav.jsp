@@ -30,15 +30,20 @@
                         <a class="nav-link" href="/home">Statistiques</a>
                     </li>
                     <!--  PARTIE PRIVE  -->
+                    <% if(session.getAttribute("login")!=null){%>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Privé
                         </a>
                         <ul class="dropdown-menu">
+                            <% if((session.getAttribute("login")!=null) && ( (session.getAttribute("role").equals('E')) || (session.getAttribute("role").equals('A') ))){%>
                             <li><a class="dropdown-item" href="/joueurs/editer">Editer joueur</a></li>
+                            <%--<li><a class="dropdown-item" href="#">Editer entraîneur</a></li>--%>
+                            <%}%>
+                            <% if((session.getAttribute("login")!=null) && ((session.getAttribute("role").equals('M')) || (session.getAttribute("role").equals('A')))){%>
                             <li><a class="dropdown-item" href="#">Editer match</a></li>
-                            <li><a class="dropdown-item" href="#">Editer entraînement</a></li>
-                            <li><a class="dropdown-item" href="#">Editer entraîneur</a></li>
+                            <li><a class="dropdown-item" href="entrainement/edit">Editer entraînement</a></li>
+                            <%}%>
                         </ul>
                     </li>
                 </ul>
