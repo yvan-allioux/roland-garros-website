@@ -9,9 +9,8 @@
 </head>
 
 	<%@include file="../general/nav.jsp" %>
-<body>
-		
-		<div class="index-item">
+<body class="index-item">
+		<div>
 			<h1>Roland Garros</h1>
    			<p> Ce site est un projet d'école fictif réaliser en JEE.</p>
 		</div>

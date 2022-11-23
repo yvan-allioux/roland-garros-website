@@ -53,7 +53,7 @@ body{
 	display : flex;
 	flex-direction:column; 
 	justify-content:space-between;
-	/*min-height:100vh;*/
+	min-height:100vh;
 }
 
 .btn-primary {
@@ -106,26 +106,21 @@ footer a{
 	color : white;
 }
 /*==================== INDEX ======================*/
-.index-item{
-	display:flex; 
-	flex-wrap:wrap;
-}
 
 .index-item h1{
 	font-size : 6rem;
 	color : var(--principal);
 	border-bottom:none;
-	align-self : flex-end;
+	margin:auto;
 }
-.index-item h1::before{
-	  content: "";
-    display: block;
-    background: url('medias/accueil.jpg') no-repeat;
-    width: 40vw;
-    height: 35vh;
-    position : relative;
-    left : 10px;
-    top : 30px;
+.index-item{
+	text-align : center;
+}
+.index-item div:before{
+	content:"";
+	background-image : url("../medias/accueil.jpg") no-repeat;
+	top:0;
+	bottom:0;
 }
 /*==================== CGU ======================*/
 span{
