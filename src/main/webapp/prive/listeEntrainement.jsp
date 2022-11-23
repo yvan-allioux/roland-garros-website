@@ -22,17 +22,21 @@
 	</head>
 	
 	<%@include file="../general/nav.jsp" %>
-	<body>			
+	<body>
+	<container class="container">
 		
 		<!-- Liste des joueurs  -->
-		<table class="table  table-striped">
+		<table class="table m-2 table-striped">
 			<thead>
 			  <tr>
 			    <th scope="col">Date</th>
 			    <th scope="col">Heure</th>
 			    <th scope="col">Court</th>
 			    <th scope="col">Joueurs</th>
-		       	<th scope="col"></th>
+				  <% if(editMod) {%>
+				  	<th scope="col">Editer ou suprimer</th>
+				  <%}%>
+
 		       
 			  </tr>
 			</thead>
@@ -54,10 +58,10 @@
 					<% if(editMod) {%>
 					  <td>
 						<a href="/entrainement/modifier?id=<%=id%>">
-							<span class="material-symbols-outlined">edit_square</span>
+							<span class="material-symbols-outlined m-1">edit_square</span>
 						</a>
 						<a href="/joueur/supprimer?id=<%=id%>">
-							<span class="material-symbols-outlined">delete</span>
+							<span class="material-symbols-outlined m-1">delete</span>
 						</a>
 					  </td>
 					<%}%>
@@ -68,12 +72,12 @@
 				
  			</tbody>
 		</table>
-		<div>
+		<div class="m-3 text-center">
 			<!--  bouton ajout joueur TODO-->
-			<a href="/joueur/ajouter" class="btn btn-outline-secondary">Ajouter un Entrainement</a>
+			<a href="/joueur/ajouter" class="btn btn-outline-success">Ajouter un Entrainement</a>
 			
 		</div>
-		
+	</container>
 	</body>
 	<%@include file="../general/footer.jsp" %>
 </html>
