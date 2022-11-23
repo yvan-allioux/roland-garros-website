@@ -33,6 +33,7 @@ public class ListeJoueurServlet extends HttpServlet {
        
         //Création d'une instance du DAO des joueurs
         JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+
         //Récupération de tous les joueurs dans listeJoueurs
         this.listeJoueurs = joueurDAO.getListeJoueurs();
         
@@ -61,7 +62,7 @@ public class ListeJoueurServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//Création d'une instance du DAO des jouers
-        JoueurDAOImpl joueurDAO = new JoueurDAOImpl();
+        JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 
         if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué 
         	 List<Joueur> listeJoueursHomme = new ArrayList<Joueur>();

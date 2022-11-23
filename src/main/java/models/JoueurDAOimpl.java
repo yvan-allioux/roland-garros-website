@@ -19,7 +19,7 @@ public class JoueurDAOImpl implements JoueurDAO {
 	private List<Joueur> listeJoueurs;
 	EntraineurDAOImpl entraineurDAO;
 
-	public JoueurDAOImpl() {
+	public JoueurDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
 		listeJoueurs = this.getAllJoueurs();
 		entraineurDAO = new EntraineurDAOImpl();

@@ -1,46 +1,19 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import classes.Utilisateur;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.JoueurDAOImpl;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet (name = "connexion", value = "/connexion")
 
 public class ConnexionServlet extends HttpServlet{
-
-    //CONSRUCTEUR
-    /*private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
-
-        resp.setContentType("text/html");
-        String pageName = "/public/test.jsp";
-        //indique la vue à afficher
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-
-        try {
-            rd.forward(req, resp);
-
-        } catch (ServletException e) {
-
-            e.printStackTrace();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-
-        }
-
-    }*/
 
     //GET REQUEST
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -56,23 +29,44 @@ public class ConnexionServlet extends HttpServlet{
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
+
+        //erreur ?
+        System.out.println("param erreur : "+request.getParameter("erreur"));
+
         //affichage des paramètres
-        System.out.println("login : " + login);
-        System.out.println("password : " + password);
+        //System.out.println("login : " + login);
+        //System.out.println("password : " + password);
 
         //nouvelle instance d'utilisateur
         Utilisateur unUser = new Utilisateur(login, password);
-
+        System.out.println( "get role : " + unUser.getType());
 
         //utilisateur existant ?
-        if(unUser.utilisateurExiste(login)) {
+        if(!(unUser.utilisateurExiste(login))) {
+            //redirection vers la page de connexion + parametre erreur
+            response.sendRedirect(request.getContextPath() + "/connexion?erreur=loginInexistant");
+
+        } else {
             //redirection vers la page d'accueil
             System.out.println("utilisateur existant");
-            response.sendRedirect(request.getContextPath() + "/");
-        } else {
-            System.out.println("utilisateur inexistant");
-            //redirection vers la page de connexion
-            response.sendRedirect(request.getContextPath() + "/connexion");
+
+            System.out.println( "get password : " + unUser.getPasswordDataBase(login));
+            //test du mot de passe
+            //todo : chifffrer le mot de passe, pas urgent
+            if(unUser.getPasswordDataBase(login).equals(password)) {
+                //redirection vers la page d'accueil
+                System.out.println("mot de passe correct avec la database");
+                response.sendRedirect(request.getContextPath() + "/");
+                //set session
+                HttpSession maSession = request.getSession();
+                maSession.setAttribute("login", login);
+                maSession.setAttribute("role", unUser.getType());
+
+            } else {
+                //redirection vers la page de connexion + parametre erreur
+                response.sendRedirect(request.getContextPath() + "/connexion?erreur=mdpInvalide");
+            }
+
         }
 
 

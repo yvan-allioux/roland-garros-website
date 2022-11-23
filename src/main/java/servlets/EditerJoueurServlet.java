@@ -1,11 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import classes.Entraineur;
 import classes.Joueur;
@@ -17,10 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import models.EntraineurDAOImpl;
 import models.JoueurDAOImpl;
 
+
 @WebServlet(name="joueur", urlPatterns={"/joueur/supprimer", "/joueur/modifier", "/joueur/ajouter"})
 public class EditerJoueurServlet extends HttpServlet {
 	
-	private JoueurDAOImpl joueurDAO;
+	private JoueurDAOimpl joueurDAO;
 	private Joueur joueur=null;
 	private Integer id_joueur=null;
 	
@@ -29,6 +27,7 @@ public class EditerJoueurServlet extends HttpServlet {
 		joueurDAO = new JoueurDAOImpl();
 		EntraineurDAOImpl entraineurDAO = new EntraineurDAOImpl();
 		
+
 		if(req.getParameter("id")!=null){
 			//Récupération de l'id passé en paramètre
 			id_joueur = Integer.parseInt(req.getParameter("id"));
@@ -68,7 +67,7 @@ public class EditerJoueurServlet extends HttpServlet {
 	
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		joueurDAO = new JoueurDAOImpl();
+		joueurDAO = new JoueurDAOimpl();
 		String nom = req.getParameter("nom-joueur");
 		String prenom = req.getParameter("prenom-joueur");
 		String sexe = req.getParameter("sexe");

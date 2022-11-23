@@ -17,7 +17,11 @@ public class Utilisateur {
     public Utilisateur(String login, String password) {
         this.login = login;
         this.password = password;
-        //TODO : récupérer le type de l'utilisateur si il existe
+        if(new UtilisateurDAOimpl().utilisateurExiste(login)){
+            this.type = new UtilisateurDAOimpl().getRole(login);
+        }else{
+            this.type = 'Z';//erreur
+        }
     }
     //METHODES
 
@@ -26,6 +30,18 @@ public class Utilisateur {
         //test si l'utilisateur existe
         UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
         return unUtilisateurDAO.utilisateurExiste(login);
+    }
+    //get role
+    public char getRole(String login) {
+        //retour du role
+        UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
+        return unUtilisateurDAO.getRole(login);
+    }
+    //get password
+    public String getPasswordDataBase(String login) {
+        //retour du role
+        UtilisateurDAOimpl unUtilisateurDAO = new UtilisateurDAOimpl();
+        return unUtilisateurDAO.getPassewordDataBase(login);
     }
 
     //GETTERS
