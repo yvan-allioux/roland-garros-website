@@ -24,6 +24,7 @@
 	--bs-link-hover-color: #a04f1e;
 	--bs-primary: #c85a19;
 	--bs-blue: #c85a19;
+	--bs-primary-rgb: 200,90,25;
 	/* SECONDARY = VERT */
 	--bs-green: #00503c;
 	--bs-success: #00503c;
@@ -53,6 +54,19 @@ body{
 	flex-direction:column; 
 	justify-content:space-between;
 	/*min-height:100vh;*/
+}
+
+.btn-primary {
+  --bs-btn-bg: #c85a19;
+  --bs-btn-border-color: #c85a19;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #ab4203;
+  --bs-btn-hover-border-color: #ab4203;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #c85a19;
+  --bs-btn-active-border-color: #ab4203;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
 nav a:hover{
