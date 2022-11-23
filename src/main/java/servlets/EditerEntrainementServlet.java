@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import classes.Entrainement;
-import classes.Joueur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,14 +26,14 @@ public class EditerEntrainementServlet extends HttpServlet {
             //Récupération de l'id passé en paramètre
             id_entrainement = Integer.parseInt(req.getParameter("id"));
             System.out.println("id entrainement : " + id_entrainement);
-            //Récupération du joueur correspondant à l'id passé en paramètre
+
+            //Récupération du entrainement correspondant à l'id passé en paramètre
             unEntrainement = entrainementDAOimpl.getEntrainementById(id_entrainement);
+            System.out.println("un entrainement : " + unEntrainement.getId());
+            System.out.println("un entrainement joueur : " + unEntrainement.getJoueur().getNom());
         }
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/supprimer")) {
-
-            //entrainementDAOimpl.deleteEntrainement(id_entrainement);
-
             resp.sendRedirect("/entrainement/editer");
         }
 
@@ -53,11 +52,6 @@ public class EditerEntrainementServlet extends HttpServlet {
             req.getRequestDispatcher(pageName).forward(req, resp);
         }
 
-
-		/*
-		PrintWriter out = resp.getWriter();
-		out.print(id_joueur);
-		out.print(req.getHttpServletMapping().getPattern());*/
     }
 
     @Override
@@ -72,14 +66,13 @@ public class EditerEntrainementServlet extends HttpServlet {
             LocalDate dateN= LocalDate.parse("1998-06-06", formatter);
             LocalDate dateC= LocalDate.parse("2017-06-06", formatter);
 
-            Joueur joueur = new Joueur(nom, prenom,"H", "Français",dateN,dateC);
+            //Entrainement unEntrainement = new Entrainement(); //TODO
 
-            //entrainementDAOimpl.createEntrainement(joueur);
         }
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
-            Integer id_joueur = Integer.parseInt(req.getParameter("id"));
+            Integer id_entrainement = Integer.parseInt(req.getParameter("id"));
 
-            unEntrainement = entrainementDAOimpl.getEntrainementById(id_joueur);
+            unEntrainement = entrainementDAOimpl.getEntrainementById(id_entrainement);
 
             //unEntrainement.setNom(nom);
             //unEntrainement.setPrenom(prenom);

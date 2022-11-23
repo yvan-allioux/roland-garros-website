@@ -12,24 +12,26 @@
 <%@ include file="../general/nav.jsp" %>
 <body>
 <container class="container">
-	<form action="../entrainement/modifier?id=<%=entrainement.getId()%>" method="post" class="row g-3 m-3">
-		<div class="col-md-6">
-			<%--@declare id="exampleinputemail2"--%><label for="exampleInputEmail2" class="form-label">Nom</label>
-			<input type="text" class="form-control" name="nom-entrainement" value="<%=entrainement.getDate()%>">
+	<form action="../entrainement/modifier?id=<%=entrainement.getId()%>" method="POST" class="row g-3 m-3">
+
+		<div class="mb-3">
+			<%--@declare id="date"--%><label for="date" class="form-label">Date</label>
+			<input  placeholder="date" name="date-entrainement" type="date" class="form-control" value="<%=entrainement.getDate()%>">
 		</div>
-		<div class="col-md-6">
-			<%--@declare id="exampleinputpassword1"--%><label for="exampleInputPassword1" class="form-label">Prenom</label>
-			<input type="text" class="form-control" name="prenom-entrainement" value="<%=entrainement.getJoueur()%>">
+		<div class="mb-3">
+			<%--@declare id="joueurs"--%><label for="joueurs" class="form-label">Joueurs</label>
+			<input placeholder="joueurs" name="joueurs-entrainement" type="text" class="form-control" value="<%=entrainement.getJoueur().getPrenom()%> <%=entrainement.getJoueur().getNom()%>">
 		</div>
-		<div class="col-md-4">
-			<label for="ddn" class="form-label">Date de naissance</label>
-			<input type="date" class="form-control" id="ddn" value="<%=entrainement.getCourt()%>">
+		<div class="mb-3">
+			<%--@declare id="heure"--%><label for="heure" class="form-label">Heure</label>
+			<input placeholder="heure" name="heure-entrainement" type="text" class="form-control" value="<%=entrainement.getHeure()%>">
 		</div>
-		<div class="col-md-4">
-			<label for="ldn" class="form-label">Lieu de naissance</label>
-			<input type="text" class="form-control" id="ldn" value="<%=entrainement.getHeure()%>">
+		<div class="mb-3">
+			<%--@declare id="court"--%><label for="court" class="form-label">Court</label>
+			<input placeholder="court" name="court-entrainement" type="text" class="form-control" value="<%=entrainement.getCourt().getNom()%>">
 		</div>
-		<button type="submit" class="btn btn-secondary">Enregistrer</button>
+
+		<button type="submit" class="btn btn-outline-success">Enregistrer</button>
 	</form>
 </container>
 </body>

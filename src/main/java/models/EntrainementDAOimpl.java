@@ -183,16 +183,20 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         if(rs!=null) {
 
             try {
-                String date = rs.getString("date");
-                LocalDate dateParse = LocalDate.parse(date);
-
-                String heur = rs.getString("heure");
-                LocalTime heurParse = LocalTime.parse(heur);
-
-                //Integer id, LocalDate date, LocalTime heure, Joueur joueur, Court court
-                Entrainement unEntrainement2 = new Entrainement(id_entrainement,dateParse,heurParse, unJoueurDAOimpl.getJoueurById(rs.getInt("joueur")),unCourtDAOimpl.getCourtById(rs.getInt("court")));
-                return unEntrainement2;
-
+                while (rs.next()) {
+                    int id_entrainement2 = rs.getInt("id_entrainement");
+                    String date2 = rs.getString("date");
+                    LocalDate dateParse2 = LocalDate.parse(date2);
+                    String heur2 = rs.getString("heure");
+                    LocalTime heurParse2 = LocalTime.parse(heur2);
+                    //setup valeur unJoueurDAOimpl
+                    Joueur unJoueur2 = unJoueurDAOimpl.getJoueurById(rs.getInt("joueur"));
+                    //setup valeur unCourtDAOimpl
+                    Court unCourt2 = unCourtDAOimpl.getCourtById(rs.getInt("court"));
+                    //Integer id, LocalDate date, LocalTime heure, Joueur joueur, Court court
+                    Entrainement unEntrainement2 = new Entrainement(id_entrainement2, dateParse2, heurParse2, unJoueur2, unCourt2);
+                    return unEntrainement2;
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
