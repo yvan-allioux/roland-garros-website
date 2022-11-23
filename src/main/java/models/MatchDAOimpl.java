@@ -10,16 +10,19 @@ import db.DBManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalTime;
 public class MatchDAOimpl implements MatchDAO{
 	
 	private Connection connexion;
 	private List<Match> listeMatchs;
 	private JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 	private CourtDAOimpl courtDAO = new CourtDAOimpl();
+	private QueryTool queryTool = new QueryTool();
 
 	public MatchDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
@@ -31,7 +34,7 @@ public class MatchDAOimpl implements MatchDAO{
 
 		List<Match> allMatchs = new ArrayList<Match>();
 
-		ResultSet rs = getResult("SELECT * FROM Matchs");
+		ResultSet rs = queryTool.getResult("SELECT * FROM Matchs");
 
 		if (rs != null) {
 
@@ -55,30 +58,6 @@ public class MatchDAOimpl implements MatchDAO{
 
 	}
 
-	/**
-	 * Retourne les résultats d'une requête SELECT
-	 * 
-	 * @param txtRequest
-	 * @return
-	 */
-	public ResultSet getResult(String query) {
-		// Créer un java.sql.Statement à partir de cette connexion en utilisant:
-		Statement statement = null;
-		ResultSet rs = null;
-		try {
-			// Initialisation du statement
-			statement = connexion.createStatement();
-
-			if (statement != null) {
-				rs = statement.executeQuery(query);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return rs;
-	}
-
 	public List<Match> getListeMatchs() {
 		return listeMatchs;
 	}
@@ -98,7 +77,7 @@ public class MatchDAOimpl implements MatchDAO{
 	public Match getMatchById(Integer id) {
 		Match m = null;
 
-		ResultSet rs = getResult("SELECT * FROM Matchs WHERE id_match=" + id);
+		ResultSet rs = queryTool.getResult("SELECT * FROM Matchs WHERE id_match=" + id);
 
 		if (rs != null) {
 
@@ -121,26 +100,75 @@ public class MatchDAOimpl implements MatchDAO{
 
 	@Override
 	public void updateMatch(Match m) {
-		// TODO Auto-generated method stub
+
+		String attributsTxt = String.format("court='%d', joueur1='%d', joueur2='%d',date='%s',heure='%s'", m.getCourt().getId(),m.getJoueur1().getId(),m.getJoueur2().getId(),m.getDate(),m.getHeure());
+		String query = "UPDATE Matchs SET " + attributsTxt + " WHERE id_match=" + m.getId();
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = connexion.prepareStatement(query);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void deleteMatch(Integer id){
-		// TODO Auto-generated method stub
+		String query = "DELETE FROM Matchs WHERE id_match=" + id;
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = connexion.prepareStatement(query);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void createMatch(Match m){
-		// TODO Auto-generated method stub
+		String attributsTxt = String.format("%d, %d, %d,'%s','%s'", m.getCourt().getId(),m.getJoueur1().getId(),m.getJoueur2().getId(),m.getDate(),m.getHeure());
+		String query = "INSERT INTO Matchs (court,joueur1,joueur2,date,heure) VALUES (" + attributsTxt + ")";
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = connexion.prepareStatement(query);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
-
+	/**
+	 * Retourne la liste des matchs passés
+	 */
 	@Override
-	public List<Match> getAllMatchsByDate(LocalDate date){
-		// TODO Auto-generated method stub
-		return null;
+	public List<Match> getAllMatchsPasses(){
+		List<Match> matchs = new ArrayList<Match>();
+			
+			for(Match m:this.listeMatchs) {
+				if(m.getDate().isBefore(LocalDate.now()) || (m.getDate().equals(LocalDate.now()) && m.getHeure().isBefore(LocalTime.now()))) { //Si la date du match est avant aujourd'hui ou si la date du match est aujourd'hui et que l'heure du match est avant l'heure actuelle
+					matchs.add(m);
+				}
+			}
+
+			return matchs;
+	}
+	
+	/**
+	 * Retourne la liste des matchs pas encore passés
+	 */
+	@Override
+	public List<Match> getAllMatchsPasPasses(){
+		List<Match> matchs = new ArrayList<Match>();
+			
+			for(Match m:this.listeMatchs) {
+				if(m.getDate().isAfter(LocalDate.now()) || (m.getDate().equals(LocalDate.now()) && m.getHeure().isAfter(LocalTime.now()))) { //Si la date du match est après aujourd'hui ou si la date du match est aujourd'hui et que l'heure du match est après l'heure actuelle
+					matchs.add(m);
+				}
+			}
+
+			return matchs;
 	}
 
 }

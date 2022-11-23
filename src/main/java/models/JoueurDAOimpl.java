@@ -158,7 +158,6 @@ public class JoueurDAOimpl implements JoueurDAO {
 		try {
 			preparedStmt = connexion.prepareStatement(query);
 			preparedStmt.execute();
-			this.updateListeJoueurs();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -223,13 +222,6 @@ public class JoueurDAOimpl implements JoueurDAO {
 
 	public void setListeJoueurs(List<Joueur> listeJoueurs) {
 		this.listeJoueurs = listeJoueurs;
-	}
-
-	@Override
-	public List<Joueur> updateListeJoueurs() {
-
-		listeJoueurs = this.getAllJoueurs();
-		return listeJoueurs;
 	}
 
 }

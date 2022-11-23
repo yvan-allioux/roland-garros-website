@@ -28,10 +28,13 @@ public class ListeMatchServlet extends HttpServlet {
        
         //Création d'une instance du DAO des matchs
         MatchDAOimpl matchDAO = new MatchDAOimpl();
-        //Récupération de tous les matchs dans listeMatchs
-        List<Match> listeMatchs = matchDAO.getAllMatchs();
         
-        req.setAttribute("matchs", listeMatchs);
+        //Récupération des matchs
+        List<Match> listeMatchsP = matchDAO.getAllMatchsPasses();
+        List<Match> listeMatchsPP = matchDAO.getAllMatchsPasPasses();
+      
+        req.setAttribute("matchsPasses", listeMatchsP);
+        req.setAttribute("matchsPasPasses", listeMatchsPP);
         
         String pageName = "/prive/listeMatchs.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);

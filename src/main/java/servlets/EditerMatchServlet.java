@@ -32,7 +32,6 @@ public class EditerMatchServlet extends HttpServlet{
 			id_match = Integer.parseInt(req.getParameter("id"));
 			 //Récupération du joueur correspondant à l'id passé en paramètre
 	        match = matchDAO.getMatchById(id_match);
-	        System.out.println(match.getCourt());
 		}
 		
 		if(req.getHttpServletMapping().getPattern().equals("/match/supprimer")) {

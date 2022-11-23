@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@page
-	import="java.util.List,java.time.LocalDate,java.time.LocalTime,classes.Match,models.MatchDAOimpl"%>
+	import="java.util.List,java.time.LocalDate,java.time.LocalTime,classes.Match,classes.Equipe,classes.Court,classes.Joueur,models.MatchDAOimpl"%>
 <%MatchDAOimpl matchDAO = new MatchDAOimpl();
 List<Match> matchs = matchDAO.getAllMatchs();%>
 
@@ -35,11 +35,11 @@ List<Match> matchs = matchDAO.getAllMatchs();%>
 				Integer id = match.getId();
 				LocalDate date = match.getDate();
 				LocalTime heure = match.getHeure();
-				String court = match.getCourt();
-				String j1 = match.getJoueur1();
-				String j2 = match.getJoueur2();
-				String e1 = match.getEquipe1();
-				String e2 = match.getEquipe2();
+				Court court = match.getCourt();
+				Joueur j1 = match.getJoueur1();
+				Joueur j2 = match.getJoueur2();
+				Equipe e1 = match.getEquipe1();
+				Equipe e2 = match.getEquipe2();
 				LocalDate dateJ = LocalDate.now();
 
 				//affichage des joueurs feminins
@@ -52,11 +52,11 @@ List<Match> matchs = matchDAO.getAllMatchs();%>
 				<%
 				if (j1 != null && j2 != null) {
 				%>
-				<td><%=j1%> VS <%=j2%></td>
+				<td><%=j1.getNomComplet()%> VS <%=j2.getNomComplet()%></td>
 				<%
 				} else if (e1 != null && e2 != null) {
 				%>
-				<td><%=e1%> VS <%=e2%></td>
+				<td><%=e1.getNom()%> VS <%=e2.getNom()%></td>
 				<%
 				}
 				%>
@@ -86,11 +86,11 @@ List<Match> matchs = matchDAO.getAllMatchs();%>
 				Integer id = match.getId();
 				LocalDate date = match.getDate();
 				LocalTime heure = match.getHeure();
-				String court = match.getCourt();
-				String j1 = match.getJoueur1();
-				String j2 = match.getJoueur2();
-				String e1 = match.getEquipe1();
-				String e2 = match.getEquipe2();
+				Court court = match.getCourt();
+				Joueur j1 = match.getJoueur1();
+				Joueur j2 = match.getJoueur2();
+				Equipe e1 = match.getEquipe1();
+				Equipe e2 = match.getEquipe2();
 				LocalDate dateJ = LocalDate.now();
 
 				//affichage des joueurs feminins
@@ -102,14 +102,14 @@ List<Match> matchs = matchDAO.getAllMatchs();%>
 				<td><%=court%></td>
 				<%
 				if (j1 != null && j2 != null) {
-				%>
-				<td><%=j1%> VS <%=j2%></td>
-				<%
-				} else if (e1 != null && e2 != null) {
-				%>
-				<td><%=e1%> VS <%=e2%></td>
-				<%
-				}
+					%>
+					<td><%=j1.getNomComplet()%> VS <%=j2.getNomComplet()%></td>
+					<%
+					} else if (e1 != null && e2 != null) {
+					%>
+					<td><%=e1.getNom()%> VS <%=e2.getNom()%></td>
+					<%
+					}
 				%>
 			</tr>
 			<%
