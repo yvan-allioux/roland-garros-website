@@ -14,7 +14,7 @@ import models.EntrainementDAOimpl;
 
 @WebServlet (name = "entrainement", value = "/entrainement")
 
-public class EntrainementServlet extends HttpServlet{
+public class ListeEntrainementServlet extends HttpServlet{
     //GET REQUEST
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.doProcess(request, response);

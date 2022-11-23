@@ -81,13 +81,10 @@ footer{
 	background-color : var(--secondaire);
 	color : white; 
 	font-size : 0.75rem;
-	height : 20vh;
 	text-align : center;
-	padding-top : 20px;
-	border-top : 5px solid var(--secondaireFonce);
-	/*position: absolute;
-  	bottom: 0;
-  	width: 100%;*/
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 footer a{
