@@ -32,7 +32,9 @@ public class Entraineur {
 	}
 
 	//METHODES
-
+	public String getNomComplet() {
+		return prenom+" "+nom;
+	}
 	//GETTERS
 	public Integer getId() {
 		return id;

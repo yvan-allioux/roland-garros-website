@@ -29,7 +29,6 @@
 			<thead>
 			  <tr>
 			    <th scope="col">Nom</th>
-			    <th scope="col">Prenom</th>
 			    <th scope="col">Sexe</th>
 			    <th scope ="col">Date de naissance </th>
 			    <th scope = "col">Lieu de naissance </th>
@@ -48,23 +47,26 @@
 				<%for (Joueur joueur:joueurs) {
 
 				      Integer id = joueur.getId();
-				      String prenom = joueur.getPrenom();
-				      String nom = joueur.getNom();
+				      String nom = joueur.getNomComplet();
 				      LocalDate  dateNaissance = joueur.getDateNaissance();
 				      String lieuNaissance = joueur.getLieuNaissance();
 				      String nationalite = joueur.getNationalite();
 				      Integer taille = joueur.getTaille();
 				      Float poids = joueur.getPoids();
-				      String main = joueur.getMain();
+				      String main = joueur.getMainComplet();
 				      LocalDate dateCarriere = joueur.getDateCarriere();
 				      Integer classement = joueur.getClassement();
-				      String sexe = joueur.getSexe();
-				      Integer entraineur = joueur.getEntraineur();
+				      String sexe = joueur.getSexeComplet();
+				      String entraineur = "Inconnu";
+				      
+				      if(joueur.getEntraineur()!=null){
+				    	  entraineur = joueur.getEntraineur().getNomComplet();
+				      }
+				      
 				      %>
 				
 				<tr>
 				  <td><%=nom%></td>
-				  <td><%=prenom%></td>
 				  <td><%=sexe%></td>
 				  <td><%=dateNaissance%></td>
 				  <td><%=lieuNaissance%></td>

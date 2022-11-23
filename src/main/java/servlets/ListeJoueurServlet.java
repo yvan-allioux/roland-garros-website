@@ -1,9 +1,12 @@
 package servlets;
 
+import classes.Entraineur;
 import classes.Joueur;
 import models.JoueurDAOimpl;
 import java.io.IOException;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -15,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet ("/joueurs/editer")
 public class ListeJoueurServlet extends HttpServlet {
+	private List<Joueur> listeJoueurs;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,10 +30,11 @@ public class ListeJoueurServlet extends HttpServlet {
 		
 		resp.setContentType("text/html");
        
-        //Création d'une instance du DAO des jouers
+        //Création d'une instance du DAO des joueurs
         JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
+
         //Récupération de tous les joueurs dans listeJoueurs
-        List<Joueur> listeJoueurs = joueurDAO.getListeJoueurs();
+        this.listeJoueurs = joueurDAO.getListeJoueurs();
         
         req.setAttribute("joueurs", listeJoueurs);
         
@@ -58,12 +63,22 @@ public class ListeJoueurServlet extends HttpServlet {
 		//Création d'une instance du DAO des jouers
         JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 
-        if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué
-        	 List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("H");
-        	 req.setAttribute("joueurs", listeJoueurs);
+        if (req.getParameter("btn-homme") != null) { //Si le bouton "Homme" a été cliqué 
+        	 List<Joueur> listeJoueursHomme = new ArrayList<Joueur>();
+        	 for(Joueur j:this.listeJoueurs) {
+        		 if(j.getSexe().equals("H")) {
+        			 listeJoueursHomme.add(j);
+        		 }
+        	 }
+        	 req.setAttribute("joueurs", listeJoueursHomme);
         } else if (req.getParameter("btn-femme") != null) { //Si le bouton "Femme" a été cliqué
-        	List<Joueur> listeJoueurs = joueurDAO.getAllJoueursBySexe("F");
-        	req.setAttribute("joueurs", listeJoueurs);
+        	List<Joueur> listeJoueursFemme = new ArrayList<Joueur>();
+	       	 for(Joueur j:this.listeJoueurs) {
+	       		 if(j.getSexe().equals("F")) {
+	       			 listeJoueursFemme.add(j);
+	       		 }
+	       	 }
+	       	 req.setAttribute("joueurs", listeJoueursFemme);
         } else if (req.getParameter("btn-classement") != null) { //Si le bouton "Classement" a été cliqué
         	List<Joueur> listeJoueurs = joueurDAO.getAllJoueursOrderedByClassement();
         	req.setAttribute("joueurs", listeJoueurs);

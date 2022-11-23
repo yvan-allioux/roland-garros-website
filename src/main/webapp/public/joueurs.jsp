@@ -4,7 +4,7 @@
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
 <%
     JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
+	List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 
 <!DOCTYPE html>
 <html>
