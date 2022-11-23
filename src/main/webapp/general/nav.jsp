@@ -1,9 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html>
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -36,16 +34,20 @@
                             Privé
                         </a>
                         <ul class="dropdown-menu">
+
                             <% if((session.getAttribute("login")!=null) && ( (session.getAttribute("role").equals('E')) || (session.getAttribute("role").equals('A') ))){%>
                             <li><a class="dropdown-item" href="/joueurs/editer">Editer joueur</a></li>
                             <%--<li><a class="dropdown-item" href="#">Editer entraîneur</a></li>--%>
                             <%}%>
+
                             <% if((session.getAttribute("login")!=null) && ((session.getAttribute("role").equals('M')) || (session.getAttribute("role").equals('A')))){%>
                             <li><a class="dropdown-item" href="#">Editer match</a></li>
                             <li><a class="dropdown-item" href="entrainement/edit">Editer entraînement</a></li>
                             <%}%>
+
                         </ul>
                     </li>
+                    <%}%>
                 </ul>
                 <%--test if login is null PERMER D'AFICHER DES INFO/PAGE UNIQUEMENT QUAND ON EST CONECTE --%>
                 
@@ -64,4 +66,3 @@
     </nav>
 
 </header>
-</html>
