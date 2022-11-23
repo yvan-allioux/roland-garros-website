@@ -24,4 +24,6 @@ public interface EntrainementDAO {
     //retourne la liste des entrainements
     //public List<Entrainement> getAllEntrainements() throws SQLException;
 
+    //modification de l'entrainement
+    public void updateEntrainement(int id_entrainement, String date, String heure, String court, String prenom, String nom);
 }

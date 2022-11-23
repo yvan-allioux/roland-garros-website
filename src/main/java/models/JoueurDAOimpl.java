@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 public class JoueurDAOimpl implements JoueurDAO {
 
@@ -196,7 +195,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 	/**
 	 * Retourne les résultat d'une requête SELECT
 	 * 
-	 * @param txtRequest
+	 * @param query
 	 * @return
 	 */
 	public ResultSet getResult(String query) {
@@ -231,5 +230,24 @@ public class JoueurDAOimpl implements JoueurDAO {
 		listeJoueurs = this.getAllJoueurs();
 		return listeJoueurs;
 	}
+
+	//get id joueur par prenom et nom
+	@Override
+	public Integer getJoueurByPrenomNom(String nom, String prenom) {
+		Integer id = null;
+		ResultSet rs = getResult("SELECT id_joueur FROM Joueur WHERE nom_joueur='" + nom + "' AND prenom_joueur='" + prenom + "'");
+		if (rs != null) {
+			try {
+				while (rs.next()) {
+					id = rs.getInt("id_joueur");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	}
+
+
 
 }

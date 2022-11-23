@@ -205,4 +205,25 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         return unEntrainementNULL;
     }
 
+    //modifie un entrainement
+    @Override
+    public void updateEntrainement(int id_entrainement, String date, String heure, String court, String prenom, String nom) {
+        QueryTool monQueryTool = new QueryTool();
+
+        //get id joueur par prenom et nom
+        JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+        Integer idJoueur = unJoueurDAOimpl.getJoueurByPrenomNom(nom,prenom);
+        Joueur unJoueur = unJoueurDAOimpl.getJoueurById(idJoueur);
+
+        //get id court par nom
+        /*CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+        Court unCourt = unCourtDAOimpl.getCourtByNom(court);
+        int id_court = unCourt.getId();*/
+
+
+        //ResultSet rs = monQueryTool.getResult("UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+unJoueur.getId()+"',`court`='"+unCourt.getId()+"' WHERE id_entrainement='"+id_entrainement+"'");
+
+
+    }
+
 }
