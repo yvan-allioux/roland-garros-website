@@ -1,7 +1,5 @@
 package models;
 
-import classes.Joueur;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -31,6 +29,27 @@ public class CourtDAOimpl implements CourtDAO {
 
 
         return j;
+    }
+
+    //getCourtByNom
+    @Override
+    public int getCourtByNom(String nom) {
+        QueryTool monQueryTool = new QueryTool();
+
+        int idCour = 0;
+
+        ResultSet rs = monQueryTool.getResult("SELECT * FROM Court WHERE nom_court='" + nom + "'");
+
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    idCour = rs.getInt("id_court");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return idCour;
     }
 
 }

@@ -213,15 +213,18 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         //get id joueur par prenom et nom
         JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
         Integer idJoueur = unJoueurDAOimpl.getJoueurByPrenomNom(nom,prenom);
-        Joueur unJoueur = unJoueurDAOimpl.getJoueurById(idJoueur);
-
+        System.out.println("idJoueur : "+idJoueur);
         //get id court par nom
-        /*CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
-        Court unCourt = unCourtDAOimpl.getCourtByNom(court);
-        int id_court = unCourt.getId();*/
+        CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+        int idCourt = unCourtDAOimpl.getCourtByNom(court);
+        System.out.println("idCourt : "+idCourt);
 
 
-        //ResultSet rs = monQueryTool.getResult("UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+unJoueur.getId()+"',`court`='"+unCourt.getId()+"' WHERE id_entrainement='"+id_entrainement+"'");
+        String queryPrepare = "UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+idJoueur+"',`court`='"+idCourt+"' WHERE id_entrainement='"+id_entrainement+"'";
+        System.out.println("UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+idJoueur+"',`court`='"+idCourt+"' WHERE id_entrainement='"+id_entrainement+"'");
+
+        ResultSet rs = monQueryTool.getResult(queryPrepare);
+
 
 
     }

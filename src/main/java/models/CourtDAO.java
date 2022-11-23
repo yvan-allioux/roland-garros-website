@@ -8,4 +8,7 @@ import java.sql.SQLException;
 public interface CourtDAO {
     //getCourtById
     public Court getCourtById(int id) throws SQLException;
+
+    //getCourtByNom
+    int getCourtByNom(String nom);
 }
