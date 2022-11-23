@@ -6,6 +6,7 @@
 <html>
 <head>
     <%@include file="../general/head.jsp" %>
+    <link rel="stylesheet" href="../style.css" type="text/css" />
     <title>Connexion | Roland Garros</title>
 </head>
 <%@include file="../general/nav.jsp" %>

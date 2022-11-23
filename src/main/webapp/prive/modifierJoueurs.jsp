@@ -6,7 +6,8 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../general/head.jsp" %>
+<%@ include file="/general/head.jsp" %>
+<link rel="stylesheet" href="../style.css" type="text/css" />
 <title>Editer Joueur | Roland Garros</title>
 </head>
 <%@ include file="../general/nav.jsp" %>
@@ -58,9 +59,10 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 		    <label for="ddc" class="form-label">Date de début de carrière</label>
 		    <input type="date" class="form-control" name="ddc" value="<%=joueur.getDateCarriere()%>">
 		  </div>
-		  <div class="col-md-3" disabled>
+		  <div class="col-md-3">
 		    <label for="classement" class="form-label">Classement</label>
-		    <input type="text" class="form-control" name="classement" disabled value="<%=joueur.getClassement()%>">
+
+		    <input type="text" class="form-control" id="classement" value="<%=joueur.getClassement()%>" disabled>
 		  </div>
 		  <div class="col-md-2">
 		    <label for="main" class="form-label">Main</label>

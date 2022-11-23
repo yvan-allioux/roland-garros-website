@@ -10,6 +10,10 @@ public class Score {
 	private LocalTime temps;
 
 	//CONSTRUCTEUR
+	public Score() {
+		this.nbSet = 0;
+		this.nbJeu = 0;
+	}
 	public Score(Integer nbSet, Integer nbJeu, LocalTime temps) {
 		this.nbSet = nbSet;
 		this.nbJeu = nbJeu;

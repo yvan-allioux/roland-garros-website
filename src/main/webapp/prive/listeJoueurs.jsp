@@ -15,10 +15,10 @@
 	<body>	
 		<!--  Filtres -->	
 		<form action="/joueurs/editer"class="btn-group m-auto" method="post">
-		  <button type="submit" class="btn btn-outline-success" name="btn-nom" value="btn-nom">Nom</button>
-		  <button type="submit" class="btn btn-outline-success" name="btn-classement" value="btn-classement">Classement</button>
-		  <button type="submit" class="btn btn-outline-success" name="btn-homme" value="btn-homme">Homme</button>
-		  <button type="submit" class="btn btn-outline-success" name="btn-femme" value="btn-femme">Femme</button>
+		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-nom" value="btn-nom">Nom</button>
+		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-classement" value="btn-classement">Classement</button>
+		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-homme" value="btn-homme">Homme</button>
+		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-femme" value="btn-femme">Femme</button>
 		</form>
 		
 		
@@ -92,15 +92,15 @@
 				
  			</tbody>
 		</table>
-		<div>
+		<div class="d-flex justify-content-evenly">
+		
+			<!--  bouton ajout joueur -->			
+			<a href="/joueur/ajouter" class="btn btn-outline-success btn-sm">Créer un joueur</a>
 			<!--  importer fichier CSV -->
 			<div class="input-group input-group-sm">
 			  <input type="file" class="form-control" id="inputTelechargement" placeholder="Username">
 			  <label class="input-group-text" for="inputTelechargement">Télécharger</label>
 			</div>
-			<!--  bouton ajout joueur -->
-			
-			<a href="/joueur/ajouter" class="btn btn-outline-success">Créer un joueur</a>
 			
 		</div>
 		
