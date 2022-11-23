@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
 <%
-    JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-Joueur joueur = joueurDAO.getJoueurById(1);%>
+	JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
+	Joueur joueur = joueurDAO.getJoueurById(1);%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@ Joueur joueur = joueurDAO.getJoueurById(1);%>
 	<div>
 		<p> <span><%=joueur.getClassement() %></span>classement individuel </p>	
 	</div>
-	<h2> Son profil</h2>
+	<h2>Son profil</h2>
 	<div>
 	</div>
 	<div>

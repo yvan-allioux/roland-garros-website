@@ -13,22 +13,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 
-public class JoueurDAOImpl implements JoueurDAO {
+public class JoueurDAOimpl implements JoueurDAO {
 
 	private Connection connexion;
 	private List<Joueur> listeJoueurs;
-	EntraineurDAOImpl entraineurDAO;
+	EntraineurDAOimpl entraineurDAO;
 
 	public JoueurDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
 		listeJoueurs = this.getAllJoueurs();
-		entraineurDAO = new EntraineurDAOImpl();
+		entraineurDAO = new EntraineurDAOimpl();
 	}
 
 	@Override
 	public List<Joueur> getAllJoueurs() {
 
-		EntraineurDAOImpl entraineurDAO = new EntraineurDAOImpl();
+		EntraineurDAOimpl entraineurDAO = new EntraineurDAOimpl();
 		List<Joueur> allJoueurs = new ArrayList<Joueur>();
 
 		ResultSet rs = getResult("SELECT * FROM Joueur");

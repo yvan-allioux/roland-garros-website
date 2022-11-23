@@ -11,12 +11,12 @@ import classes.Entraineur;
 import classes.Joueur;
 import db.DBManager;
 
-public class EntraineurDAOImpl implements EntraineurDAO{
+public class EntraineurDAOimpl implements EntraineurDAO{
 	
 	private Connection connexion;
 	private List<Entraineur> entraineurs ;
 
-	public EntraineurDAOImpl(){
+	public EntraineurDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
 		entraineurs = this.getAllEntraineurs();
 	}
