@@ -21,7 +21,7 @@
 	/* PRIMARY = ORANGE */
 	--bs-link-color : #c85a19;
 	--bs-primary: #c85a19;
-	--bs-link-hover-color: #ab4203;
+	--bs-link-hover-color: #a04f1e;
 	--bs-primary: #c85a19;
 	--bs-blue: #c85a19;
 	/* SECONDARY = VERT */
@@ -53,7 +53,12 @@ body{
 	flex-direction:column; 
 	justify-content:space-between;
 	/*min-height:100vh;*/
+}
 
+nav a:hover{
+	color:var(--principal);
+	border-bottom : 2px solid var(--principal);
+	width:fit-content;
 }
 
 
