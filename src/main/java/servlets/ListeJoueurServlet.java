@@ -36,16 +36,6 @@ public class ListeJoueurServlet extends HttpServlet {
         //Récupération de tous les joueurs dans listeJoueurs
         this.listeJoueurs = joueurDAO.getListeJoueurs();
         
-        EntraineurDAOImpl entraineurDAO = new EntraineurDAOImpl();
-        for(Joueur j:this.listeJoueurs) {
-        	System.out.println(j.getEntraineur());
-        	if(j.getEntraineur()!=0) {
-        		Entraineur e = entraineurDAO.getEntraineurById(j.getEntraineur());
-            	j.setNomEntraineur(e.getPrenom()+" "+e.getNom());
-        	}
-        	
-        }
-        
         req.setAttribute("joueurs", listeJoueurs);
         
         String pageName = "/prive/listeJoueurs.jsp";

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import classes.Entraineur;
@@ -13,9 +14,11 @@ import db.DBManager;
 public class EntraineurDAOImpl implements EntraineurDAO{
 	
 	private Connection connexion;
+	private List<Entraineur> entraineurs ;
 
 	public EntraineurDAOImpl(){
 		connexion = DBManager.getInstance().getConnection();
+		entraineurs = this.getAllEntraineurs();
 	}
 
 	@Override
@@ -36,6 +39,27 @@ public class EntraineurDAOImpl implements EntraineurDAO{
 		}
 		
 		return entraineur;
+	}
+	
+	@Override
+	public List<Entraineur> getAllEntraineurs() {
+		ResultSet rs = getResult("SELECT id_entraineur,nom_entraineur,prenom_entraineur FROM Entraineur");
+		List<Entraineur> allEntraineurs = new ArrayList<Entraineur>();
+		if(rs!=null) {
+			
+			try {
+				while (rs.next()) { //Itérer sur le resultSet :
+					//Pour chaque instance de joueur retournée par la requête on créé un nouveau joueur
+					Entraineur e = new Entraineur(rs.getInt("id_entraineur"), rs.getString("nom_entraineur"), rs.getString("prenom_entraineur"));
+					//On ajoute le joueur créé à la liste des joueurs
+					allEntraineurs.add(e);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return allEntraineurs;
 	}
 	
 	/**
@@ -60,5 +84,7 @@ public class EntraineurDAOImpl implements EntraineurDAO{
 		
 		return rs;
 	}
+
+	
 
 }

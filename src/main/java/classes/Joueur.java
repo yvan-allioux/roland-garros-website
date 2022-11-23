@@ -17,11 +17,11 @@ public class Joueur{
 	private String main;
 	private LocalDate dateCarriere;
 	private int classement;
-	private Integer entraineur;
+	private Entraineur entraineur;
 	private String nomEntraineur=null;
 
 	//CONSTRUCTEURS
-	public Joueur(Integer id, String nom, String prenom, String sexe, Integer entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere, Integer classement) {
+	public Joueur(Integer id, String nom, String prenom, String sexe, Entraineur entraineur, LocalDate dateNaissance, String lieuNaissance, String nationalite, Integer taille, float poids, String main, LocalDate dateCarriere, Integer classement) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -46,7 +46,7 @@ public class Joueur{
 		this.dateNaissance = dateNaissance;
 	}
 	
-	public Joueur(int id, String nom, String prenom, String sexe,Integer entraineur) {
+	public Joueur(int id, String nom, String prenom, String sexe,Entraineur entraineur) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -99,7 +99,7 @@ public class Joueur{
 	public Integer getClassement() {
 		return classement;
 	}
-	public Integer getEntraineur() {
+	public Entraineur getEntraineur() {
 		return entraineur;
 	}
 	
@@ -116,7 +116,7 @@ public class Joueur{
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
-	public void setEntraineur(Integer entraineur) {
+	public void setEntraineur(Entraineur entraineur) {
 		this.entraineur = entraineur;
 	}
 	public void setDateNaissance(LocalDate dateNaissance) {
@@ -179,9 +179,7 @@ public class Joueur{
 	      }else {
 	    	  sexeTxt = null;
 	      }
-	      
 	      return sexeTxt;
-		
 	}
 	
 	public int getAge() {
@@ -191,14 +189,4 @@ public class Joueur{
 	      int age =  dateJour.getYear() - dateNaissance.getYear();
 	      return age;
 	}
-
-	public String getNomEntraineur() {
-		return nomEntraineur;
-	}
-
-	public void setNomEntraineur(String nomEntraineur) {
-		this.nomEntraineur = nomEntraineur;
-	}
-	
-
 }

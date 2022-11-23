@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.time.LocalDate,classes.Joueur"%>
-<%Joueur joueur = (Joueur)request.getAttribute("joueur");%>
+<%@page import="java.util.List,java.time.LocalDate,classes.Joueur,classes.Entraineur"%>
+<%Joueur joueur = (Joueur)request.getAttribute("joueur");
+List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineurs");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +39,10 @@
 		  <div>
 		    <label for="sexe" class="form-label">Sexe</label>
 		    <select  class="form-select" id="sexe">
-		    <%if(joueur.getSexe()=="F"){ %>
+		    <%if(joueur.getSexe().equals("F")){ %>
 		    	<option value="F" selected>Femme</option>
 		    	<option value="H">Homme</option>
-		    <%}else if(joueur.getSexe()=="H"){ %>
+		    <%}else if(joueur.getSexe().equals("H")){ %>
 		    	<option value="F">Femme</option>
 		    	<option value="H" selected>Homme</option>
 		    <%} %>
@@ -49,7 +50,7 @@
 		  </div>
 		  <div>
 		    <label for="taille" class="form-label">Taille</label>
-		    <input type="text" class="form-control" id="taille" value="<%=joueur.getSexe()%>">
+		    <input type="text" class="form-control" id="taille" value="<%=joueur.getTaille()%>">
 		  </div>
 		  <div>
 		    <label for="poids" class="form-label">Poids</label>
@@ -60,13 +61,9 @@
 		  <div>
 		    <label for="main" class="form-label">Main</label>
 		    <select class="form-select" id="main">
-		    	<option value="D">Droitier </option>
-		    	<option value="G"> Gaucher </option>
+		    	<option value="D">Droitier</option>
+		    	<option value="G">Gaucher</option>
 		    </select>
-		  </div>
-		  <div>
-		    <label for="classement" class="form-label">Classement</label>
-		    <input type="text" class="form-control" id="classement" value="<%=joueur.getClassement()%>">
 		  </div>
 	  </div>
 	  <div class="form-item-container">
@@ -76,10 +73,17 @@
 		  </div>
 		  <div>
 		    <label for="entraineur" class="form-label">Entraineur</label>
-		    <input type="text" class="form-control" id="entraineur" value="<%=joueur.getEntraineur()%>"> 
+		    <select  class="form-select" name="entraineur" id="entraineur">
+		    	<option value="<%=joueur.getEntraineur()%>" selected><%=joueur.getEntraineur().getNomComplet()%></option>
+		    	<%for(Entraineur e:entraineurs){ 
+		    		if(e.getId()!=joueur.getEntraineur().getId()){%>
+		    	<option value="<%=e.getId()%>"><%=e.getNomComplet()%></option>
+		    	<%	}
+		    	} %>
+		    </select>
 		  </div>
 	  </div>
-	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <button type="submit" class="btn btn-primary">Envoyer</button>
   </form>
 </body>
 <%@ include file="../general/footer.jsp" %>

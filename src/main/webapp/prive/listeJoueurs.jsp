@@ -57,9 +57,8 @@
 				      String sexe = joueur.getSexeComplet();
 				      String entraineur = "Inconnu";
 				      
-				      if(joueur.getEntraineur()!=0){
-				    	  entraineur = joueur.getNomEntraineur();
-				    
+				      if(joueur.getEntraineur()!=null){
+				    	  entraineur = joueur.getEntraineur().getNomComplet();
 				      }
 				      
 				      %>
