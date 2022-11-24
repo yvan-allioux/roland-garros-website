@@ -89,13 +89,18 @@ public class MatchDAOimpl implements MatchDAO{
 					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
 					Court court = courtDAO.getCourtById(rs.getInt("court"));
 					
+					Score s=null;
+					Joueur j=null;
 					if(rs.getInt("score")!=0) {
-						Score s = scoreDAO.getScoreById(rs.getInt("score"));
+						s = scoreDAO.getScoreById(rs.getInt("score"));	
+					}
+					if(rs.getInt("gagnant")!=0) {
+						j = joueurDAO.getJoueurById(rs.getInt("gagnant"));
 						
 					}
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
 					m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
-							rs.getTime("heure").toLocalTime(),j1,j2,court);
+							rs.getTime("heure").toLocalTime(),court,j1,j2,j,s);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
