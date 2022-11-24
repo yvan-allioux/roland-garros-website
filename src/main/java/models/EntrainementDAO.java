@@ -26,4 +26,7 @@ public interface EntrainementDAO {
 
     //modification de l'entrainement
     public void updateEntrainement(int id_entrainement, String date, String heure, String court, String prenom, String nom);
+
+    //supprime un entrainement
+    void supprimerEntrainement(int id_entrainement);
 }

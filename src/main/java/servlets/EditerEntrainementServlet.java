@@ -33,7 +33,10 @@ public class EditerEntrainementServlet extends HttpServlet {
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/supprimer")) {
             //todo
             System.out.println("SUPPRIMER");
-            resp.sendRedirect("/entrainement/editer");
+            entrainementDAOimpl = new EntrainementDAOimpl();
+            entrainementDAOimpl.supprimerEntrainement(id_entrainement);
+
+            resp.sendRedirect("/entrainement/edit");
         }
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
@@ -78,11 +81,9 @@ public class EditerEntrainementServlet extends HttpServlet {
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
             //todo
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+            /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
             LocalDate dateN= LocalDate.parse("1998-06-06", formatter);
-            LocalDate dateC= LocalDate.parse("2017-06-06", formatter);
-
-
+            LocalDate dateC= LocalDate.parse("2017-06-06", formatter);*/
 
         }
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {

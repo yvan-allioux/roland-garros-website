@@ -236,4 +236,23 @@ public class EntrainementDAOimpl implements EntrainementDAO {
 
     }
 
+    //supprime un entrainement
+    @Override
+    public void supprimerEntrainement(int id_entrainement) {
+        QueryTool monQueryTool = new QueryTool();
+
+        String queryPrepare = "DELETE FROM `Entrainement` WHERE id_entrainement='" + id_entrainement + "'";
+        System.out.println(queryPrepare);
+        //ResultSet rs = monQueryTool.getResult(queryPrepare);
+
+        PreparedStatement preparedStmt;
+        try {
+            Connection connexion = DBManager.getInstance().getConnection();
+            preparedStmt = connexion.prepareStatement(queryPrepare);
+            preparedStmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
