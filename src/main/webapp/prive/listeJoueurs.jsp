@@ -12,6 +12,7 @@
 	<%@include file="../general/nav.jsp" %>
 	<body>
 	<div class="container">
+		<h1 class="text-center m-4">Editer Joueur</h1>
 		<!--  Filtres -->	
 		<form action="/joueurs/editer"class="btn-group m-auto" method="post">
 		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-nom" value="btn-nom">Nom</button>
@@ -95,11 +96,13 @@
 		
 			<!--  bouton ajout joueur -->			
 			<a href="/joueur/ajouter" class="btn btn-outline-success btn-sm">Créer un joueur</a>
+
 			<!--  importer fichier CSV -->
-			<div class="input-group input-group-sm">
-			  <input type="file" class="form-control" id="inputTelechargement" placeholder="Username">
-			  <label class="input-group-text" for="inputTelechargement">Télécharger</label>
-			</div>
+
+			<form class="input-group input-group-sm" method="post" action="/fileuploadservlet" enctype="multipart/form-data">
+				<input type="file" name="file" class="form-control" />
+				<input class="input-group-text ms-2" type="submit" value="Télécharger" />
+			</form>
 			
 		</div>
 	</div>
