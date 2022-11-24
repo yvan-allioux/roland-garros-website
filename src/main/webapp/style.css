@@ -53,7 +53,7 @@ body{
 	display : flex;
 	flex-direction:column; 
 	justify-content:space-between;
-	padding-bottom: 10vm;
+	min-height:100vh;
 }
 
 .btn-primary {
@@ -68,7 +68,19 @@ body{
   --bs-btn-active-border-color: #ab4203;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
-
+;
+.btn-success {
+  --bs-btn-bg: #00503c;
+  --bs-btn-border-color: #00503c;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #003729;
+  --bs-btn-hover-border-color: #003729;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #00503c;
+  --bs-btn-active-border-color: #003729;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
 nav a:hover{
 	color:var(--principal);
 	border-bottom : 3px solid var(--principal);
@@ -83,35 +95,32 @@ footer{
 	color : white; 
 	font-size : 0.75rem;
 	text-align : center;
-	bottom: 0;
-	width: 100%;
 }
 
 footer a{
 	color : white;
 }
 /*==================== INDEX ======================*/
-.index-item{
-	display:flex; 
-	flex-wrap:wrap;
+.masthead{
+	background-image: url('medias/jaiUnBackground.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 73vh;
+}
+.text-large {
+	font-size: 1000%!important;
+}
+.masthead > div {
+	margin-top: 30vh!important;
+
+}
+.masthead > div > div{
+	margin-top: 30vh!important;
+
 }
 
-.index-item h1{
-	font-size : 6rem;
-	color : var(--principal);
-	border-bottom:none;
-	/*align-self : flex-end;*/
-}
-.index-item h1::before{
-	  content: "";
-    display: block;
-    background: url('medias/accueil.jpg') no-repeat;
-    width: 40vw;
-    height: 35vh;
-    position : relative;
-    left : 10px;
-    top : 30px;
-}
+
 /*==================== CGU ======================*/
 span{
 	font-family : var(--subtitleFont);
@@ -169,23 +178,5 @@ span{
 	width : calc(100vw/2);
 }
 
-.masthead{
-	background-image: url('medias/jaiUnBackground.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 90vh;
-}
-.text-large {
-	font-size: 1000%!important;
-}
-.masthead > div {
-	margin-top: 30vh!important;
-
-}
-.masthead > div > div{
-	margin-top: 30vh!important;
-
-}
 
 

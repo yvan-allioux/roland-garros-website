@@ -26,7 +26,12 @@ List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
 		    <label for="court" class="form-label">Court</label>
 		    <input type="text" class="form-control" name="court" value="<%=match.getCourt().getNom()%>">
 		 </div>
-		  
+		 
+		 <div class="col-md-4">
+		    <label for="heure" class="form-label">Heure</label>
+		    <input type="text" class="form-control" name="court" value="">
+		 </div>
+		<div class="col-md-6">  
 		<% if(match.getJoueur1()!=null){ %>
 		<label for="joueur1" class="form-label">Joueur 1</label> 
 		<select class="form-select" name="joueur1">
@@ -41,7 +46,8 @@ List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
 			}
 			%>
 		</select>
-		
+		</div>
+		<div class="col-md-6">
 		<label for="joueur2" class="form-label">Joueur 2</label> 
 		<select class="form-select" name="joueur2">
 			<option value="<%=match.getJoueur2().getId()%>" selected><%=match.getJoueur2().getNomComplet()%></option>
@@ -55,8 +61,9 @@ List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
 			}
 			%>
 		</select>
+		</div>
 		<%} %>
-		<button type="submit" class="btn btn-secondary">Enregistrer</button>
+		<button type="submit" class="btn btn-secondary m-auto">Enregistrer</button>
 	</form>
 
 </body>
