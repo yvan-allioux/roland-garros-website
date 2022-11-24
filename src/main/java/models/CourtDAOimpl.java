@@ -63,29 +63,11 @@ public class CourtDAOimpl implements CourtDAO {
 
 		return allCourts;
 	}
-    }
 
 	@Override
-	public List<Court> getAllCourts() {
-		List<Court> allCourts = new ArrayList<Court>();
-
-		ResultSet rs = monQueryTool.getResult("SELECT * FROM Court");
-
-		if (rs != null) {
-
-			try {
-				while (rs.next()) { // Itérer sur le resultSet :
-					// Pour chaque instance de joueur retournée par la requête on créé un nouveau joueur
-					Court c = new Court(rs.getInt("id_court"), rs.getString("nom_court"));
-					// On ajoute le joueur créé à la liste des joueurs
-					allCourts.add(c);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return allCourts;
+	public int getCourtByNom(String nom) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
