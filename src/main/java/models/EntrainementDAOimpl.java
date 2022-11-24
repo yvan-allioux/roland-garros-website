@@ -1,7 +1,6 @@
 package models;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -10,6 +9,8 @@ import java.util.List;
 import classes.Court;
 import classes.Entrainement;
 import classes.Joueur;
+import db.DBManager;
+
 
 //add querytool
 
@@ -223,7 +224,16 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         String queryPrepare = "UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+idJoueur+"',`court`='"+idCourt+"' WHERE id_entrainement='"+id_entrainement+"'";
         System.out.println("UPDATE `Entrainement` SET `date`='"+date+"',`heure`='"+heure+"',`joueur`='"+idJoueur+"',`court`='"+idCourt+"' WHERE id_entrainement='"+id_entrainement+"'");
 
-        ResultSet rs = monQueryTool.getResult(queryPrepare);
+        //ResultSet rs = monQueryTool.getResult(queryPrepare);
+
+        PreparedStatement preparedStmt;
+        try {
+            Connection connexion = DBManager.getInstance().getConnection();
+            preparedStmt = connexion.prepareStatement(queryPrepare);
+            preparedStmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
 
