@@ -242,8 +242,6 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         QueryTool monQueryTool = new QueryTool();
 
         String queryPrepare = "DELETE FROM `Entrainement` WHERE id_entrainement='" + id_entrainement + "'";
-        System.out.println(queryPrepare);
-        //ResultSet rs = monQueryTool.getResult(queryPrepare);
 
         PreparedStatement preparedStmt;
         try {

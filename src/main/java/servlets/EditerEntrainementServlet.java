@@ -31,8 +31,6 @@ public class EditerEntrainementServlet extends HttpServlet {
         }
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/supprimer")) {
-            //todo
-            System.out.println("SUPPRIMER");
             entrainementDAOimpl = new EntrainementDAOimpl();
             entrainementDAOimpl.supprimerEntrainement(id_entrainement);
 
