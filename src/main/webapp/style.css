@@ -53,10 +53,13 @@ body{
 	display : flex;
 	flex-direction:column; 
 	justify-content:space-between;
-	padding-bottom: 10vm;
+	min-height:100vh;
+	text-align:center;
+
 }
 .container{
-flex:1;
+	flex:1;
+	padding-bottom: 20vh;
 }
 
 .btn-primary {
@@ -99,7 +102,6 @@ footer{
 	color : white; 
 	font-size : 0.75rem;
 	text-align : center;
-	bottom: 0;
 	width: 100%;
 }
 
@@ -117,7 +119,7 @@ footer a{
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 87vh;
+	height: 83vh;
 }
 
 .index-item h1{
@@ -193,13 +195,6 @@ span{
 	width : calc(100vw/2);
 }
 
-.masthead{
-	background-image: url('medias/jaiUnBackground.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 90vh;
-}
 .text-large {
 	font-size: 1000%!important;
 }

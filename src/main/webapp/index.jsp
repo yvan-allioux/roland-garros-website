@@ -4,7 +4,6 @@
 <html>
 <head>
 <%@include file="/general/head.jsp" %>
-<%--<link rel="stylesheet" href="style.css" type="text/css" /> --%>
 <title>Roland Garros</title>
 </head>
 

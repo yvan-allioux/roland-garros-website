@@ -6,13 +6,12 @@
 <html>
 	<head>
 	<%@include file="../general/head.jsp" %>
-	
-<link rel="stylesheet" href="../style.css" type="text/css" />
 	<title> Editer Joueurs| Roland Garros</title>
 	</head>
 	
 	<%@include file="../general/nav.jsp" %>
-	<body>	
+	<body>
+	<div class="container">
 		<!--  Filtres -->	
 		<form action="/joueurs/editer"class="btn-group m-auto" method="post">
 		  <button type="submit" class="btn btn-outline-success btn-sm" name="btn-nom" value="btn-nom">Nom</button>
@@ -103,7 +102,7 @@
 			</div>
 			
 		</div>
-		
+	</div>
 	</body>
 	<%@include file="../general/footer.jsp" %>
 </html>
