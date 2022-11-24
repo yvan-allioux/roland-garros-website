@@ -2,9 +2,11 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import classes.Court;
 import classes.Joueur;
 import classes.Match;
 import jakarta.servlet.ServletException;
@@ -13,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.MatchDAOimpl;
+import models.CourtDAOimpl;
 import models.JoueurDAOimpl;
 
 @WebServlet(name="match", urlPatterns={"/match/supprimer", "/match/modifier", "/match/ajouter"})
@@ -35,10 +38,8 @@ public class EditerMatchServlet extends HttpServlet{
 		}
 		
 		if(req.getHttpServletMapping().getPattern().equals("/match/supprimer")) {
-		
-			//match.deleteJoueur(id_joueur);
-			
-			//resp.sendRedirect("/matchs/editer");
+			matchDAO.deleteMatch(id_match);
+			resp.sendRedirect("/matchs/editer");
 		}
 		
 		if(req.getHttpServletMapping().getPattern().equals("/match/modifier")) {
@@ -63,48 +64,33 @@ public class EditerMatchServlet extends HttpServlet{
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*String nom = req.getParameter("nom-joueur");
-		String prenom = req.getParameter("prenom-joueur");
-		String sexe = req.getParameter("sexe");
-		String nationalite = req.getParameter("nationalite");
-		String main = req.getParameter("main");
-		Integer taille = Integer.parseInt(req.getParameter("taille"));
-		Float poids = Float.parseFloat(req.getParameter("poids"));
-		LocalDate ddc = LocalDate.parse(req.getParameter("ddc"), dateFormatter);
-		LocalDate ddn = LocalDate.parse(req.getParameter("ddn"), dateFormatter);
-		String ldn = req.getParameter("ldn");
+		JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
+		CourtDAOimpl courtDAO = new CourtDAOimpl();
 		
-		EntraineurDAOimpl entraineurDAO
-		   = new EntraineurDAOimpl();
-		Entraineur entraineur = entraineurDAO.getEntraineurById(Integer.parseInt(req.getParameter("entraineur")));
+		Joueur joueur1 = joueurDAO.getJoueurById(Integer.parseInt(req.getParameter("joueur1")));
+		Joueur joueur2 = joueurDAO.getJoueurById(Integer.parseInt(req.getParameter("joueur2")));
+		LocalDate ddm = LocalDate.parse(req.getParameter("ddm"), dateFormatter);
+		LocalTime hdm = LocalTime.parse("16:00:00", timeFormatter);
+		Court court = courtDAO.getCourtById(Integer.parseInt(req.getParameter("court")));
 		
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/ajouter")) {
 			
-			Joueur joueur = new Joueur(nom,prenom,sexe,entraineur,ddn,ldn,nationalite,taille,poids,main,ddc);
+			Match match = new Match(ddm,hdm,court,joueur1,joueur2);
 			
-			joueurDAO.createJoueur(joueur);
+			matchDAO.createMatch(match);
 		}
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/modifier")) {
-			Integer id_joueur = Integer.parseInt(req.getParameter("id"));
+			Integer id_match = Integer.parseInt(req.getParameter("id"));
 			
-			joueur = joueurDAO.getJoueurById(id_joueur);
+			match = matchDAO.getMatchById(id_match);
 			
-			joueur.setNom(nom);
-			joueur.setPrenom(prenom);
-			joueur.setEntraineur(entraineur);
-			joueur.setMain(main);
-			joueur.setSexe(sexe);
-			joueur.setNationalite(nationalite);
-			joueur.setDateCarriere(ddc);
-			joueur.setLieuNaissance(ldn);
-			joueur.setDateNaissance(ddn);
-			joueur.setPoids(poids);
-			joueur.setTaille(taille);
-			
-			joueurDAO.updateJoueur(joueur);
-		}
-        
-		resp.sendRedirect("/joueurs/editer");*/
+			match.setHeure(hdm);
+			match.setDate(ddm);
+			match.setJoueur1(joueur1);
+			match.setJoueur2(joueur2);
+		
+			matchDAO.updateMatch(match);
+		}   
+		resp.sendRedirect("/matchs/editer");
     }
-
 }

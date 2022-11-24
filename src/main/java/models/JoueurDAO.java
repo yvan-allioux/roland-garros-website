@@ -16,6 +16,6 @@ public interface JoueurDAO {
 	public void createJoueur(Joueur j);
 
     //get id joueur par prenom et nom
-    Integer getJoueurByPrenomNom(String nom, String prenom);
+    //Integer getJoueurByPrenomNom(String nom, String prenom);
 }
 

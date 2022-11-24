@@ -17,6 +17,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 	private Connection connexion;
 	private List<Joueur> listeJoueurs;
 	EntraineurDAOimpl entraineurDAO;
+	QueryTool queryTool = new QueryTool();
 
 	public JoueurDAOimpl(){
 		connexion = DBManager.getInstance().getConnection();
@@ -30,7 +31,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 		EntraineurDAOimpl entraineurDAO = new EntraineurDAOimpl();
 		List<Joueur> allJoueurs = new ArrayList<Joueur>();
 
-		ResultSet rs = getResult("SELECT * FROM Joueur");
+		ResultSet rs = queryTool.getResult("SELECT * FROM Joueur");
 
 		if (rs != null) {
 
@@ -61,7 +62,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 
 		List<Joueur> listeJoueursClassement = new ArrayList<Joueur>();
 
-		ResultSet rs = getResult("SELECT * FROM Joueur ORDER BY classement ASC");
+		ResultSet rs = queryTool.getResult("SELECT * FROM Joueur ORDER BY classement ASC");
 
 		if (rs != null) {
 
@@ -94,7 +95,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 
 		List<Joueur> listeJoueursNom = new ArrayList<Joueur>();
 
-		ResultSet rs = getResult("SELECT * FROM Joueur ORDER BY nom_joueur ASC, prenom_joueur ASC");
+		ResultSet rs = queryTool.getResult("SELECT * FROM Joueur ORDER BY nom_joueur ASC, prenom_joueur ASC");
 
 		if (rs != null) {
 
@@ -125,7 +126,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 
 		Joueur j = null;
 
-		ResultSet rs = getResult("SELECT * FROM Joueur WHERE id_joueur=" + id);
+		ResultSet rs = queryTool.getResult("SELECT * FROM Joueur WHERE id_joueur=" + id);
 
 		if (rs != null) {
 
@@ -189,30 +190,6 @@ public class JoueurDAOimpl implements JoueurDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Retourne les résultat d'une requête SELECT
-	 * 
-	 * @param query
-	 * @return
-	 */
-	public ResultSet getResult(String query) {
-		// Créer un java.sql.Statement à partir de cette connexion en utilisant:
-		Statement statement = null;
-		ResultSet rs = null;
-		try {
-			// Initialisation du statement
-			statement = connexion.createStatement();
-
-			if (statement != null) {
-				rs = statement.executeQuery(query);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return rs;
 	}
 
 	public List<Joueur> getListeJoueurs() {
