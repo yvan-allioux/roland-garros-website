@@ -23,73 +23,73 @@ boolean editMod = (boolean) request.getAttribute("editMod");
 
 <%@include file="../general/nav.jsp"%>
 <body>
-	<container class="container">
-	<h1 class="text-center m-4">Entrainement</h1>
-	<!-- Liste des joueurs  -->
-	<table class="table m-2 table-striped">
-		<thead>
-			<tr>
+	<div class="container">
+		<h1 class="text-center m-4">Entrainement</h1>
+		<!-- Liste des joueurs  -->
+		<table class="table m-2 table-striped">
+			<thead>
+				<tr>
 
-				<th scope="col"><span class="material-symbols-outlined">calendar_month</span>Date</th>
-				<th scope="col"><span class="material-symbols-outlined">schedule</span>Heure</th>
-				<th scope="col"><span class="material-symbols-outlined">pin_drop</span>Court</th>
-				<th scope="col"><span class="material-symbols-outlined">person</span>Joueurs</th>
+					<th scope="col"><span class="material-symbols-outlined">calendar_month</span>Date</th>
+					<th scope="col"><span class="material-symbols-outlined">schedule</span>Heure</th>
+					<th scope="col"><span class="material-symbols-outlined">pin_drop</span>Court</th>
+					<th scope="col"><span class="material-symbols-outlined">person</span>Joueurs</th>
 
+					<%
+					if (editMod) {
+					%>
+					<th scope="col">Editer ou suprimer</th>
+					<%}%>
+
+
+				</tr>
+			</thead>
+			<tbody>
 				<%
-				if (editMod) {
+				for (Entrainement entrainement : entrainements) {
+					Integer id = entrainement.getId();
+					LocalDate date = entrainement.getDate();
+					LocalTime heure = entrainement.getHeure();
+					String prenomJ = entrainement.getJoueur().getPrenom();
+					String nomJ = entrainement.getJoueur().getNom();
+					String court = entrainement.getCourt().getNom();
 				%>
-				<th scope="col">Editer ou suprimer</th>
+
+				<tr>
+					<td><%=date%></td>
+					<td><%=heure%></td>
+					<td><%=court%></td>
+					<td><%=prenomJ%> <%=nomJ%></td>
+					<%
+					if (editMod) {
+					%>
+					<td><a href="/entrainement/modifier?id=<%=id%>"
+						class="text-decoration-none"> <span
+							class="material-symbols-outlined m-1">edit_square</span>
+					</a> <a href="/entrainement/supprimer?id=<%=id%>"
+						class="text-decoration-none"> <span
+							class="material-symbols-outlined m-1">delete</span>
+					</a></td>
+					<%}%>
+
+				</tr>
+
 				<%}%>
 
-
-			</tr>
-		</thead>
-		<tbody>
+			</tbody>
+		</table>
+		<div class="m-3 text-center">
+			<!--  bouton ajout joueur TODO-->
 			<%
-			for (Entrainement entrainement : entrainements) {
-				Integer id = entrainement.getId();
-				LocalDate date = entrainement.getDate();
-				LocalTime heure = entrainement.getHeure();
-				String prenomJ = entrainement.getJoueur().getPrenom();
-				String nomJ = entrainement.getJoueur().getNom();
-				String court = entrainement.getCourt().getNom();
+			if (editMod) {
 			%>
-
-			<tr>
-				<td><%=date%></td>
-				<td><%=heure%></td>
-				<td><%=court%></td>
-				<td><%=prenomJ%> <%=nomJ%></td>
-				<%
-				if (editMod) {
-				%>
-				<td><a href="/entrainement/modifier?id=<%=id%>"
-					class="text-decoration-none"> <span
-						class="material-symbols-outlined m-1">edit_square</span>
-				</a> <a href="/entrainement/supprimer?id=<%=id%>"
-					class="text-decoration-none"> <span
-						class="material-symbols-outlined m-1">delete</span>
-				</a></td>
-				<%}%>
-
-			</tr>
-
+			<a href="/entrainement/ajouter" class="btn btn-outline-success">Ajouter
+				un Entrainement</a>
 			<%}%>
 
-		</tbody>
-	</table>
-	<div class="m-3 text-center">
-		<!--  bouton ajout joueur TODO-->
-		<%
-		if (editMod) {
-		%>
-		<a href="/entrainement/ajouter" class="btn btn-outline-success">Ajouter
-			un Entrainement</a>
-		<%}%>
 
-
+		</div>
 	</div>
-	</container>
 </body>
 <%@include file="../general/footer.jsp"%>
 </html>
