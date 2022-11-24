@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
-<%
-	JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-	Joueur joueur = joueurDAO.getJoueurById(1);%>
+<%Joueur joueur = (Joueur)request.getAttribute("joueur");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +12,7 @@
 	
 	<%@include file="../general/nav.jsp" %>
 <body>
+	<a href="/joueurs"><span class="material-symbols-outlined">arrow_back</span></a>
 	<h1><%=joueur.getPrenom() %> <%= joueur.getNom() %></h1>
 	
 	<div>

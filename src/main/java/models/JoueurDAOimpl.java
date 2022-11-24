@@ -157,7 +157,6 @@ public class JoueurDAOimpl implements JoueurDAO {
 		try {
 			preparedStmt = connexion.prepareStatement(query);
 			preparedStmt.execute();
-			this.updateListeJoueurs();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -223,31 +222,5 @@ public class JoueurDAOimpl implements JoueurDAO {
 	public void setListeJoueurs(List<Joueur> listeJoueurs) {
 		this.listeJoueurs = listeJoueurs;
 	}
-
-	@Override
-	public List<Joueur> updateListeJoueurs() {
-
-		listeJoueurs = this.getAllJoueurs();
-		return listeJoueurs;
-	}
-
-	//get id joueur par prenom et nom
-	@Override
-	public Integer getJoueurByPrenomNom(String nom, String prenom) {
-		Integer id = null;
-		ResultSet rs = getResult("SELECT id_joueur FROM Joueur WHERE nom_joueur='" + nom + "' AND prenom_joueur='" + prenom + "'");
-		if (rs != null) {
-			try {
-				while (rs.next()) {
-					id = rs.getInt("id_joueur");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return id;
-	}
-
-
 
 }

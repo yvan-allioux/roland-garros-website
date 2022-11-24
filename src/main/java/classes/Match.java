@@ -71,16 +71,20 @@ public class Match {
 		return joueur2;
 	}
 
-	public String getEquipe1() {
-		return equipe1.getNom();
+	public Equipe getEquipe1() {
+		return equipe1;
 	}
 
-	public String getEquipe2() {
-		return equipe1.getNom();
+	public Equipe getEquipe2() {
+		return equipe1;
 	}
 
 	public Court getCourt() {
 			return court;
+	}
+	
+	public Score getScore() {
+		return score;
 	}
 
 	// SETTERS
@@ -108,6 +112,10 @@ public class Match {
 	public void setJoueur2(String prenom, String nom) {
 		this.joueur2.setPrenom(prenom);
 		this.joueur2.setNom(nom);
+	}
+	
+	public void setScore(Score s) {
+		this.score = s;
 	}
 
 }

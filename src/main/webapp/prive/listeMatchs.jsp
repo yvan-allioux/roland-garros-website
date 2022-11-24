@@ -3,7 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List,java.time.LocalDate,classes.Match"%>
 <%
-List<Match> matchs = (List<Match>) request.getAttribute("matchs");
+
+List<Match> matchsPasses = (List<Match>) request.getAttribute("matchsPasses");
+List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasses");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,20 +17,16 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 <%@include file="../general/nav.jsp"%>
 <body>
 	<!--  Filtres -->
-	<form action="/matchs/editer" class="btn-group" method="post">
+	<form action="/matchs/editer" class="btn-group m-auto" method="post">
 		<button type="submit" class="btn btn-outline-dark" name="btn-nom"
-			value="btn-nom">Date</button>
-		<button type="submit" class="btn btn-outline-dark"
-			name="btn-classement" value="btn-classement">A venir</button>
-		<button type="submit" class="btn btn-outline-dark" name="btn-homme"
-			value="btn-homme">Passé</button>
+			value="btn-nom">Trier par date</button>
 	</form>
 
+	<!-- Liste des matchs passés  -->
 
-
-
-	<!-- Liste des matchs  -->
-	<table class="table  table-striped">
+	<div>
+		<h2>Match passés</h2>
+		<table class="table  table-striped">
 		<thead>
 			<tr>
 				<th scope="col">Date</th>
@@ -42,15 +40,14 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 		</thead>
 		<tbody>
 			<%
-			for (Match match : matchs) {
+			for (Match m : matchsPasses) {
 
-				Integer id = match.getId();
-				LocalDate date = match.getDate();
-				LocalTime heure = match.getHeure();
-				String joueur1 = match.getJoueur1().getNomComplet();
-				String joueur2 = match.getJoueur2().getNomComplet();
+				Integer id = m.getId();
+				LocalDate date = m.getDate();
+				LocalTime heure = m.getHeure();
+				String joueur1 = m.getJoueur1().getNomComplet();
+				String joueur2 = m.getJoueur2().getNomComplet();
 				//String gagnant = match.getGagnant().getNomComplet();
-				
 			%>
 
 			<tr>
@@ -60,11 +57,15 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 				<td><%=joueur2%></td>
 				<!--  <td><%//gagnant%></td>-->
 				<td>
-					<a href="/match/modifier?id=<%=id%>"> <span
-						class="material-symbols-outlined">edit_square</span>
-				</a> <a href="/match/supprimer?id=<%=id%>"> <span
+					<%
+					if (m.getScore()==null) {
+					%> <a
+					href="/score/ajouter?id_match=<%=id%>"><span
+						class="material-symbols-outlined">scoreboard</span></a> 
+					<%}%> 
+					<a href="/match/supprimer?id=<%=id%>"> <span
 						class="material-symbols-outlined">delete</span>
-				</a>
+					</a>
 				</td>
 
 			</tr>
@@ -73,9 +74,58 @@ List<Match> matchs = (List<Match>) request.getAttribute("matchs");
 
 		</tbody>
 	</table>
+	</div>
+	<!-- Liste des matchs pas encore passés  -->
+	<div>
+		<h2>Match pas passés</h2>
+		<table class="table  table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Date</th>
+				<th scope="col">Heure</th>
+				<th scope="col">Joueur1</th>
+				<th scope="col">Joueur2</th>
+				<th scope="col"></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			for (Match m : matchsPasses) {
+
+				Integer id = m.getId();
+				LocalDate date = m.getDate();
+				LocalTime heure = m.getHeure();
+				String joueur1 = m.getJoueur1().getNomComplet();
+				String joueur2 = m.getJoueur2().getNomComplet();
+			%>
+
+			<tr>
+				<td><%=date%></td>
+				<td><%=heure%></td>
+				<td><%=joueur1%></td>
+				<td><%=joueur2%></td>
+				<!--  <td><%//gagnant%></td>-->
+				<td>
+					<a href="/match/modifier?id=<%=id%>">
+				  		<span class="material-symbols-outlined">edit_square</span>
+					</a>
+					<a href="/match/supprimer?id=<%=id%>"> <span
+						class="material-symbols-outlined">delete</span>
+					</a>
+				</td>
+
+			</tr>
+
+			<%}%>
+
+		</tbody>
+	</table>
+	</div>
+	
 	<!--  bouton ajout match -->
 
-	<a href="/match/ajouter" class="btn btn-outline-secondary">Ajouter
+	<a href="/match/ajouter" class="btn m-auto btn-outline-secondary">Ajouter
 		un match</a>
 
 	</div>

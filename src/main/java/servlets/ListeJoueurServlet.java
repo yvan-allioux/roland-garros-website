@@ -1,11 +1,9 @@
 package servlets;
 
-import classes.Entraineur;
 import classes.Joueur;
 import models.JoueurDAOimpl;
 import java.io.IOException;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,20 +14,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet ("/joueurs/editer")
+@WebServlet (name="joueurs",urlPatterns={"/joueurs/editer", "/joueurs"})
 public class ListeJoueurServlet extends HttpServlet {
 	private List<Joueur> listeJoueurs;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		this.doProcess(req, resp);
-        
-	} 
-	
-	private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
-		
 		resp.setContentType("text/html");
-       
+	       
         //Création d'une instance du DAO des joueurs
         JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 
@@ -37,25 +29,17 @@ public class ListeJoueurServlet extends HttpServlet {
         this.listeJoueurs = joueurDAO.getListeJoueurs();
         
         req.setAttribute("joueurs", listeJoueurs);
+      
+        if(req.getHttpServletMapping().getPattern().equals("/joueurs")) {
+        	RequestDispatcher rd = getServletContext().getRequestDispatcher("/public/joueurs.jsp");
+        	rd.forward(req, resp);
+        }else if(req.getHttpServletMapping().getPattern().equals("/joueurs/editer")) {
+        	RequestDispatcher rd = getServletContext().getRequestDispatcher("/prive/listeJoueurs.jsp");
+        	rd.forward(req, resp);
+        }
+       
         
-        String pageName = "/prive/listeJoueurs.jsp";
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-        
-        try {
-            rd.forward(req, resp);
-
-      } catch (ServletException e) {
-
-            e.printStackTrace();
-
-      } catch (IOException e) {
-
-            e.printStackTrace();
-
-
-      }
-		
-	}
+	} 
 	
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

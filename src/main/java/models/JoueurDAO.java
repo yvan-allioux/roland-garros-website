@@ -14,7 +14,6 @@ public interface JoueurDAO {
 	public void updateJoueur(Joueur j);
 	public void deleteJoueur(Integer id);
 	public void createJoueur(Joueur j);
-	public List<Joueur> updateListeJoueurs();
 
     //get id joueur par prenom et nom
     Integer getJoueurByPrenomNom(String nom, String prenom);
