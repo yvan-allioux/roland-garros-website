@@ -17,7 +17,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 <%@include file="../general/nav.jsp"%>
 <body>
 	<!--  Filtres -->
-	<form action="/matchs/editer" class="btn-group" method="post">
+	<form action="/matchs/editer" class="btn-group m-auto" method="post">
 		<button type="submit" class="btn btn-outline-dark" name="btn-nom"
 			value="btn-nom">Trier par date</button>
 	</form>
@@ -60,7 +60,8 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 					<%
 					if (m.getScore()==null) {
 					%> <a
-					href="/score/ajouter?id_match=<%=id%>">+</a> 
+					href="/score/ajouter?id_match=<%=id%>"><span
+						class="material-symbols-outlined">scoreboard</span></a> 
 					<%}%> 
 					<a href="/match/supprimer?id=<%=id%>"> <span
 						class="material-symbols-outlined">delete</span>
@@ -124,7 +125,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 	
 	<!--  bouton ajout match -->
 
-	<a href="/match/ajouter" class="btn btn-outline-secondary">Ajouter
+	<a href="/match/ajouter" class="btn m-auto btn-outline-secondary">Ajouter
 		un match</a>
 
 	</div>

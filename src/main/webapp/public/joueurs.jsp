@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
-<%
-    JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-	List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
+<%@page import="java.util.List,java.time.LocalDate,classes.Joueur"%>
+<%List<Joueur> joueurs = (List<Joueur>)request.getAttribute("joueurs");%>
 
 <!DOCTYPE html>
 <html>
@@ -56,7 +54,7 @@
 						<%=age%>
 						ans
 					</p>
-					<a class="align-self-end" href="#"><span
+					<a class="align-self-end" href="/joueur?id=<%=id%>"><span
 						class="material-symbols-outlined">add_circle</span></a>
 				</div>
 				<%
@@ -102,7 +100,7 @@
 						<%=age%>
 						ans
 					</p>
-					<a class="align-self-end" href="/ficheJoueurs.jsp?id=<%=id%>"><span
+					<a class="align-self-end" href="/joueur?id=<%=id%>"><span
 						class="material-symbols-outlined">add_circle</span></a>
 				</div>
 				<%

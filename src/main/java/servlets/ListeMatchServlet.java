@@ -13,19 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet ("/matchs/editer")
+@WebServlet (name="matchs",urlPatterns={"/matchs/editer", "/matchs"})
 public class ListeMatchServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		this.doProcess(req, resp);
-        
-	} 
-	
-	private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
-		
 		resp.setContentType("text/html");
-       
+	       
         //Création d'une instance du DAO des matchs
         MatchDAOimpl matchDAO = new MatchDAOimpl();
         
@@ -36,22 +30,18 @@ public class ListeMatchServlet extends HttpServlet {
         req.setAttribute("matchsPasses", listeMatchsP);
         req.setAttribute("matchsPasPasses", listeMatchsPP);
         
-        String pageName = "/prive/listeMatchs.jsp";
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-        
-        try {
-            rd.forward(req, resp);
-
-      } catch (ServletException e) {
-
-            e.printStackTrace();
-
-      } catch (IOException e) {
-
-            e.printStackTrace();
-
-
-      }
+        if(req.getHttpServletMapping().getPattern().equals("/matchs")) {
+        	RequestDispatcher rd = getServletContext().getRequestDispatcher("/public/matchs.jsp");
+        	rd.forward(req, resp);
+        }else if(req.getHttpServletMapping().getPattern().equals("/matchs/editer")) {
+        	RequestDispatcher rd = getServletContext().getRequestDispatcher("/prive/listeMatchs.jsp");
+        	rd.forward(req, resp);
+        }
+	} 
+	
+	private void doProcess(HttpServletRequest req, HttpServletResponse resp) {
+		
+		
 		
 	}
 	
