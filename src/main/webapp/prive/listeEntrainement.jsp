@@ -57,10 +57,10 @@
 				  <td><%=prenomJ%> <%=nomJ%></td>
 					<% if(editMod) {%>
 					  <td>
-						<a href="/entrainement/modifier?id=<%=id%>">
+						<a href="/entrainement/modifier?id=<%=id%>" class="text-decoration-none">
 							<span class="material-symbols-outlined m-1">edit_square</span>
 						</a>
-						<a href="/joueur/supprimer?id=<%=id%>">
+						<a href="/joueur/supprimer?id=<%=id%>" class="text-decoration-none">
 							<span class="material-symbols-outlined m-1">delete</span>
 						</a>
 					  </td>

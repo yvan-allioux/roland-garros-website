@@ -99,6 +99,6 @@ public class EditerEntrainementServlet extends HttpServlet {
 ;
         }
 
-        resp.sendRedirect("/entrainement");//sucess ?
+        resp.sendRedirect("/entrainement/edit");//sucess ?
     }
 }
