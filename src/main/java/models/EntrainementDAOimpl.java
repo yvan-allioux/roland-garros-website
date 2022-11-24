@@ -253,4 +253,30 @@ public class EntrainementDAOimpl implements EntrainementDAO {
         }
     }
 
+    //ajoute un entrainement
+    @Override
+    public void ajouterEntrainement(String date, String prenom, String nom, String heure, String court) {
+        QueryTool monQueryTool = new QueryTool();
+
+        //get id joueur par prenom et nom
+        JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+        Integer idJoueur = unJoueurDAOimpl.getJoueurByPrenomNom(nom, prenom);
+
+        //get id court par nom
+        CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+        int idCourt = unCourtDAOimpl.getCourtByNom(court);
+
+        String queryPrepare = "INSERT INTO `Entrainement`(`date`, `heure`, `joueur`, `court`) VALUES ('" + date + "','" + heure + "','" + idJoueur + "','" + idCourt + "')";
+
+
+        PreparedStatement preparedStmt;
+        try {
+            Connection connexion = DBManager.getInstance().getConnection();
+            preparedStmt = connexion.prepareStatement(queryPrepare);
+            preparedStmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

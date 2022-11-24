@@ -29,4 +29,8 @@ public interface EntrainementDAO {
 
     //supprime un entrainement
     void supprimerEntrainement(int id_entrainement);
+
+    //ajoute un entrainement
+    void ajouterEntrainement(String date, String prenom, String nom, String heure, String court);
+
 }
