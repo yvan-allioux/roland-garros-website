@@ -149,7 +149,7 @@ span{
 	max-width:200px;
 	min-width:200px;
 	margin-bottom : 5px !important;
-	border : 1px solid var(--principal) !important;
+	border : 1px solid var(--secondaire) !important;
 	border-radius : 0;
 	padding : 2px;
 }
@@ -165,7 +165,11 @@ span{
 	color : var(--principal);
 	font-size:1.25rem;
 }
-
+.card-title{
+	color : var(--secondaire);
+	font-size:1.25rem;
+	margin:0;
+}
 .card-group{
 	justify-content : space-around;
 	align-content : space-around;
@@ -178,5 +182,11 @@ span{
 	width : calc(100vw/2);
 }
 
+.logo{
+	color : var(--secondaire);
+}
 
+.logo2{
+	color : var(--principal);
+}
 

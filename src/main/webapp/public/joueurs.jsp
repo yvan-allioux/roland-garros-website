@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur"%>
-<%List<Joueur> joueurs = (List<Joueur>)request.getAttribute("joueurs");%>
+<%
+List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -37,22 +39,21 @@
 					if (sexe.equals("F")) {
 				%>
 				<div class="card">
-					<p class="card-text">
+					<p class="card-title text-center">
 						<span> <%=prenom%> <%=nom%>
 						</span>
 					</p>
-					<p class="card-text nationalite"><%=nationalite%></p>
+					<p class="card-text ">
+						<span class="material-symbols-outlined m-1">flag</span><%=nationalite%></p>
+
 					<p class="card-text">
-						<%=sexe%>
-						|<%=main%>
+						<span class="material-symbols-outlined m-1">workspace_premium</span><span><%=classement%></span>
 					</p>
 					<p class="card-text">
-						Classement : <span><%=classement%></span>
+						<span class="material-symbols-outlined m-1">cake</span><%=age%> ans
 					</p>
 					<p class="card-text">
-						Age :
-						<%=age%>
-						ans
+						<span class="material-symbols-outlined m-1">waving_hand</span><%=main%>
 					</p>
 					<a class="align-self-end" href="/joueur?id=<%=id%>"><span
 						class="material-symbols-outlined">add_circle</span></a>
@@ -83,22 +84,21 @@
 					if (sexe.equals("H")) {
 				%>
 				<div class="card">
-					<p class="card-text">
+					<p class="card-title text-center">
 						<span> <%=prenom%> <%=nom%>
 						</span>
 					</p>
-					<p class="card-text nationalite"><%=nationalite%></p>
+					<p class="card-text ">
+						<span class="material-symbols-outlined m-1">flag</span><%=nationalite%></p>
+
 					<p class="card-text">
-						<%=sexe%>
-						|<%=main%>
+						<span class="material-symbols-outlined m-1">workspace_premium</span><span><%=classement%></span>
 					</p>
 					<p class="card-text">
-						Classement : <span><%=classement%></span>
+						<span class="material-symbols-outlined m-1">cake</span><%=age%> ans
 					</p>
 					<p class="card-text">
-						Age :
-						<%=age%>
-						ans
+						<span class="material-symbols-outlined m-1">waving_hand</span><%=main%>
 					</p>
 					<a class="align-self-end" href="/joueur?id=<%=id%>"><span
 						class="material-symbols-outlined">add_circle</span></a>
