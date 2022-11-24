@@ -23,7 +23,7 @@ boolean editMod = (boolean) request.getAttribute("editMod");
 	
 	<%@include file="../general/nav.jsp" %>
 	<body>
-	<container class="container">
+	<div class="container">
 		<h1 class="text-center m-4">Entrainements</h1>
 
 		<!-- Liste des joueurs  -->
