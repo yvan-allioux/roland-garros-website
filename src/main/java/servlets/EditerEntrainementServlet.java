@@ -46,8 +46,7 @@ public class EditerEntrainementServlet extends HttpServlet {
         }
         /*A rediriger direct sur le bouton*/
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
-            //todo
-            String pageName = "/prive/modifierEntrainement.jsp";
+            String pageName = "/prive/ajouterEntrainement.jsp";
             //On renvoie la requête
             req.getRequestDispatcher(pageName).forward(req, resp);
     }
@@ -59,7 +58,10 @@ public class EditerEntrainementServlet extends HttpServlet {
         //Récupération des paramètres
 
         //id_entrainement
-        int id_entrainement = Integer.parseInt(req.getParameter("id-entrainement"));
+        if(req.getParameter("id_entrainement")!=null){
+            int id_entrainement = Integer.parseInt(req.getParameter("id-entrainement"));
+        }
+
         //date
         String date = req.getParameter("date-entrainement");
         //prenom
@@ -71,20 +73,18 @@ public class EditerEntrainementServlet extends HttpServlet {
         //id_court
         String court = req.getParameter("court-entrainement");
 
-
-        String prenomJOUEURentrainement = req.getParameter("prenom-entrainement");
-
-
         entrainementDAOimpl = new EntrainementDAOimpl();
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
-            //todo
-            /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
-            LocalDate dateN= LocalDate.parse("1998-06-06", formatter);
-            LocalDate dateC= LocalDate.parse("2017-06-06", formatter);*/
-
+            //Création d'un entrainement
+            //todo : verifier que l'entrainement n'existe pas déjà
+            //todo : proposer des joueurs dans le formulaire
+            //todo : proposer des courts dans le formulaire
+            //todo : message d'erreur dans le formulaire
+            entrainementDAOimpl.ajouterEntrainement(date, prenom, nom, heure, court);
         }
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
+            //todo : message d'erreur dans le formulaire
             entrainementDAOimpl.updateEntrainement(id_entrainement, date, heure, court, prenom, nom);
         }
 

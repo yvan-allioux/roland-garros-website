@@ -75,7 +75,7 @@
 		<div class="m-3 text-center">
 			<!--  bouton ajout joueur TODO-->
 			<% if(editMod) {%>
-				<a href="/joueur/ajouter" class="btn btn-outline-success">Ajouter un Entrainement</a>
+				<a href="/entrainement/ajouter" class="btn btn-outline-success">Ajouter un Entrainement</a>
 			<%}%>
 
 			
