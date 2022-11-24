@@ -14,7 +14,7 @@
 		<%--text au centre--%>
 		<div>
 			<div class="fs-3 mt-5 text-light text-center fw-bold fst-italic">site du tournois de</div>
-			<div class="display-1 text-light text-center fw-bold">Roland Garros</div>
+			<h1 class="display-1 text-light text-center fw-bold text-decoration-none">Roland Garros</h1>
 		</div>
 	</header>
 	<%--<div class="index-item">

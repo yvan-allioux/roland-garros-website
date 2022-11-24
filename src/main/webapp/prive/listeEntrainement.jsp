@@ -24,7 +24,7 @@
 	<%@include file="../general/nav.jsp" %>
 	<body>
 	<container class="container">
-		
+		<h1 class="text-center m-4">Entrainement</h1>
 		<!-- Liste des joueurs  -->
 		<table class="table m-2 table-striped">
 			<thead>
