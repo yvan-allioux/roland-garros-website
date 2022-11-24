@@ -2,25 +2,29 @@ package models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import classes.Court;
+import classes.Entraineur;
+import classes.Joueur;
 
 
 public class CourtDAOimpl implements CourtDAO {
 
     //getCourtById
+	private QueryTool monQueryTool = new QueryTool();
     @Override
     public Court getCourtById(int id) {
-        QueryTool monQueryTool = new QueryTool();
-
-        Court j = null;
+        
+        Court c = null;
 
         ResultSet rs = monQueryTool.getResult("SELECT * FROM Court WHERE id_court="+id);
 
         if(rs!=null) {
             try {
                 while (rs.next()) {
-                    j = new Court(rs.getInt("id_court"), rs.getString("nom_court"));
+                    c = new Court(rs.getInt("id_court"), rs.getString("nom_court"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -28,7 +32,7 @@ public class CourtDAOimpl implements CourtDAO {
         }
 
 
-        return j;
+        return c;
     }
 
     //getCourtByNom
@@ -36,20 +40,43 @@ public class CourtDAOimpl implements CourtDAO {
     public int getCourtByNom(String nom) {
         QueryTool monQueryTool = new QueryTool();
 
-        int idCour = 0;
+        int idCourt = 0;
 
         ResultSet rs = monQueryTool.getResult("SELECT * FROM Court WHERE nom_court='" + nom + "'");
 
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    idCour = rs.getInt("id_court");
+                    idCourt = rs.getInt("id_court");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return idCour;
+        return idCourt;
     }
+
+	@Override
+	public List<Court> getAllCourts() {
+		List<Court> allCourts = new ArrayList<Court>();
+
+		ResultSet rs = monQueryTool.getResult("SELECT * FROM Court");
+
+		if (rs != null) {
+
+			try {
+				while (rs.next()) { // Itérer sur le resultSet :
+					// Pour chaque instance de joueur retournée par la requête on créé un nouveau joueur
+					Court c = new Court(rs.getInt("id_court"), rs.getString("nom_court"));
+					// On ajoute le joueur créé à la liste des joueurs
+					allCourts.add(c);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return allCourts;
+	}
 
 }

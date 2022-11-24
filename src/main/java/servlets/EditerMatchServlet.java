@@ -25,7 +25,7 @@ public class EditerMatchServlet extends HttpServlet{
 	private Match match=null;
 	private Integer id_joueur=null;
 	private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
-	private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+	private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 			
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id_match = null;
@@ -46,14 +46,27 @@ public class EditerMatchServlet extends HttpServlet{
 			
 			JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 			List<Joueur> joueurs = joueurDAO.getAllJoueurs();
-			String pageName = "/prive/modifierMatch.jsp";
+			
+			CourtDAOimpl courtDAO = new CourtDAOimpl();
+			List<Court> courts = courtDAO.getAllCourts();
+			
 	        //On renvoie la requête
 			req.setAttribute("match", match);
 			req.setAttribute("joueurs", joueurs);
-	        req.getRequestDispatcher(pageName).forward(req, resp);
+			req.setAttribute("courts", courts);
+	        req.getRequestDispatcher("/prive/modifierMatch.jsp").forward(req, resp);
 		}
 		/*A rediriger direct sur le bouton*/
 		if(req.getHttpServletMapping().getPattern().equals("/match/ajouter")) {
+			
+			JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
+			List<Joueur> joueurs = joueurDAO.getAllJoueurs();
+			
+			CourtDAOimpl courtDAO = new CourtDAOimpl();
+			List<Court> courts = courtDAO.getAllCourts();
+			
+			req.setAttribute("joueurs", joueurs);
+			req.setAttribute("courts", courts);
 			
 			String pageName = "/prive/ajouterMatch.jsp";
 	        //On renvoie la requête
@@ -70,16 +83,16 @@ public class EditerMatchServlet extends HttpServlet{
 		Joueur joueur1 = joueurDAO.getJoueurById(Integer.parseInt(req.getParameter("joueur1")));
 		Joueur joueur2 = joueurDAO.getJoueurById(Integer.parseInt(req.getParameter("joueur2")));
 		LocalDate ddm = LocalDate.parse(req.getParameter("ddm"), dateFormatter);
-		LocalTime hdm = LocalTime.parse("16:00:00", timeFormatter);
+		LocalTime hdm = LocalTime.parse(req.getParameter("hdm"), timeFormatter);
 		Court court = courtDAO.getCourtById(Integer.parseInt(req.getParameter("court")));
 		
-		if(req.getHttpServletMapping().getPattern().equals("/joueur/ajouter")) {
+		if(req.getHttpServletMapping().getPattern().equals("/match/ajouter")) {
 			
 			Match match = new Match(ddm,hdm,court,joueur1,joueur2);
 			
 			matchDAO.createMatch(match);
 		}
-		if(req.getHttpServletMapping().getPattern().equals("/joueur/modifier")) {
+		if(req.getHttpServletMapping().getPattern().equals("/match/modifier")) {
 			Integer id_match = Integer.parseInt(req.getParameter("id"));
 			
 			match = matchDAO.getMatchById(id_match);
@@ -88,7 +101,7 @@ public class EditerMatchServlet extends HttpServlet{
 			match.setDate(ddm);
 			match.setJoueur1(joueur1);
 			match.setJoueur2(joueur2);
-		
+			
 			matchDAO.updateMatch(match);
 		}   
 		resp.sendRedirect("/matchs/editer");

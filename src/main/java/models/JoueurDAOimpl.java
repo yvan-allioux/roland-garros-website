@@ -167,8 +167,8 @@ public class JoueurDAOimpl implements JoueurDAO {
 	@Override
 	public void updateJoueur(Joueur j) {
 
-		String attributsTxt = String.format("nom_joueur='%s', prenom_joueur='%s', sexe='%s'", j.getNom(), j.getPrenom(),
-				j.getSexe());
+		String attributsTxt = String.format("nom_joueur='%s', prenom_joueur='%s', sexe='%s', date_debut_carriere=%s, date_naissance='%s',nationalite='%s',main='%s',taille='%d',poids='%d',entraineur='%d'", j.getNom(), j.getPrenom(),
+				j.getSexe(),j.getDateCarriere().getYear(),j.getDateNaissance(),j.getNationalite(),j.getMain(),j.getTaille(),(int)j.getPoids(),j.getEntraineur().getId());
 		String query = "UPDATE Joueur SET " + attributsTxt + " WHERE id_joueur=" + j.getId();
 		PreparedStatement preparedStmt;
 		try {

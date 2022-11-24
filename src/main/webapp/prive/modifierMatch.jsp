@@ -5,6 +5,7 @@
 <%
 Match match = (Match) request.getAttribute("match");
 List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
+List<Court> courts = (List<Court>) request.getAttribute("courts");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,37 +16,45 @@ List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
 </head>
 <%@ include file="../general/nav.jsp"%>
 <body>
-	<form action="../match/modifier?id=<%=match.getId()%>" method="post" class="row g-3">
+	<form action="../match/modifier?id=<%=match.getId()%>" method="post" class="m-auto row g-3">
+		
 		
 		<div class="col-md-4">
 		    <label for="ddm" class="form-label">Date du match</label>
 		    <input type="date" class="form-control" name="ddm" value="<%=match.getDate()%>">
 		</div>
 		
-		<div class="col-md-4">
-		    <label for="court" class="form-label">Court</label>
-		    <input type="text" class="form-control" name="court" value="<%=match.getCourt().getNom()%>">
-		 </div>
-		 
 		 <div class="col-md-4">
-		    <label for="heure" class="form-label">Heure</label>
-		    <input type="text" class="form-control" name="court" value="">
+		    <label for="hdm" class="form-label">Heure</label>
+		    <input type="time" class="form-control" name="hdm" value="<%=match.getHeure()%>">
 		 </div>
-		<div class="col-md-6">  
-		<% if(match.getJoueur1()!=null){ %>
-		<label for="joueur1" class="form-label">Joueur 1</label> 
-		<select class="form-select" name="joueur1">
-			<option value="<%=match.getJoueur1().getId()%>" selected><%=match.getJoueur1().getNomComplet()%></option>
-			<%
-			for (Joueur j : joueurs) {
-				if (j.getId() != match.getJoueur1().getId()) {
-			%>
-			<option value="<%=j.getId()%>"><%=j.getNomComplet()%></option>
-			<%
+		
+		 <div class="col-md-4">  
+			<label for="court" class="form-label">Court</label> 
+			<select class="form-select" name="court">
+				<%
+				for (Court c : courts) {	
+				%>
+				<option value="<%=c.getId()%>"><%=c.getNom()%></option>
+				<%
 				}
-			}
-			%>
-		</select>
+				%>
+			</select>
+		</div>
+		 
+		<div class="col-md-6">  
+			<% if(match.getJoueur1()!=null){ %>
+			<label for="joueur1" class="form-label">Joueur 1</label> 
+			<select class="form-select" name="joueur1">
+				<option value="<%=match.getJoueur1().getId()%>" selected><%=match.getJoueur1().getNomComplet()%></option>
+				<%
+				for (Joueur j : joueurs) {
+				%>
+				<option value="<%=j.getId()%>"><%=j.getNomComplet()%></option>
+				<%
+				}
+				%>
+			</select>
 		</div>
 		<div class="col-md-6">
 		<label for="joueur2" class="form-label">Joueur 2</label> 
@@ -63,7 +72,7 @@ List<Joueur> joueurs = (List<Joueur>) request.getAttribute("joueurs");
 		</select>
 		</div>
 		<%} %>
-		<button type="submit" class="btn btn-secondary m-auto">Enregistrer</button>
+		<button type="submit" class="btn btn-secondary m-auto col-md-2">Enregistrer</button>
 	</form>
 
 </body>

@@ -76,7 +76,7 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 
 		    <label for="entraineur" class="form-label">Entraineur</label>
 		    <select  class="form-select" name="entraineur">
-		    	<option value="<%=joueur.getId()%>" selected><%=joueur.getEntraineur().getNomComplet()%></option>
+		    	<option value="<%=joueur.getEntraineur().getId()%>" selected><%=joueur.getEntraineur().getNomComplet()%></option>
 		    	<%for(Entraineur e:entraineurs){ 
 		    		if(e.getId()!=joueur.getEntraineur().getId()){%>
 		    	<option value="<%=e.getId()%>"><%=e.getNomComplet()%></option>

@@ -58,6 +58,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 				<!--  <td><%//gagnant%></td>-->
 				<td>
 					<%
+					System.out.println(m.getScore());
 					if (m.getScore()==null) {
 					%> <a
 					href="/score/ajouter?id_match=<%=id%>"><span
@@ -77,7 +78,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 	</div>
 	<!-- Liste des matchs pas encore passés  -->
 	<div>
-		<h2>Match pas passés</h2>
+		<h2>Match à venir</h2>
 		<table class="table  table-striped">
 		<thead>
 			<tr>
@@ -91,7 +92,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 		</thead>
 		<tbody>
 			<%
-			for (Match m : matchsPasses) {
+			for (Match m : matchsPasPasses) {
 
 				Integer id = m.getId();
 				LocalDate date = m.getDate();

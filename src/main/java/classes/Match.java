@@ -52,12 +52,15 @@ public class Match {
 		this.court = court;
 	}
 	
-	public Match(LocalDate date, LocalTime heure, Court court, Equipe equipe1, Equipe equipe2) {
+	public Match(Integer id,LocalDate date, LocalTime heure, Court court, Equipe equipe1, Equipe equipe2,Joueur gagnant, Score score) {
+		this.id = id;
 		this.date = date;
 		this.heure = heure;
 		this.equipe1 = equipe1;
 		this.equipe2 = equipe2;
 		this.court = court;
+		this.gagnant = gagnant;
+		this.score = score;
 	}
 	// METHODES
 

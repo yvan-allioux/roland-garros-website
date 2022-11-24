@@ -83,13 +83,11 @@ public class EditerJoueurServlet extends HttpServlet {
 		LocalDate ddn = LocalDate.parse(req.getParameter("ddn"), dateFormatter);
 		String ldn = req.getParameter("ldn");
 		
-		EntraineurDAOimpl entraineurDAO
-		   = new EntraineurDAOimpl();
+	
+		EntraineurDAOimpl entraineurDAO = new EntraineurDAOimpl();
 		Entraineur entraineur = entraineurDAO.getEntraineurById(Integer.parseInt(req.getParameter("entraineur")));
-		
+	
 		if(req.getHttpServletMapping().getPattern().equals("/joueur/ajouter")) {
-			/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-			LocalTime dateC= LocalTime.parse("18:02:04", formatter);*/
 			
 			Joueur joueur = new Joueur(nom,prenom,sexe,entraineur,ddn,ldn,nationalite,taille,poids,main,ddc);
 			
@@ -99,7 +97,7 @@ public class EditerJoueurServlet extends HttpServlet {
 			Integer id_joueur = Integer.parseInt(req.getParameter("id"));
 			
 			joueur = joueurDAO.getJoueurById(id_joueur);
-			
+		
 			joueur.setNom(nom);
 			joueur.setPrenom(prenom);
 			joueur.setEntraineur(entraineur);
