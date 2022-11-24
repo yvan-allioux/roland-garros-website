@@ -14,7 +14,7 @@
 </head>
 <%@ include file="../general/nav.jsp" %>
 <body>
-<container class="container">
+<container class="container wrapper">
 	<form action="../entrainement/ajouter" method="POST" class="row g-3 m-3">
 
 		<div class="mb-3"> <%--date--%>

@@ -10,13 +10,12 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 <html>
 <head>
 <%@ include file="../general/head.jsp"%>
-<link rel="stylesheet" href="../style.css" type="text/css" />
 <title>Matchs | Roland Garros</title>
 </head>
 <%@ include file="../general/nav.jsp"%>
 <body>
-	<h1>Matchs</h1>
-
+	<div class="container">
+		<h1 class="text-center m-4">Matchs</h1>
 	<!-- MATCHS A VENIR -->
 	<h2>Matchs à venir</h2>
 	<table class="table">
@@ -118,7 +117,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 			%>
 		</tbody>
 	</table>
-
+</div>
 </body>
 <%@ include file="../general/footer.jsp"%>
 </html>

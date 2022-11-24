@@ -8,16 +8,16 @@
 <html>
 <head>
 <%@ include file="../general/head.jsp"%>
-<link rel="stylesheet" href="../style.css" type="text/css" />
 <title>Joueurs | Roland Garros</title>
 </head>
 <%@ include file="../general/nav.jsp"%>
 <body>
-	<h1>Joueurs et Joueuses</h1>
+<div class="container">
+	<h1 class="text-center m-4">Joueurs et Joueuses</h1>
 	<!-- liste des joueurs -->
 	<div class="cardJoueurs">
 		<div class="cardSexe">
-			<h2>Dames</h2>
+			<h2 class="m-3">Dames</h2>
 			<div class="card-group">
 				<!-- récuperation des données de chaque joueurs -->
 				<%
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		<div class="cardSexe">
-			<h2>Messieurs</h2>
+			<h2 class="m-3">Messieurs</h2>
 			<div class="card-group">
 				<!-- récuperation des données de chaque joueurs -->
 				<%
@@ -110,7 +110,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 <%@ include file="../general/footer.jsp"%>
 </html>
