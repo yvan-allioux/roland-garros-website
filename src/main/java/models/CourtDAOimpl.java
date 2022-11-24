@@ -1,10 +1,10 @@
 package models;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import classes.Court;
 
+import java.util.*;
 
 public class CourtDAOimpl implements CourtDAO {
 
@@ -31,25 +31,29 @@ public class CourtDAOimpl implements CourtDAO {
         return j;
     }
 
-    //getCourtByNom
+    //getAllCourts
     @Override
-    public int getCourtByNom(String nom) {
+    public List<Court> getAllCourt() {
         QueryTool monQueryTool = new QueryTool();
 
-        int idCour = 0;
+        List<Court> allCourt = new ArrayList<Court>();
 
-        ResultSet rs = monQueryTool.getResult("SELECT * FROM Court WHERE nom_court='" + nom + "'");
+        ResultSet rs = monQueryTool.getResult("SELECT * FROM Court");
 
         if (rs != null) {
+
             try {
                 while (rs.next()) {
-                    idCour = rs.getInt("id_court");
+                    Court j = new Court(rs.getInt("id_court"), rs.getString("nom_court"));
+                    // On ajoute le joueur créé à la liste des joueurs
+                    allCourt.add(j);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return idCour;
-    }
 
+        return allCourt;
+
+    }
 }

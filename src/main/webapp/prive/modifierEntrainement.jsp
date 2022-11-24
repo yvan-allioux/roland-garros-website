@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
-<%@page import="java.time.LocalDate,classes.Entrainement"%>
-<%Entrainement entrainement = (Entrainement)request.getAttribute("entrainement");%>
+<%@page import="java.util.List,java.time.LocalDate,classes.Entrainement,classes.Joueur"%>
+<%@ page import="classes.Court" %>
+<%
+	Entrainement entrainement = (Entrainement)request.getAttribute("entrainement");
+	List<Joueur> listejoueurs = (List<Joueur>) request.getAttribute("listejoueurs");
+	List<Court> listecourts = (List<Court>) request.getAttribute("listecourts");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +29,18 @@
 			<input  placeholder="date" name="date-entrainement" type="date" class="form-control" value="<%=entrainement.getDate()%>">
 		</div>
 
-
-		<div class="col-md-6"> <%--prenom--%>
-			<%--@declare id="joueursPrenom"--%><label for="joueursPrenom" class="form-label">Prenom joueurs</label>
-			<input placeholder="joueursPrenom" name="joueursPrenom-entrainement" type="text" class="form-control" value="<%=entrainement.getJoueur().getPrenom()%>">
-		</div>
-		<div class="col-md-6"> <%--nom--%>
-			<%--@declare id="joueursNom"--%><label for="joueursNom" class="form-label">Nom joueurs</label>
-			<input placeholder="joueursNom" name="joueursNom-entrainement" type="text" class="form-control" value="<%=entrainement.getJoueur().getNom()%>">
+		<div class="mb-3">
+			<%--@declare id="joueur1"--%><label for="joueur1" class="form-label">Joueur</label>
+			<select class="form-select" name="idJoueur-entrainement">
+				<option value="<%=entrainement.getJoueur().getId()%>" selected> <%=entrainement.getJoueur().getNomComplet()%> </option>
+				<%
+					for (Joueur j : listejoueurs) {
+				%>
+				<option value="<%=j.getId()%>"><%=j.getNomComplet()%></option>
+				<%
+					}
+				%>
+			</select>
 		</div>
 
 
@@ -39,9 +48,19 @@
 			<%--@declare id="heure"--%><label for="heure" class="form-label">Heure</label>
 			<input placeholder="heure" name="heure-entrainement" type="text" class="form-control" value="<%=entrainement.getHeure()%>">
 		</div>
-		<div class="mb-3"> <%--court--%>
-			<%--@declare id="court"--%><label for="court" class="form-label">Court</label>
-			<input placeholder="court" name="court-entrainement" type="text" class="form-control" value="<%=entrainement.getCourt().getNom()%>">
+
+		<div class="mb-3">
+			<%--@declare id="joueur1"--%><label for="joueur1" class="form-label">Court</label>
+			<select class="form-select" name="idCourt-entrainement">
+				<option value="<%=entrainement.getCourt().getId()%>" selected> <%=entrainement.getCourt().getNom()%> </option>
+				<%
+					for (Court j : listecourts) {
+				%>
+				<option value="<%=j.getId()%>"><%=j.getNom()%></option>
+				<%
+					}
+				%>
+			</select>
 		</div>
 
 		<button type="submit" class="btn btn-outline-success">Enregistrer</button>

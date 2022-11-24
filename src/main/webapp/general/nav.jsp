@@ -25,7 +25,7 @@
                         <a class="nav-link" href="/entrainement">Entraînements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Statistiques</a>
+                        <a class="nav-link" href="/statistiques">Statistiques</a>
                     </li>
                     <!--  PARTIE PRIVE  -->
                     <% if(session.getAttribute("login")!=null){%>
@@ -41,7 +41,7 @@
                             <%}%>
 
                             <% if((session.getAttribute("login")!=null) && ((session.getAttribute("role").equals('M')) || (session.getAttribute("role").equals('A')))){%>
-                            <li><a class="dropdown-item" href="#">Editer match</a></li>
+                            <li><a class="dropdown-item" href="/matchs/editer">Editer match</a></li>
                             <li><a class="dropdown-item" href="/entrainement/edit">Editer entraînement</a></li>
                             <%}%>
 
