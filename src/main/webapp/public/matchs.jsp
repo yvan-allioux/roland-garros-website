@@ -10,27 +10,44 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 <html>
 <head>
 <%@ include file="../general/head.jsp"%>
-<link rel="stylesheet" href="../style.css" type="text/css" />
 <title>Matchs | Roland Garros</title>
 </head>
 <%@ include file="../general/nav.jsp"%>
 <body>
 	<div class="container">
-		<h1>Matchs</h1>
+		<h1 class="text-center m-4">Matchs</h1>
+	<!-- MATCHS A VENIR -->
+	<h2>Matchs à venir</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Date</th>
+				<th scope="col">Heure</th>
+				<th scope="col">Court</th>
+				<th scope="col">Joueurs / Equipes</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- récuperation des données de chaque joueurs -->
+			<%
+			for (Match match : matchsPasPasses) {
+				Integer id = match.getId();
+				LocalDate date = match.getDate();
+				LocalTime heure = match.getHeure();
+				String court = match.getCourt().getNom();
+				String j1 = match.getJoueur1().getNomComplet();
+				String j2 = match.getJoueur2().getNomComplet();
+				Equipe e1 = match.getEquipe1();
+				Equipe e2 = match.getEquipe2();
+				LocalDate dateJ = LocalDate.now();
 
-		<!-- MATCHS A VENIR -->
-		<h2>Matchs à venir</h2>
-		<table class="table align-center">
-			<thead>
-				<tr>
-					<th scope="col"><span class="material-symbols-outlined">calendar_month</span>Date</th>
-					<th scope="col"><span class="material-symbols-outlined">schedule</span>Heure</th>
-					<th scope="col"><span class="material-symbols-outlined">pin_drop</span>Court</th>
-					<th scope="col"><span class="material-symbols-outlined">person</span>Joueurs / Equipes</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- récuperation des données de chaque matchs -->
+				//affichage des joueurs feminins
+				if (date.isAfter(dateJ)) {
+			%>
+			<tr>
+				<th scope="row"><%=date%></th>
+				<td><%=heure%></td>
+				<td><%=court%></td>
 				<%
 				for (Match match : matchsPasPasses) {
 					Integer id = match.getId();
@@ -68,6 +85,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 				}
 				}
 				%>
+
 			</tbody>
 		</table>
 
@@ -143,6 +161,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 			</tbody>
 		</table>
 	</div>
+</div>
 </body>
 <%@ include file="../general/footer.jsp"%>
 </html>
