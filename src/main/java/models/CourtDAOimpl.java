@@ -64,10 +64,5 @@ public class CourtDAOimpl implements CourtDAO {
 		return allCourts;
 	}
 
-	@Override
-	public int getCourtByNom(String nom) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
