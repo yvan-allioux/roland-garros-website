@@ -16,11 +16,11 @@ Joueur joueur = (Joueur) request.getAttribute("joueur");
 
 <%@include file="../general/nav.jsp"%>
 <body>
-
-	<a href="/joueurs"><span class="material-symbols-outlined">arrow_back</span></a>
-	<h1 class="m-auto"><%=joueur.getPrenom()%>
-		<%=joueur.getNom()%></h1>
-		<p class="m-auto text-align">
+<div class="container">
+	<div class="m-4"></div>
+	<a class="" href="/joueurs"><span class="material-symbols-outlined">arrow_back</span></a>
+	<h1 class="m-4"><%=joueur.getPrenom()%><%=joueur.getNom()%></h1>
+		<p class="m-3 text-align">
 			<span class="material-symbols-outlined m-1 logo2">workspace_premium</span> classement individuel : <span><%=joueur.getClassement()%></span>
 		</p>
 	<div class="d-flex justify-content-evenly">
@@ -77,6 +77,7 @@ Joueur joueur = (Joueur) request.getAttribute("joueur");
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 <%@include file="../general/footer.jsp"%>
 </html>
