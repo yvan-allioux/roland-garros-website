@@ -10,7 +10,8 @@
 </head>
 <%@ include file="../general/nav.jsp" %>
 <body>
-
+<div class="container">
+	<h1 class="text-center m-4">Ajouter joueur</h1>
   <form action="/joueur/ajouter" method="post">
 	  <div class="mb-3">
 	    <label for="exampleInputEmail1" class="form-label">Nom</label>
@@ -74,8 +75,9 @@
 		    </select>
 		  </div>
 	  </div>
-	  <button type="submit" class="btn btn-primary">Envoyer</button>
+	  <button type="submit" class="btn btn-primary m-2">Envoyer</button>
   </form>
+</div>
 </body>
 <%@ include file="../general/footer.jsp" %>
 </html>
