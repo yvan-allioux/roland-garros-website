@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 public class JoueurDAOimpl implements JoueurDAO {
 
@@ -195,7 +194,7 @@ public class JoueurDAOimpl implements JoueurDAO {
 	/**
 	 * Retourne les résultat d'une requête SELECT
 	 * 
-	 * @param txtRequest
+	 * @param query
 	 * @return
 	 */
 	public ResultSet getResult(String query) {

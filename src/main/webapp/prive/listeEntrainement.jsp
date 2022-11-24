@@ -24,7 +24,7 @@
 	<%@include file="../general/nav.jsp" %>
 	<body>
 	<container class="container">
-		
+		<h1 class="text-center m-4">Entrainement</h1>
 		<!-- Liste des joueurs  -->
 		<table class="table m-2 table-striped">
 			<thead>
@@ -57,10 +57,10 @@
 				  <td><%=prenomJ%> <%=nomJ%></td>
 					<% if(editMod) {%>
 					  <td>
-						<a href="/entrainement/modifier?id=<%=id%>">
+						<a href="/entrainement/modifier?id=<%=id%>" class="text-decoration-none">
 							<span class="material-symbols-outlined m-1">edit_square</span>
 						</a>
-						<a href="/joueur/supprimer?id=<%=id%>">
+						<a href="/entrainement/supprimer?id=<%=id%>" class="text-decoration-none">
 							<span class="material-symbols-outlined m-1">delete</span>
 						</a>
 					  </td>

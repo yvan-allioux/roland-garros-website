@@ -42,7 +42,7 @@
 
                             <% if((session.getAttribute("login")!=null) && ((session.getAttribute("role").equals('M')) || (session.getAttribute("role").equals('A')))){%>
                             <li><a class="dropdown-item" href="#">Editer match</a></li>
-                            <li><a class="dropdown-item" href="entrainement/edit">Editer entraînement</a></li>
+                            <li><a class="dropdown-item" href="/entrainement/edit">Editer entraînement</a></li>
                             <%}%>
 
                         </ul>
