@@ -63,6 +63,18 @@ public class EditerEntrainementServlet extends HttpServlet {
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
             String pageName = "/prive/ajouterEntrainement.jsp";
             //On renvoie la requête
+
+            JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+            List<Joueur> listeJoueurs = unJoueurDAOimpl.getAllJoueurs();
+            req.setAttribute("listejoueurs", listeJoueurs);
+
+            //creation liste de court
+            CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+            List<Court> listeCourt = unCourtDAOimpl.getAllCourt();
+            req.setAttribute("listecourts", listeCourt);
+
+
+
             req.getRequestDispatcher(pageName).forward(req, resp);
     }
 
