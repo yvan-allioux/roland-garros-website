@@ -3,8 +3,10 @@
     
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
 <%
+	//List<Entrainement> entrainements = (List<Entrainement>)request.getAttribute("entrainement");
     JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
+List<Joueur> joueurs = joueurDAO.getAllJoueurs();
+%>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,8 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 </head>
 <%@ include file="../general/nav.jsp"%>
 <body>
-	<h1>Listes des joueurs et joueuses triés par nombre de match gagnées</h1>
+<div class="container">
+	<h1 class="text-center m-4">Listes des joueurs et joueuses triés par nombre de match gagnées</h1>
 	<!-- liste des joueurs -->
 	<div class="cardJoueurs">
 			<div class="card-group">
@@ -62,7 +65,7 @@ List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
 			</div>
 		
 	</div>
-
+</div>
 </body>
 <%@ include file="../general/footer.jsp"%>
 </html>

@@ -3,6 +3,7 @@ package models;
 import classes.Court;
 import classes.Joueur;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,6 +13,8 @@ public interface CourtDAO {
 
     //getCourtByNom
     public int getCourtByNom(String nom);
-    
-    public List<Court> getAllCourts();
+
+    //getAllCourts
+    List<Court> getAllCourt();
+
 }
