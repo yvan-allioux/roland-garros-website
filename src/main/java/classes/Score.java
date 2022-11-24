@@ -5,6 +5,7 @@ import java.time.LocalTime;
 public class Score {
 
 	//ATTRIBUTS
+	private Integer id;
 	private Integer nbSet;
 	private Integer nbJeu;
 	private LocalTime temps;
@@ -15,6 +16,12 @@ public class Score {
 		this.nbJeu = 0;
 	}
 	public Score(Integer nbSet, Integer nbJeu, LocalTime temps) {
+		this.nbSet = nbSet;
+		this.nbJeu = nbJeu;
+		this.temps = temps;
+	}
+	
+	public Score(Integer id,Integer nbSet, Integer nbJeu, LocalTime temps) {
 		this.nbSet = nbSet;
 		this.nbJeu = nbJeu;
 		this.temps = temps;

@@ -43,6 +43,25 @@ public class Match {
 		this.equipe2 = equipe2;
 		this.court = court;
 	}
+	
+	public Match(LocalDate date, LocalTime heure, Court court, Joueur joueur1, Joueur joueur2) {
+		this.date = date;
+		this.heure = heure;
+		this.joueur1 = joueur1;
+		this.joueur2 = joueur2;
+		this.court = court;
+	}
+	
+	public Match(Integer id,LocalDate date, LocalTime heure, Court court, Equipe equipe1, Equipe equipe2,Joueur gagnant, Score score) {
+		this.id = id;
+		this.date = date;
+		this.heure = heure;
+		this.equipe1 = equipe1;
+		this.equipe2 = equipe2;
+		this.court = court;
+		this.gagnant = gagnant;
+		this.score = score;
+	}
 	// METHODES
 
 	// GETTERS
@@ -104,14 +123,12 @@ public class Match {
 		this.gagnant = gagnant;
 	}
 
-	public void setJoueur1(String prenom, String nom) {
-		this.joueur1.setPrenom(prenom);
-		this.joueur1.setNom(nom);
+	public void setJoueur1(Joueur j1) {
+		this.joueur1=j1;
 	}
 
-	public void setJoueur2(String prenom, String nom) {
-		this.joueur2.setPrenom(prenom);
-		this.joueur2.setNom(nom);
+	public void setJoueur2(Joueur j2) {
+		this.joueur2=j2;
 	}
 	
 	public void setScore(Score s) {

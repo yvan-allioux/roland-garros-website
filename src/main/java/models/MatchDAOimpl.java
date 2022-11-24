@@ -5,6 +5,7 @@ import models.JoueurDAOimpl;
 import classes.Court;
 import classes.Joueur;
 import classes.Match;
+import classes.Score;
 import db.DBManager;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class MatchDAOimpl implements MatchDAO{
 	private List<Match> listeMatchs;
 	private JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
 	private CourtDAOimpl courtDAO = new CourtDAOimpl();
+	private ScoreDAOimpl scoreDAO = new ScoreDAOimpl();
 	private QueryTool queryTool = new QueryTool();
 
 	public MatchDAOimpl(){
@@ -86,6 +88,11 @@ public class MatchDAOimpl implements MatchDAO{
 					Joueur j1 = joueurDAO.getJoueurById(rs.getInt("joueur1"));
 					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
 					Court court = courtDAO.getCourtById(rs.getInt("court"));
+					
+					if(rs.getInt("score")!=0) {
+						Score s = scoreDAO.getScoreById(rs.getInt("score"));
+						
+					}
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
 					m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
 							rs.getTime("heure").toLocalTime(),j1,j2,court);
@@ -96,6 +103,10 @@ public class MatchDAOimpl implements MatchDAO{
 		}
 
 		return m;
+	}
+	
+	public List<Court> getMatchsPassesOrderedByDate(){
+		return null;
 	}
 
 	@Override

@@ -16,15 +16,16 @@ boolean editMod = (boolean) request.getAttribute("editMod");
 
 <!DOCTYPE html>
 <html>
-<head>
-<%@include file="../general/head.jsp"%>
-<title>Editer Entrainement| Roland Garros</title>
-</head>
+	<head>
+	<%@include file="../general/head.jsp" %>
+	<title> Editer Entrainement| Roland Garros</title>
+	</head>
+	
+	<%@include file="../general/nav.jsp" %>
+	<body>
+	<container class="container">
+		<h1 class="text-center m-4">Entrainements</h1>
 
-<%@include file="../general/nav.jsp"%>
-<body>
-	<div class="container">
-		<h1 class="text-center m-4">Entrainement</h1>
 		<!-- Liste des joueurs  -->
 		<table class="table m-2 table-striped">
 			<thead>
