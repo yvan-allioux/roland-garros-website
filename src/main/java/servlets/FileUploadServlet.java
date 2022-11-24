@@ -21,13 +21,26 @@ public class FileUploadServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /* Receive file uploaded to the Servlet from the HTML5 form */
+        // Get the file chosen by the user
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
-        for (Part part : request.getParts()) {
-            part.write("/" + fileName);
+
+        // Write the file to the server
+        InputStream fileContent = filePart.getInputStream();
+        OutputStream outputStream = new FileOutputStream(new File("" + fileName));
+        int read = 0;
+        final byte[] bytes = new byte[1024];
+        while ((read = fileContent.read(bytes)) != -1) {
+            outputStream.write(bytes, 0, read);
         }
-        response.getWriter().print("The file uploaded sucessfully.");
+
+        // Close the streams
+        outputStream.close();
+        fileContent.close();
+
+        // Redirect the user to the success page
+        //response.sendRedirect("success.jsp");
+
     }
 
 }
