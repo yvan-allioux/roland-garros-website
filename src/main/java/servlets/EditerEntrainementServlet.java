@@ -49,7 +49,7 @@ public class EditerEntrainementServlet extends HttpServlet {
             String pageName = "/prive/modifierEntrainement.jsp";
             //On renvoie la requête
             req.getRequestDispatcher(pageName).forward(req, resp);
-        }
+    }
 
     }
 
@@ -59,22 +59,17 @@ public class EditerEntrainementServlet extends HttpServlet {
 
         //id_entrainement
         int id_entrainement = Integer.parseInt(req.getParameter("id-entrainement"));
-        System.out.println("id-entrainement : " + id_entrainement);
         //date
         String date = req.getParameter("date-entrainement");
-        System.out.println("date : " + date);
         //prenom
         String prenom = req.getParameter("joueursPrenom-entrainement");
-        System.out.println("prenom : " + prenom);
         //nom
         String nom = req.getParameter("joueursNom-entrainement");
-        System.out.println("nom : " + nom);
         //heure
         String heure = req.getParameter("heure-entrainement");
-        System.out.println("heure : " + heure);
         //id_court
         String court = req.getParameter("court-entrainement");
-        System.out.println("id_court : " + court);
+
 
         String prenomJOUEURentrainement = req.getParameter("prenom-entrainement");
 
@@ -83,7 +78,6 @@ public class EditerEntrainementServlet extends HttpServlet {
 
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
             //todo
-            System.out.println("AJOUT");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
             LocalDate dateN= LocalDate.parse("1998-06-06", formatter);
             LocalDate dateC= LocalDate.parse("2017-06-06", formatter);
@@ -92,11 +86,7 @@ public class EditerEntrainementServlet extends HttpServlet {
 
         }
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
-            //todo
-            System.out.println("MODIFICATION");
-
             entrainementDAOimpl.updateEntrainement(id_entrainement, date, heure, court, prenom, nom);
-;
         }
 
         resp.sendRedirect("/entrainement/edit");//sucess ?
