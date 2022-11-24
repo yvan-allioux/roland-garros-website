@@ -13,6 +13,7 @@ List<Entraineur> entraineurs = (List<Entraineur>)request.getAttribute("entraineu
 <%@ include file="../general/nav.jsp" %>
 <body>
 <div class="container">
+	<h1 class="text-center m-4">Editer Joueur</h1>
 	<form action="../joueur/modifier?id=<%=joueur.getId()%>" method="post" class="row g-3">
 	  <div class="col-md-6">
 	    <label for="exampleInputEmail1" class="form-label">Nom</label>
