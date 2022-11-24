@@ -48,7 +48,7 @@ public class EditerMatchServlet extends HttpServlet{
 			List<Joueur> joueurs = joueurDAO.getAllJoueurs();
 			
 			CourtDAOimpl courtDAO = new CourtDAOimpl();
-			List<Court> courts = courtDAO.getAllCourts();
+			List<Court> courts = courtDAO.getAllCourt();
 			
 	        //On renvoie la requête
 			req.setAttribute("match", match);
@@ -63,7 +63,7 @@ public class EditerMatchServlet extends HttpServlet{
 			List<Joueur> joueurs = joueurDAO.getAllJoueurs();
 			
 			CourtDAOimpl courtDAO = new CourtDAOimpl();
-			List<Court> courts = courtDAO.getAllCourts();
+			List<Court> courts = courtDAO.getAllCourt();
 			
 			req.setAttribute("joueurs", joueurs);
 			req.setAttribute("courts", courts);
