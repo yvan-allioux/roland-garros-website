@@ -4,14 +4,19 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import classes.Entrainement;
+import classes.Joueur;
+import classes.Court;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import models.CourtDAOimpl;
 import models.EntrainementDAOimpl;
+import models.JoueurDAOimpl;
 
 @WebServlet(name="entrainement-form", urlPatterns={"/entrainement/supprimer", "/entrainement/modifier", "/entrainement/ajouter"})
 
@@ -40,14 +45,36 @@ public class EditerEntrainementServlet extends HttpServlet {
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
             //page de modification
             String pageName = "/prive/modifierEntrainement.jsp";
-            //On renvoie la requête
             req.setAttribute("entrainement", unEntrainement);
+            //creation liste de joueurs
+            JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+            List<Joueur> listeJoueurs = unJoueurDAOimpl.getAllJoueurs();
+            req.setAttribute("listejoueurs", listeJoueurs);
+
+            //creation liste de court
+            CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+            List<Court> listeCourt = unCourtDAOimpl.getAllCourt();
+            req.setAttribute("listecourts", listeCourt);
+
+            //On renvoie la requête
             req.getRequestDispatcher(pageName).forward(req, resp);
         }
         /*A rediriger direct sur le bouton*/
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/ajouter")) {
             String pageName = "/prive/ajouterEntrainement.jsp";
             //On renvoie la requête
+
+            JoueurDAOimpl unJoueurDAOimpl = new JoueurDAOimpl();
+            List<Joueur> listeJoueurs = unJoueurDAOimpl.getAllJoueurs();
+            req.setAttribute("listejoueurs", listeJoueurs);
+
+            //creation liste de court
+            CourtDAOimpl unCourtDAOimpl = new CourtDAOimpl();
+            List<Court> listeCourt = unCourtDAOimpl.getAllCourt();
+            req.setAttribute("listecourts", listeCourt);
+
+
+
             req.getRequestDispatcher(pageName).forward(req, resp);
     }
 
@@ -58,20 +85,19 @@ public class EditerEntrainementServlet extends HttpServlet {
         //Récupération des paramètres
 
         //id_entrainement
-        if(req.getParameter("id_entrainement")!=null){
-            int id_entrainement = Integer.parseInt(req.getParameter("id-entrainement"));
+        int idEntrainement = 0;
+        if(req.getParameter("id-entrainement")!=null){
+            idEntrainement = Integer.parseInt(req.getParameter("id-entrainement"));
         }
 
         //date
         String date = req.getParameter("date-entrainement");
         //prenom
-        String prenom = req.getParameter("joueursPrenom-entrainement");
-        //nom
-        String nom = req.getParameter("joueursNom-entrainement");
+        String idJoueur = req.getParameter("idJoueur-entrainement");
         //heure
         String heure = req.getParameter("heure-entrainement");
         //id_court
-        String court = req.getParameter("court-entrainement");
+        String court = req.getParameter("idCourt-entrainement");
 
         entrainementDAOimpl = new EntrainementDAOimpl();
 
@@ -81,11 +107,11 @@ public class EditerEntrainementServlet extends HttpServlet {
             //todo : proposer des joueurs dans le formulaire
             //todo : proposer des courts dans le formulaire
             //todo : message d'erreur dans le formulaire
-            entrainementDAOimpl.ajouterEntrainement(date, prenom, nom, heure, court);
+            entrainementDAOimpl.ajouterEntrainement(date, idJoueur, heure, court);
         }
         if(req.getHttpServletMapping().getPattern().equals("/entrainement/modifier")) {
             //todo : message d'erreur dans le formulaire
-            entrainementDAOimpl.updateEntrainement(id_entrainement, date, heure, court, prenom, nom);
+            entrainementDAOimpl.updateEntrainement(idEntrainement, date, heure, court, idJoueur);
         }
 
         resp.sendRedirect("/entrainement/edit");//sucess ?

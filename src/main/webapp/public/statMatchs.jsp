@@ -3,8 +3,10 @@
     
 <%@page import="java.util.List,java.time.LocalDate,classes.Joueur,models.JoueurDAOimpl"%>
 <%
+	//List<Entrainement> entrainements = (List<Entrainement>)request.getAttribute("entrainement");
     JoueurDAOimpl joueurDAO = new JoueurDAOimpl();
-List<Joueur> joueurs = joueurDAO.getAllJoueurs();%>
+List<Joueur> joueurs = joueurDAO.getAllJoueurs();
+%>
 
 <!DOCTYPE html>
 <html>

@@ -24,13 +24,12 @@ public interface EntrainementDAO {
     //retourne la liste des entrainements
     //public List<Entrainement> getAllEntrainements() throws SQLException;
 
-    //modification de l'entrainement
-    public void updateEntrainement(int id_entrainement, String date, String heure, String court, String prenom, String nom);
+    //modifie un entrainement
+    void updateEntrainement(int id_entrainement, String date, String heure, String idCourt, String idJoueur);
 
     //supprime un entrainement
     void supprimerEntrainement(int id_entrainement);
 
     //ajoute un entrainement
-    void ajouterEntrainement(String date, String prenom, String nom, String heure, String court);
-
+    void ajouterEntrainement(String date, String idJoueur, String heure, String idCourt);
 }
