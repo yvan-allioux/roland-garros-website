@@ -16,12 +16,12 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 
 <%@include file="../general/nav.jsp"%>
 <body>
-
+	<div class="container">
 
 	<!-- Liste des matchs passés  -->
 
 	<div>
-		<h2>Match passés</h2>
+		<h1 class="text-center m-4">Match passés</h1>
 		<table class="table  table-striped">
 		<thead>
 			<tr>
@@ -74,7 +74,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 	</div>
 	<!-- Liste des matchs pas encore passés  -->
 	<div>
-		<h2>Match à venir</h2>
+		<h1 class="text-center m-4">Match à venir</h1>
 		<table class="table  table-striped">
 		<thead>
 			<tr>
@@ -126,7 +126,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 		un match</a>
 
 	</div>
-
+	</div>
 </body>
 <%@include file="../general/footer.jsp"%>
 </html>

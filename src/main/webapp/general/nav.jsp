@@ -57,7 +57,7 @@
                         <p class="nav-item m-2">bonjour ${sessionScope.login} <% if(session.getAttribute("role").equals('A')){%>| role : Admin<%}%> <% if(session.getAttribute("role").equals('E')){%>role : Editeur de joueur<%}%> <% if(session.getAttribute("role").equals('M')){%>role : Editeur de match<%}%>
                     </div>
                     <div class="d-flex">
-                        <a class="nav-link m-2" href="./deconnexion"><span class="material-symbols-outlined">logout</span></a>
+                        <a class="nav-link m-2" href="/deconnexion"><span class="material-symbols-outlined">logout</span></a>
                     </div>
                 <%}else{%>
                     <div class="d-flex me-2">
