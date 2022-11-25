@@ -16,6 +16,7 @@ public interface MatchDAO {
 	public List<Match> getAllMatchsPasses();
 	public List<Match> getAllMatchsPasPasses();
 	public List<Match> updateListeMatchs();
+	void finaliserMatch(Match m);
 
 }
 

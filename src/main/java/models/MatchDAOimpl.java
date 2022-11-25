@@ -45,9 +45,23 @@ public class MatchDAOimpl implements MatchDAO{
 					Joueur j1 = joueurDAO.getJoueurById(rs.getInt("joueur1"));
 					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
 					Court court = courtDAO.getCourtById(rs.getInt("court"));
+					
+					Score score=null;
+					Joueur gagnant=null;
+					Integer scoreValue = rs.getInt("score");
+					Integer gagnantValue = rs.getInt("gagnant");
+					
+					if(scoreValue!=0) {
+						score = scoreDAO.getScoreById(rs.getInt("score"));	
+					}
+					if(gagnantValue!=0) {
+						gagnant = joueurDAO.getJoueurById(rs.getInt("gagnant"));
+						
+					}
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
 					Match m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
-							rs.getTime("heure").toLocalTime(),j1,j2,court);
+							rs.getTime("heure").toLocalTime(),court,j1,j2,gagnant,score);
+			
 					// On ajoute le match créé à la liste des matchs
 					allMatchs.add(m);
 				}
@@ -88,14 +102,22 @@ public class MatchDAOimpl implements MatchDAO{
 					Joueur j1 = joueurDAO.getJoueurById(rs.getInt("joueur1"));
 					Joueur j2 = joueurDAO.getJoueurById(rs.getInt("joueur2"));
 					Court court = courtDAO.getCourtById(rs.getInt("court"));
+			
+					Score score=null;
+					Joueur gagnant=null;
+					Integer scoreValue = rs.getInt("score");
+					Integer gagnantValue = rs.getInt("gagnant");
 					
-					if(rs.getInt("score")!=0) {
-						Score s = scoreDAO.getScoreById(rs.getInt("score"));
+					if(scoreValue!=null) {
+						score = scoreDAO.getScoreById(rs.getInt("score"));	
+					}
+					if(gagnantValue!=null) {
+						gagnant = joueurDAO.getJoueurById(rs.getInt("gagnant"));
 						
 					}
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
 					m = new Match(rs.getInt("id_match"), rs.getDate("date").toLocalDate(),
-							rs.getTime("heure").toLocalTime(),j1,j2,court);
+							rs.getTime("heure").toLocalTime(),court,j1,j2,gagnant,score);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -121,6 +143,22 @@ public class MatchDAOimpl implements MatchDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+	}
+	
+	@Override
+	public void finaliserMatch(Match m) {
+
+		String attributsTxt = String.format("gagnant='%d', score='%d'", m.getGagnant().getId(),m.getScore().getId());
+		String query = "UPDATE Matchs SET " + attributsTxt + " WHERE id_match=" + m.getId();
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = connexion.prepareStatement(query);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 
 	}
 

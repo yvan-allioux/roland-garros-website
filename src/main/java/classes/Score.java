@@ -22,6 +22,7 @@ public class Score {
 	}
 	
 	public Score(Integer id,Integer nbSet, Integer nbJeu, LocalTime temps) {
+		this.id = id;
 		this.nbSet = nbSet;
 		this.nbJeu = nbJeu;
 		this.temps = temps;
@@ -30,6 +31,9 @@ public class Score {
 	//METHODES
 
 	//GETTERS
+	public Integer getId() {
+		return id;
+	}
 	public Integer getNbSet() {
 		return nbSet;
 	}
@@ -41,6 +45,9 @@ public class Score {
 	}
 
 	//SETTERS
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public void setNbSet(Integer nbSet) {
 		this.nbSet = nbSet;
 	}

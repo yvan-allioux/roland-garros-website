@@ -26,21 +26,60 @@ public class ScoreDAOimpl implements ScoreDAO {
 			e.printStackTrace();
 		}
 		
+		
+		
 	}
 	
 	@Override
-	public Score getScoreById(int id) {
-		Score s = null;
+	public void createScoreWithId(Score s) {
+		String attributsTxt = String.format("%d,%d, %d, '%s'",s.getId(), s.getNbSet(),s.getNbJeu(),s.getTemps());
+		String query = "INSERT INTO Score (id_score,nombre_set,nombre_jeu,temps) VALUES (" + attributsTxt + ")";
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = connexion.prepareStatement(query);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	public Integer getLastScoreId() {
 
-		ResultSet rs = queryTool.getResult("SELECT * FROM Score WHERE id_match=" + id);
-
+		ResultSet rs = queryTool.getResult("SELECT id_score FROM Score ORDER BY id_score DESC LIMIT 1;");		
+		Integer id =null;
 		if (rs != null) {
 
 			try {
 				while (rs.next()) {
 		
 					// Pour chaque instance de match retournée par la requête on créé un nouveau
-					s = new Score(id, rs.getInt("nb_set"),rs.getInt("nb_jeu"),rs.getTime("heure").toLocalTime());
+					id = rs.getInt("id_score");
+					System.out.println(id);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+		
+	}
+	
+	@Override
+	public Score getScoreById(int id) {
+		Score s = null;
+
+		ResultSet rs = queryTool.getResult("SELECT * FROM Score WHERE id_score=" + id);
+		
+		if (rs != null) {
+
+			try {
+				while (rs.next()) {
+		
+					// Pour chaque instance de match retournée par la requête on créé un nouveau
+					s = new Score(id, rs.getInt("nombre_set"),rs.getInt("nombre_jeu"),rs.getTime("temps").toLocalTime());
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
