@@ -24,22 +24,26 @@ public class FileUploadServlet extends HttpServlet {
         // Get the file chosen by the user
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
-
         // Write the file to the server
         InputStream fileContent = filePart.getInputStream();
-        OutputStream outputStream = new FileOutputStream(new File("" + fileName));
-        int read = 0;
-        final byte[] bytes = new byte[1024];
-        while ((read = fileContent.read(bytes)) != -1) {
-            outputStream.write(bytes, 0, read);
+        //afiicher le contenu du fichier
+        BufferedReader reader = new BufferedReader(new InputStreamReader(fileContent));
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            String str = line;
+            String[] res = str.split("[,]", 0);
+            for(String myStr: res) {
+                System.out.println(myStr);
+            }
         }
 
-        // Close the streams
-        outputStream.close();
+
+        //close the stream
         fileContent.close();
 
-        // Redirect the user to the success page
-        //response.sendRedirect("success.jsp");
+        //redirection vers la liste des joueurs
+        response.sendRedirect("/joueurs/editer");
+
 
     }
 
