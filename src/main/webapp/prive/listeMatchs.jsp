@@ -50,19 +50,20 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 				<td><%=heure%></td>
 				<td><%=joueur1%></td>
 				<td><%=joueur2%></td>
-				<% 
-					if(m.getScore()!=null) {
-				 %>
+				
 				<td>
+				<% 
+					if(m.getScore()==null) {
+				 %>
 					 <a
 					href="/match/finaliser?id=<%=id%>"><span
 						class="material-symbols-outlined">scoreboard</span></a> 
-					
+					<%}%>
 					<a href="/match/supprimer?id=<%=id%>"> <span
 						class="material-symbols-outlined">delete</span>
 					</a>
 				</td>
-			<%}%> 
+			 
 
 			</tr>
 
