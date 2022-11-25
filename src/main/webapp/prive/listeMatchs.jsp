@@ -16,11 +16,7 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 
 <%@include file="../general/nav.jsp"%>
 <body>
-	<!--  Filtres -->
-	<form action="/matchs/editer" class="btn-group m-auto" method="post">
-		<button type="submit" class="btn btn-outline-dark" name="btn-nom"
-			value="btn-nom">Trier par date</button>
-	</form>
+
 
 	<!-- Liste des matchs passés  -->
 
@@ -33,7 +29,6 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 				<th scope="col">Heure</th>
 				<th scope="col">Joueur1</th>
 				<th scope="col">Joueur2</th>
-				<!--<th scope="col">Gagnant</th>-->
 				<th scope="col"></th>
 
 			</tr>
@@ -55,19 +50,19 @@ List<Match> matchsPasPasses = (List<Match>) request.getAttribute("matchsPasPasse
 				<td><%=heure%></td>
 				<td><%=joueur1%></td>
 				<td><%=joueur2%></td>
-				<!--  <td><%//gagnant%></td>-->
+				<% 
+					if(m.getScore()!=null) {
+				 %>
 				<td>
-					<%
-					System.out.println(m.getScore());
-					if (m.getScore()==null) {
-					%> <a
-					href="/score/ajouter?id_match=<%=id%>"><span
+					 <a
+					href="/match/finaliser?id=<%=id%>"><span
 						class="material-symbols-outlined">scoreboard</span></a> 
-					<%}%> 
+					
 					<a href="/match/supprimer?id=<%=id%>"> <span
 						class="material-symbols-outlined">delete</span>
 					</a>
 				</td>
+			<%}%> 
 
 			</tr>
 
