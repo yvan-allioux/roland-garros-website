@@ -1,6 +1,25 @@
 # roland-garros-website
 
-netstat -a | grep 8000
-netstat -a | grep 8005
+## dianmic web site in Java EE
 
-test
+MVC Servlet architecture
+Use of GIT
+Object approach
+
+### Technologies used
+
+back end
+   - Java EE
+   - MySQL  
+   - Tomcat
+   
+front end
+   - Bootstrap
+   
+software for dev
+   - Eclipse/IntelliJ
+   - GitHub
+   - DBeaver
+   
+ 
+
